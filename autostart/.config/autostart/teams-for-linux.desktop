@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Teams for Linux
+Exec=bash -c "sleep 10 && snap run teams-for-linux &"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Comment=Start Teams for linux after 10s
