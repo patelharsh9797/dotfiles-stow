@@ -1,0 +1,105 @@
+sudo apt install curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0 bat
+
+
+
+--Gnme setup
+sudo apt install gnome-tweaks -y
+sudo apt install gnome-shell-extensions -y
+
+-- dock icon click to toggle app
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
+**gnome-shell-ext:
+https://extensions.gnome.org/extension/3193/blur-my-shell/
+https://extensions.gnome.org/extension/4478/net-speed/
+https://extensions.gnome.org/extension/1162/emoji-selector/
+https://extensions.gnome.org/extension/779/clipboard-indicator/
+
+not supported in 22.04
+https://extensions.gnome.org/extension/4491/privacy-settings-menu/
+https://extensions.gnome.org/extension/5446/quick-settings-tweaker/
+https://extensions.gnome.org/extension/5547/custom-accent-colors/
+
+
+--- video endocing suppor & vlc
+sudo apt install ubuntu-restricted-extras -y
+sudo apt install vlc -y
+
+
+--Enable Firewall
+sudo ufw enable
+sudo apt install gufw
+sudo ufw deny 22/tcp
+
+sudo apt install preload -y
+sudo apt install bleachbit -y
+sudo apt install stacer -y
+
+--Nala
+echo "deb [trusted=yes] https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian.list
+sudo apt update
+sudo apt install nala
+sudo nala fetch
+sudo nala install neofetch htop
+
+--teams
+sudo apt install snapd
+sudo snap install teams-for-linux
+
+
+--Laptop specific
+sudo apt install tlp tlp-rdw
+sudo systemctl enable tlp
+sudo systemctl start tlp
+
+--NVM // Node // Bun
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+exec $SHELL
+nvm install 20.14.0
+
+curl -fsSL https://bun.sh/install | bash
+
+--Neovim //lazyvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+export PATH="$PATH:/opt/nvim-linux64/bin"  //put it in a .bashrc
+sudo rm nvim-linux64.tar.gz
+
+
+--starship prompt
+curl -sS https://starship.rs/install.sh | sh
+
+
+--docker
+sudo nala install docker.io
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo chmod 666 /var/run/docker.sock
+
+--docker compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+
+--Kitty terminal
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/bin/
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+echo 'kitty.desktop' > ~/.config/xdg-terminals.list
+
+gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'  || 'gnome-terminal' for default terminal
+
+py /usr/share/nautilus-python/extensions/open-kitty.py
+
+
+--dbeaver database explorer
+sudo add-apt-repository ppa:serge-rider/dbeaver-ce
+sudo apt-get update
+sudo apt-get install dbeaver-ce
+
