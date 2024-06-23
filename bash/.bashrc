@@ -161,7 +161,40 @@ alias rec="ffmpeg -framerate 24 -f x11grab -video_size 1920x1080 -i :0.0+1366,0 
 alias f="ffmpeg -framerate 24 -f x11grab -video_size 1366x768 -i :0.0+0,0 -preset ultrafast -crf 8 ~/Recordings/Output.mkv"
 alias cam="ffplay -f v4l2 -framerate 29 -video_size 1280x720 /dev/video0"
 #
-#
+
+# My custom alias
+alias mysql_restart="sudo sh ~/mysql_restart.sh"
+alias cl="clear"
+alias x="exit"
+alias g="git"
+alias gpom="git push origin main"
+alias brd="bun run dev"
+alias brb="bun run build"
+alias brs="bun run start"
+alias bdp="bun db:push"
+alias bdg="bun db:generate"
+alias bds="bun db:studio"
+alias vim="vi"
+alias gt="goto"
+alias nv="nvim"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias venvAdd="python3 -m venv .venv"
+alias envAct="source env/bin/activate"
+alias venvAct="source .venv/bin/activate"
+alias py="python3"
+alias pmr="py manage.py runserver"
+alias pa="py app.py"
+alias pipun="pip uninstall"
+alias pjn="jupyter notebook"
+
+# Changing "ls" to "eza"
+alias ls='eza --icons --color=always --group-directories-first'
+alias ll='eza -alF --icons --color=always --group-directories-first'
+alias la='eza -a --icons --color=always --group-directories-first'
+alias l='eza -F --icons --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
