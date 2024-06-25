@@ -21,8 +21,8 @@ live_config_reload = true
 TERM = "xterm-256color"
 
 [window]
-decorations = "Buttonless"
-# decorations = "Full"
+decorations = "Full"
+# decorations = "Buttonless"  # (macOS only)
 startup_mode = "Maximized"
 dynamic_padding = true
 padding = { x = 4, y = 4 }
