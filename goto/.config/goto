@@ -1,0 +1,4 @@
+dotfiles-stow /home/harsh/dotfiles-stow
+nvim /home/harsh/.config/nvim
+alacritty /home/harsh/.config/alacritty
+kitty /home/harsh/.config/kitty

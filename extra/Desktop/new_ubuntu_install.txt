@@ -106,8 +106,21 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'  || '
 py /usr/share/nautilus-python/extensions/open-kitty.py
 
 
+-- alacritty
+sudo apt install alacritty
+gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty' 
+
+
+
 --dbeaver database explorer
 sudo add-apt-repository ppa:serge-rider/dbeaver-ce
 sudo apt-get update
 sudo apt-get install dbeaver-ce
+
+
+--goto alias and navigate to directories 
+git clone https://github.com/iridakos/goto.git
+cd goto
+sudo ./install
+
 

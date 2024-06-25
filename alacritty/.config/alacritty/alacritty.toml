@@ -27,7 +27,7 @@ startup_mode = "Maximized"
 dynamic_padding = true
 padding = { x = 4, y = 4 }
 class = {instance= "Alacritty",general="Alacritty"}
-opacity = 0.95
+opacity = 0.85
 blur = true
 
 [bell]
@@ -36,10 +36,10 @@ color = "#ffffff"
 duration = 0
 
 [font]
-normal = { family = "JetBrains Mono NL", style = "Medium" }
-bold = { family = "JetBrains Mono NL", style = "Bold" }
-italic = { family = "JetBrains Mono NL", style = "MediumItalic" }
-bold_italic = { family = "JetBrains Mono NL", style = "BoldItalic" }
+normal = { family = "JetBrains Mono", style = "Medium" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "MediumItalic" }
+bold_italic = { family = "JetBrains Mono", style = "BoldItalic" }
 builtin_box_drawing = true
 size=12
 
