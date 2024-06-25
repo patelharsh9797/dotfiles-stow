@@ -1,0 +1,58 @@
+import = [
+  "~/.config/alacritty/themes/mocha.toml"
+  # "~/.config/alacritty/themes/coolnight.toml"
+  # "~/.config/alacritty/themes/dracula.toml"
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+live_config_reload = true
+
+# [shell]
+# program = "bash"
+# program = "/usr/bin/zsh"
+
+# shell = "C:\\Windows\\System32\\bash.exe"
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "Buttonless"
+# decorations = "Full"
+startup_mode = "Maximized"
+dynamic_padding = true
+padding = { x = 4, y = 4 }
+class = {instance= "Alacritty",general="Alacritty"}
+opacity = 0.95
+blur = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 0
+
+[font]
+normal = { family = "JetBrains Mono NL", style = "Medium" }
+bold = { family = "JetBrains Mono NL", style = "Bold" }
+italic = { family = "JetBrains Mono NL", style = "MediumItalic" }
+bold_italic = { family = "JetBrains Mono NL", style = "BoldItalic" }
+builtin_box_drawing = true
+size=12
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+blink_interval = 300
+unfocused_hollow = true
+thickness = 0.15
+
+
+[colors]
+draw_bold_text_with_bright_colors = true

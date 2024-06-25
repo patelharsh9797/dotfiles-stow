@@ -1,4 +1,4 @@
-sudo apt install curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0 bat
+sudo apt install curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0 bat locate
 
 --exa alternative eza
 sudo mkdir -p /etc/apt/keyrings

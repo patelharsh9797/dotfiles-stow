@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias cd="z"
 alias mysql_restart="sudo sh ~/mysql_restart.sh"
 alias cl="clear"
 alias x="exit"
@@ -116,6 +117,7 @@ alias bds="bun db:studio"
 alias vim="vi"
 alias gt="goto"
 alias nv="nvim"
+alias yz="yazi"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -135,6 +137,15 @@ alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
+# --- setup fzf theme ---
+fg="#CBE0F0"
+bg="#0f0f0f"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
