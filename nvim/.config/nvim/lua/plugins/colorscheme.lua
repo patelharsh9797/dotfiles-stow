@@ -5,7 +5,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
-      flavour = "macchiato", -- latte, frappe, macchiato, mocha
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
       transparent_background = true,
       transparent = true,
       integrations = {
@@ -65,12 +65,13 @@ return {
     config = function()
       local p = require("poimandres.palette")
       require("poimandres").setup({
-        bold_vert_split = false, -- use bold vertical separators
+        bold_vert_split = true, -- use bold vertical separators
         dim_nc_background = true, -- dim 'non-current' window backgrounds
         disable_background = true, -- disable background
         disable_float_background = true, -- disable background for floats
         disable_italics = false, -- disable italics
         highlight_groups = {
+          WhichKeyFloat = { bg = p.none },
           LspReferenceText = { bg = p.background3 },
           LspReferenceRead = { bg = p.background3 },
           LspReferenceWrite = { bg = p.background3 },
