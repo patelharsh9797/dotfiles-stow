@@ -3,3 +3,4 @@ nvim /home/harsh/.config/nvim
 alacritty /home/harsh/.config/alacritty
 kitty /home/harsh/.config/kitty
 bat /home/harsh/.config/bat
+tmuxifier /home/harsh/.tmuxifier/layouts
