@@ -1,5 +1,26 @@
-[aws]
-style = "bold #ffb86c"
+[os]
+disabled = true
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = ""
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
 
 [character]
 error_symbol = "[λ](bold #ff5555)"
@@ -11,16 +32,15 @@ style = "bold #f1fa8c"
 [directory]
 style = "bold #50fa7b"
 
-[git_branch]
-style = "bold #ff79c6"
-
 [hostname]
 style = "bold #bd93f9"
+
+[git_branch]
+style = "bold #ff79c6"
 
 [username]
 format = "[$user]($style) on "
 style_user = "bold #8be9fd"
-
 
 [git_status]
 style = "bold #ff5555"
@@ -36,3 +56,5 @@ staged = '[++\($count\)](#50fa7b)'
 renamed = "👅"
 deleted = "🗑"
 
+[line_break]
+disabled = false

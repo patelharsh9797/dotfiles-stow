@@ -171,8 +171,14 @@ PATH=~/.console-ninja/.bin:$PATH
 # zoxide
 # Path=~/.local/bin/zoxide
 
+
+
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+eval "$(tmuxifier init -)"
 
 eval "$(starship init zsh)"
 
