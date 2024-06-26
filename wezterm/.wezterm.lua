@@ -8,15 +8,15 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.colors = {
-	foreground = "#CBE0F0",
+	foreground = "#cdd6f4",
 	background = "#0f0f0f",
-	cursor_bg = "#47FF9C",
-	cursor_border = "#47FF9C",
-	cursor_fg = "#011423",
-	selection_bg = "#706b4e",
-	selection_fg = "#f3d9c4",
-	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+	cursor_bg = "#f5e0dc",
+	cursor_border = "#f5e0dc",
+	cursor_fg = "#11111b",
+	selection_bg = "#585b70",
+	selection_fg = "#cdd6f4",
+	ansi = { "#45475a", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#f5c2e7", "#94e2d5", "#bac2de" },
+	brights = { "#585b70", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#f5c2e7", "#94e2d5", "#a6adc8" },
 }
 
 config.font = wezterm.font("JetBrains Mono")
