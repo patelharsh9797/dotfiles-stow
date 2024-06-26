@@ -17,20 +17,6 @@ return {
     },
   },
 
-  -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        -- globalstatus = false,
-        -- theme = "catppuccin",
-        -- theme = "dracula",
-        theme = "poimandres",
-      },
-    },
-  },
-
   -- filename
   {
     "b0o/incline.nvim",

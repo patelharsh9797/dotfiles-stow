@@ -1,6 +1,35 @@
 return {
   {
-    enabled = true,
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "cyberdream",
+    },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        -- globalstatus = false,
+        theme = "poimandres",
+      },
+    },
+  },
+
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = function(_, opts)
+      opts.transparent = true
+      opts.italic_comments = true
+      opts.terminal_colors = true
+      opts.hide_fillchars = false
+      opts.borderless_telescope = false
+    end,
+  },
+  {
+    enabled = false,
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
@@ -49,7 +78,7 @@ return {
     enabled = false,
     "folke/tokyonight.nvim",
     opts = {
-      style = "light", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+      style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
       transparent = true,
       styles = {
         sidebars = "transparent",
