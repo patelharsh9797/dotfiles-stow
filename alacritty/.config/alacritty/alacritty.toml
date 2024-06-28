@@ -25,7 +25,7 @@ decorations = "Full"
 # decorations = "Buttonless"  # (macOS only)
 startup_mode = "Maximized"
 dynamic_padding = true
-padding = { x = 4, y = 4 }
+padding = { x = 0, y = 0 }
 class = {instance= "Alacritty",general="Alacritty"}
 opacity = 0.8
 blur = true

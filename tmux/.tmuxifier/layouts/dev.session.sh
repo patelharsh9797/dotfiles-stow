@@ -1,6 +1,6 @@
-session_root "/media/harsh/5C38B5DC38B5B57C/HARSH Coding/Web Development/07_NextJS/sprout-scribble"
+session_root "${PWD}"
 
-if initialize_session "sprout-scribble"; then
+if initialize_session "dev"; then
 
 	new_window "nvim"
 	split_h 50

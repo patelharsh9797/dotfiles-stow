@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cyberdream",
+      colorscheme = "poimandres",
     },
   },
   {
@@ -17,6 +17,7 @@ return {
   },
 
   {
+    enabled = false,
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,

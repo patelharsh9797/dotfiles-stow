@@ -1,12 +1,6 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
-
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
 config.colors = {
 	foreground = "#cdd6f4",
 	background = "#0f0f0f",
@@ -22,19 +16,36 @@ config.colors = {
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12
 
-config.enable_tab_bar = true
+-- config.hide_tab_bar_if_only_one_tab = true
+config.enable_tab_bar = false
 config.bold_brightens_ansi_colors = true
+config.use_fancy_tab_bar = false
 
-config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.8
+-- config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE"
+config.window_background_opacity = 0.85
 config.macos_window_background_blur = 8
+config.native_macos_fullscreen_mode = false
 
 config.window_padding = {
-	left = 2,
-	right = 2,
-	top = 2,
-	bottom = 2,
+	left = 4,
+	right = 4,
+	top = 4,
+	bottom = 4,
 }
+
+-- config.keys = {
+-- 	{
+-- 		key = "m", -- You can change this to your preferred key combination
+-- 		mods = "ALT", -- You can change this to your preferred modifier key(s)
+-- 		action = wezterm.action_callback(function(win, pane)
+-- 			local screen_width = wezterm.screen_info().width
+-- 			local screen_height = wezterm.screen_info().height
+-- 			win:set_window_position(0, 0)
+-- 			win:set_window_size(screen_width, screen_height)
+-- 		end),
+-- 	},
+-- }
 
 -- and finally, return the configuration to wezterm
 return config
