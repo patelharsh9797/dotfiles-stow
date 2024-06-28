@@ -1,0 +1,6 @@
+[/]
+close=['<Control>w']
+maximize=@as []
+toggle-fullscreen=@as []
+toggle-maximized=['<Shift><Control>w']
+unmaximize=@as []
