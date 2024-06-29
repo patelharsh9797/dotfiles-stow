@@ -35,12 +35,12 @@ style = "bold #50fa7b"
 [hostname]
 style = "bold #bd93f9"
 
-[git_branch]
-style = "bold #ff79c6"
-
 [username]
 format = "[$user]($style) on "
 style_user = "bold #8be9fd"
+
+[git_branch]
+style = "bold #ff79c6"
 
 [git_status]
 style = "bold #ff5555"
@@ -58,3 +58,15 @@ deleted = "🗑"
 
 [line_break]
 disabled = false
+
+[docker_context]
+disabled = false
+
+[golang]
+format = '[ ](bold cyan)'
+
+[aws]
+format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
+disabled = false
+style = 'bold blue'
+symbol = " "

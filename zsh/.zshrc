@@ -84,11 +84,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -138,8 +138,10 @@ alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
 
-# --- setup fzf theme ---
+# FZF
 fg="#CBE0F0"
 bg="#0f0f0f"
 bg_highlight="#143652"
@@ -147,7 +149,9 @@ purple="#B388FF"
 blue="#06BCE4"
 cyan="#2CF9ED"
 
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+# export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -169,8 +173,6 @@ PATH=~/.console-ninja/.bin:$PATH
 
 # zoxide
 # Path=~/.local/bin/zoxide
-
-export EDITOR='nvim'
 
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh

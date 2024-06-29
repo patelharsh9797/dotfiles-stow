@@ -20,6 +20,7 @@ return {
         "vtsls",
         "yaml-language-server",
       })
+
       opts.ui = {
         height = 0.8,
         border = "rounded",
@@ -35,9 +36,17 @@ return {
   -- { "dmmulroy/ts-error-translator.nvim" },
   {
     "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      -- LspInfo Border
+      require("lspconfig.ui.windows").default_options.border = "rounded"
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = true },
+      -- ui.windows.border = "rounded",
       ---@type lspconfig.options
+      inlay_hints = { enabled = true },
       servers = {
         cssls = {},
         tailwindcss = {
