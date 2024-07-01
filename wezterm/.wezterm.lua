@@ -21,12 +21,24 @@ config.enable_tab_bar = false
 config.bold_brightens_ansi_colors = true
 config.use_fancy_tab_bar = false
 
+-- config.visual_bell = {
+-- 	fade_in_function = "EaseIn",
+-- 	fade_in_duration_ms = 150,
+-- 	fade_out_function = "EaseOut",
+-- 	fade_out_duration_ms = 150,
+-- }
+
+config.cursor_thickness = 1
+config.default_cursor_style = "BlinkingBar"
+config.cursor_blink_ease_in = "Linear"
+config.cursor_blink_ease_out = "Linear"
+config.cursor_blink_rate = 300
+
 -- config.window_decorations = "RESIZE"
 config.window_decorations = "TITLE"
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 8
 config.native_macos_fullscreen_mode = false
-
 config.window_padding = {
 	left = 4,
 	right = 4,
@@ -44,6 +56,15 @@ config.window_padding = {
 -- 			win:set_window_position(0, 0)
 -- 			win:set_window_size(screen_width, screen_height)
 -- 		end),
+-- 	},
+-- }
+
+-- config.mouse_bindings = {
+-- 	-- Ctrl-click will open the link under the mouse cursor
+-- 	{
+-- 		event = { Up = { streak = 1, button = "Left" } },
+-- 		mods = "CTRL",
+-- 		action = wezterm.action.OpenLinkAtMouseCursor,
 -- 	},
 -- }
 

@@ -130,7 +130,8 @@ alias pmr="py manage.py runserver"
 alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
-alias tmx="tmux -u"
+alias t="tmux -u"
+alias pycharm="/home/harsh/pycharm-community-2024.1.4/bin/pycharm.sh"
 
 # Changing "ls" to "eza"
 alias ls='eza --icons --color=always --group-directories-first'
@@ -170,6 +171,7 @@ export PATH="/home/harsh/.turso:$PATH"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
 PATH=~/.console-ninja/.bin:$PATH
+
 
 # zoxide
 # Path=~/.local/bin/zoxide
