@@ -101,98 +101,12 @@ fi
 # ezample aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zsh_alias
 
-alias cd="z"
-alias cat="bat"
-alias mysql_restart="sudo sh ~/mysql_restart.sh"
-alias cl="clear"
-alias x="exit"
-alias g="git"
-alias gpom="git push origin main"
-alias brd="bun run dev"
-alias brb="bun run build"
-alias brs="bun run start"
-alias bdp="bun db:push"
-alias bdg="bun db:generate"
-alias bds="bun db:studio"
-alias gt="goto"
-alias vim="nvim"
-alias vi="nvim"
-alias nv="nvim"
-alias yz="yazi"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias venvAdd="python3 -m venv .venv"
-alias envAct="source env/bin/activate"
-alias venvAct="source .venv/bin/activate"
-alias py="python3"
-alias pmr="py manage.py runserver"
-alias pa="py app.py"
-alias pipun="pip uninstall"
-alias pjn="jupyter notebook"
-alias t="tmux -u"
+source ~/.zsh_export_path
 
-# docker alias
-alias dps="docker ps"
-alias dpsa="docker ps -a"
-alias dv="docker volume"
-alias di="docker image"
-alias dis="docker images"
-alias dip="docker image prune"
-alias dc="docker container"
-alias dsp="docker system prune"
-alias dexec="docker exec"
-
-# Changing "ls" to "eza"
-alias ls='eza --icons --color=always --group-directories-first'
-alias ll='eza -alF --icons --color=always --group-directories-first'
-alias la='eza -a --icons --color=always --group-directories-first'
-alias l='eza -F --icons --color=always --group-directories-first'
-alias l.='eza -a | egrep "^\."'
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
-
-# FZF
-fg="#CBE0F0"
-bg="#0f0f0f"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
-
-# export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
-
-#NVM Stuff
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Turso
-export PATH="/home/harsh/.turso:$PATH"
-
-# NVIM
-export PATH="$PATH:/opt/nvim-linux64/bin"
-
-PATH=~/.console-ninja/.bin:$PATH
-
-
-# zoxide
-# Path=~/.local/bin/zoxide
-
-# Source goto
-[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-
-eval "$(tmuxifier init -)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"

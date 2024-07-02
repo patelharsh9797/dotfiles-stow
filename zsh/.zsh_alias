@@ -1,0 +1,63 @@
+alias cd="z"
+alias cat="bat"
+alias htop="htop -t"
+alias mysql_restart="sudo sh ~/mysql_restart.sh"
+alias cl="clear"
+alias x="exit"
+alias neofetch='neofetch --ascii ascii.txt | lolcat'
+
+alias g="git"
+alias gt='git clone --depth=1'
+alias gs='git status'
+alias gm='git commit -m'
+alias gc='git clean'
+alias gr='git restore'
+alias ga='git add .'
+alias gp='git push'
+alias gpom="git push origin main"
+
+alias brd="bun run dev"
+alias brb="bun run build"
+alias brs="bun run start"
+alias bdp="bun db:push"
+alias bdg="bun db:generate"
+alias bds="bun db:studio"
+
+alias gt="goto"
+alias v="nvim"
+alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"
+alias yz="yazi"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias venvAdd="python3 -m venv .venv"
+alias envAct="source env/bin/activate"
+alias venvAct="source .venv/bin/activate"
+alias py="python3"
+alias pmr="py manage.py runserver"
+alias pa="py app.py"
+alias pipun="pip uninstall"
+alias pjn="jupyter notebook"
+alias t="tmux -u"
+
+# docker alias
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dv="docker volume"
+alias di="docker image"
+alias dis="docker images"
+alias dip="docker image prune"
+alias dc="docker container"
+alias dsp="docker system prune"
+alias dexec="docker exec"
+
+# Changing "ls" to "eza"
+alias ls='eza --icons --color=always --group-directories-first'
+alias ll='eza -alF --icons --color=always --group-directories-first'
+alias la='eza -a --icons --color=always --group-directories-first'
+alias l='eza -F --icons --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
