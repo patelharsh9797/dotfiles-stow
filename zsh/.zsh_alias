@@ -7,13 +7,7 @@ alias x="exit"
 alias neofetch='neofetch --ascii ascii.txt | lolcat'
 
 alias g="git"
-alias gt='git clone --depth=1'
-alias gs='git status'
 alias gm='git commit -m'
-alias gc='git clean'
-alias gr='git restore'
-alias ga='git add .'
-alias gp='git push'
 alias gpom="git push origin main"
 
 alias brd="bun run dev"
