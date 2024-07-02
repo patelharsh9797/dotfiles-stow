@@ -103,6 +103,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cd="z"
+alias cat="bat"
 alias mysql_restart="sudo sh ~/mysql_restart.sh"
 alias cl="clear"
 alias x="exit"
@@ -131,7 +132,17 @@ alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
 alias t="tmux -u"
-alias pycharm="/home/harsh/pycharm-community-2024.1.4/bin/pycharm.sh"
+
+# docker alias
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dv="docker volume"
+alias di="docker image"
+alias dis="docker images"
+alias dip="docker image prune"
+alias dc="docker container"
+alias dsp="docker system prune"
+alias dexec="docker exec"
 
 # Changing "ls" to "eza"
 alias ls='eza --icons --color=always --group-directories-first'

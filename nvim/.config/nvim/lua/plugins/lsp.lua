@@ -18,7 +18,7 @@ return {
         "tailwindcss-language-server",
         -- "typescript-language-server",
         "vtsls",
-        "yaml-language-server",
+        -- "yaml-language-server",
       })
 
       opts.ui = {
@@ -127,6 +127,8 @@ return {
             },
           },
         },
+        dockerls = {},
+        docker_compose_language_service = {},
       },
       setup = {},
     },
