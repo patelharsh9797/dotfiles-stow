@@ -59,8 +59,26 @@ deleted = "🗑"
 [line_break]
 disabled = false
 
-[docker_context]
-disabled = false
+[custom.docker]
+description = "Displays a Docker icon in directories with Docker-related files"
+command = "echo 🐳"
+detect_files = [
+  "Dockerfile",
+  "docker-compose.yml",
+  "docker-compose.dev.yml",
+  "docker-compose.prod.yml",
+  "docker-compose.base.yml",
+  "docker-compose*.yml",
+]
+when = """ command -v docker &> /dev/null; exit (echo $?); """
+format = "[$output](bold cyan) "
+
+# [custom.docker]
+# format = '[🐋](bold cyan)'
+# # command = "echo 🐋"
+# files = ["Dockerfile", "docker-compose.yml"]
+# when = """ command -v docker &> /dev/null; exit (echo $?); """
+# prefix = "on "
 
 [golang]
 format = '[ ](bold cyan)'

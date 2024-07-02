@@ -13,6 +13,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+# bun completions
 [ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
 
 #NVM Stuff
@@ -39,4 +40,3 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 eval "$(tmuxifier init -)"
-

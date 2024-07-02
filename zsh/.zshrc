@@ -107,6 +107,3 @@ source ~/.zsh_export_path
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-# bun completions
-[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
