@@ -10,7 +10,6 @@ sudo apt update
 sudo apt install -y eza
 
 
-
 --Gnme setup
 sudo apt install gnome-tweaks -y
 sudo apt install gnome-shell-extensions -y
@@ -81,6 +80,15 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 export PATH="$PATH:/opt/nvim-linux64/bin"  //put it in a .bashrc
 sudo rm nvim-linux64.tar.gz
+
+----neovim using appImage
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/bin/nvim
+
+sudo apt install libfuse2
+sudo modprobe fuse
+
 
 
 --starship prompt

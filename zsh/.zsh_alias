@@ -37,6 +37,7 @@ alias pjn="jupyter notebook"
 alias t="tmux -u"
 
 # docker alias
+alias dr="docker run"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
 alias dv="docker volume"
