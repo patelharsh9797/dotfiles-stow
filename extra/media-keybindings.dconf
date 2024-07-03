@@ -1,0 +1,10 @@
+[/]
+control-center=['<Control><Alt>s']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+home=['<Shift><Control>h']
+www=['<Control><Alt>b']
+
+[custom-keybindings/custom0]
+binding='<Control><Alt>q'
+command='/home/harsh/poweroff-confirm.sh'
+name='Shutdown'

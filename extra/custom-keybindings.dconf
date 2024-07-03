@@ -1,4 +1,0 @@
-[custom0]
-binding='<Control><Alt>q'
-command='/home/harsh/poweroff-confirm.sh'
-name='Shutdown'

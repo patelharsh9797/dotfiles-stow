@@ -31,6 +31,7 @@ style = "bold #f1fa8c"
 
 [directory]
 style = "bold #50fa7b"
+home_symbol = '󰋜 ~'
 
 [hostname]
 style = "bold #bd93f9"
@@ -59,8 +60,16 @@ deleted = "🗑"
 [line_break]
 disabled = false
 
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+pyenv_version_name = true
+
 [custom.docker]
 description = "Displays a Docker icon in directories with Docker-related files"
+# command = "echo  "
 command = "echo 🐳"
 detect_files = [
   "Dockerfile",
@@ -73,12 +82,8 @@ detect_files = [
 when = """ command -v docker &> /dev/null; exit (echo $?); """
 format = "[$output](bold cyan) "
 
-# [custom.docker]
-# format = '[🐋](bold cyan)'
-# # command = "echo 🐋"
-# files = ["Dockerfile", "docker-compose.yml"]
-# when = """ command -v docker &> /dev/null; exit (echo $?); """
-# prefix = "on "
+[lua]
+symbol = " "
 
 [golang]
 format = '[ ](bold cyan)'
@@ -86,5 +91,5 @@ format = '[ ](bold cyan)'
 [aws]
 format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
 disabled = false
-style = 'bold blue'
+style = 'bold orange'
 symbol = " "
