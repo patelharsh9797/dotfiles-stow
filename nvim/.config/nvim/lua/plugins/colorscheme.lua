@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cyberdream",
+      colorscheme = "catppuccin",
     },
   },
   {
@@ -15,11 +15,10 @@ return {
       },
     },
   },
-
   {
-    enabled = true,
+    enabled = false,
     "scottmckendry/cyberdream.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = function(_, opts)
       opts.transparent = true
@@ -31,6 +30,7 @@ return {
   },
   -- modicator (auto color line number based on vim mode)
   {
+    enabled = false,
     "mawkler/modicator.nvim",
     dependencies = "scottmckendry/cyberdream.nvim",
     init = function()
@@ -42,7 +42,7 @@ return {
     opts = {},
   },
   {
-    enabled = false,
+    enabled = true,
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",

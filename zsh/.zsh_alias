@@ -35,6 +35,9 @@ alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
 alias t="tmux -u"
+alias tls="tmux ls"
+alias tks="tmux kill-server"
+alias tdev="tmuxifier load-session dev"
 
 # docker alias
 alias dr="docker run"
