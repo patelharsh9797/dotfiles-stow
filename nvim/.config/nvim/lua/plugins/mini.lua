@@ -21,12 +21,17 @@ return {
         return { glyph = icon, hl = hl }
       end
       local dockerfile_icon_tbl = get_icon_tbl("filetype", "dockerfile")
+      local database_icon_tbl = get_icon_tbl("extension", "sql")
+
       icons.setup({
         file = {
           ["docker-compose.yml"] = dockerfile_icon_tbl,
           ["docker-compose.dev.yml"] = dockerfile_icon_tbl,
           ["docker-compose.prod.yml"] = dockerfile_icon_tbl,
           ["docker-compose.base.yml"] = dockerfile_icon_tbl,
+        },
+        extension = {
+          db = database_icon_tbl,
         },
       })
     end,
