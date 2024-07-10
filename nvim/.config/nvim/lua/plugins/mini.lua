@@ -11,6 +11,26 @@ return {
       },
     },
   },
+  {
+    "echasnovski/mini.icons",
+    config = function()
+      local icons = require("mini.icons")
+      -- icons.mock_nvim_web_devicons()
+      local get_icon_tbl = function(category, name)
+        local icon, hl = icons.get(category, name)
+        return { glyph = icon, hl = hl }
+      end
+      local dockerfile_icon_tbl = get_icon_tbl("filetype", "dockerfile")
+      icons.setup({
+        file = {
+          ["docker-compose.yml"] = dockerfile_icon_tbl,
+          ["docker-compose.dev.yml"] = dockerfile_icon_tbl,
+          ["docker-compose.prod.yml"] = dockerfile_icon_tbl,
+          ["docker-compose.base.yml"] = dockerfile_icon_tbl,
+        },
+      })
+    end,
+  },
   -- {
   -- 	"lukas-reineke/indent-blankline.nvim",
   -- 	main = "ibl",
