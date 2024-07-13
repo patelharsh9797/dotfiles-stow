@@ -3,6 +3,13 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# setopt hist_ignore_all_dups
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,3 +114,5 @@ source ~/.zsh_export_path
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"

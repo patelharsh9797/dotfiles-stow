@@ -1,21 +1,103 @@
 {
-  "features": {
-    "inline_completion_provider": "none"
-  },
+  "relative_line_numbers": true,
+  "always_treat_brackets_as_autoclosed": true,
   "font_family": "JetBrains Mono",
   "font_features": true,
-  "vim_mode": false,
+  "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "theme": "Catppuccin Frappé",
   "tab_size": 2,
   "show_wrap_guides": true,
   "format_on_save": "language_server",
+  "project_panel": {
+    "button": true,
+    "dock": "right",
+    "git_status": true
+  },
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "inlay_hints": {
+    "enabled": false
+  },
+  "terminal": {
+    "font_family": "JetBrains Mono",
+    "font_size": 16
+  },
   "scrollbar": {
     "git_diff": false
   },
   "git": {
     "git_gutter": "tracked_files"
+  },
+  "languages": {
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      },
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      },
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
+      }
+    },
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": true
+      },
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
+      }
+    }
+  },
+  "preferences": {
+    "includeInlayParameterNameHints": "all",
+    "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+    "includeInlayFunctionParameterTypeHints": true,
+    "includeInlayVariableTypeHints": true,
+    "includeInlayVariableTypeHintsWhenTypeMatchesName": true,
+    "includeInlayPropertyDeclarationTypeHints": true,
+    "includeInlayFunctionLikeReturnTypeHints": true,
+    "includeInlayEnumMemberValueHints": true
+  },
+  "formatter": {
+    "external": {
+      "command": "./node_modules/@biomejs/biome/bin/biome",
+      "arguments": [
+        "format",
+        "--write",
+        "--stdin-file-path",
+        "{buffer_path}"
+      ]
+    }
+  },
+  "file_types": {
+    "Dockerfile": [
+      "Dockerfile",
+      "Dockerfile.*"
+    ],
+    "JSON": [
+      "json",
+      "jsonc",
+      "*.code-snippets"
+    ]
   },
   "experimental.theme_overrides": {
     "background.appearance": "blurred",

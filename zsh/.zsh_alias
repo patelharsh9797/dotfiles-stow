@@ -39,8 +39,6 @@ alias tls="tmux ls"
 alias tks="tmux kill-server"
 alias tdev="tmuxifier load-session dev"
 
-alias zed="/home/harsh/zed-preview.app/bin/zed --new ."
-
 # docker alias
 alias dr="docker run"
 alias dps="docker ps"

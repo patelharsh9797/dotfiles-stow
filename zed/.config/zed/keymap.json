@@ -1,0 +1,12 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock",
+    }
+  }
+]
