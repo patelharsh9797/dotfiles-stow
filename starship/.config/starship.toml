@@ -32,6 +32,7 @@ style = "bold #f1fa8c"
 [directory]
 style = "bold #50fa7b"
 home_symbol = '󰋜 ~'
+truncation_length = 1
 
 [hostname]
 style = "bold #bd93f9"
