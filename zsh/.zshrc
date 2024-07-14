@@ -79,7 +79,7 @@ setopt HIST_SAVE_NO_DUPS
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # ezample format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
+plugins=(git you-should-use zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,5 +114,5 @@ source ~/.zsh_export_path
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+# . "$HOME/.atuin/bin/env"
+# eval "$(atuin init zsh)"

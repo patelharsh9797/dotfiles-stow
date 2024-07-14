@@ -94,6 +94,9 @@ sudo modprobe fuse
 --starship prompt
 curl -sS https://starship.rs/install.sh | sh
 
+--atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
 
 --docker
 sudo nala install docker.io
