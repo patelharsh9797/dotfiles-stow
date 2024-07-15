@@ -116,3 +116,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
+
+# bun completions
+[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"

@@ -58,6 +58,18 @@
       }
     }
   },
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": [
+          "class",
+          "className",
+          "ngClass",
+          "styles"
+        ]
+      }
+    }
+  },
   "preferences": {
     "includeInlayParameterNameHints": "all",
     "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
@@ -92,7 +104,7 @@
   },
   "experimental.theme_overrides": {
     "background.appearance": "blurred",
-    "background": "#000000f0",
+    "background": "#0f0f0ff0",
     "editor.background": "#00000000",
     "panel.background": "#00000000",
     "editor.gutter.background": "#00000000",
