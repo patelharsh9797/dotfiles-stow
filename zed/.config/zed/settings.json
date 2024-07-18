@@ -1,4 +1,7 @@
 {
+  "features": {
+    "inline_completion_provider": "none"
+  },
   "relative_line_numbers": true,
   "always_treat_brackets_as_autoclosed": true,
   "font_family": "JetBrains Mono",
@@ -15,18 +18,43 @@
     "dock": "right",
     "git_status": true
   },
-  "features": {
-    "inline_completion_provider": "none"
-  },
   "terminal": {
     "font_family": "JetBrains Mono",
     "font_size": 16
   },
   "scrollbar": {
-    "git_diff": false
+    "git_diff": false,
+    "show": "never"
   },
   "git": {
-    "git_gutter": "tracked_files"
+    "git_gutter": "tracked_files",
+  },
+  "preferences": {
+    "includeInlayParameterNameHints": "all",
+    "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+    "includeInlayFunctionParameterTypeHints": true,
+    "includeInlayVariableTypeHints": true,
+    "includeInlayVariableTypeHintsWhenTypeMatchesName": true,
+    "includeInlayPropertyDeclarationTypeHints": true,
+    "includeInlayFunctionLikeReturnTypeHints": true,
+    "includeInlayEnumMemberValueHints": true
+  },
+  "experimental.theme_overrides": {
+    "background.appearance": "blurred",
+    "background": "#0f0f0ff0",
+    "editor.background": "#00000000",
+    "panel.background": "#00000000",
+    "editor.gutter.background": "#00000000",
+    "tab_bar.background": "#00000000",
+    "terminal.background": "#00000000",
+    "toolbar.background": "#00000000",
+    "tab.active_background": "#28282820",
+    "tab.inactive_background": "#00000000",
+    "status_bar.background": "#000000f1",
+    "title_bar.background": "#000000f1",
+    "border.variant": "#f5c2e7f0",
+    "scrollbar.track.border": "#000000f0",
+    "editor.active_line.background": "#00000000"
   },
   "languages": {
     "TypeScript": {
@@ -70,16 +98,6 @@
       }
     }
   },
-  "preferences": {
-    "includeInlayParameterNameHints": "all",
-    "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-    "includeInlayFunctionParameterTypeHints": true,
-    "includeInlayVariableTypeHints": true,
-    "includeInlayVariableTypeHintsWhenTypeMatchesName": true,
-    "includeInlayPropertyDeclarationTypeHints": true,
-    "includeInlayFunctionLikeReturnTypeHints": true,
-    "includeInlayEnumMemberValueHints": true
-  },
   "formatter": {
     "external": {
       "command": "./node_modules/@biomejs/biome/bin/biome",
@@ -101,22 +119,5 @@
       "jsonc",
       "*.code-snippets"
     ]
-  },
-  "experimental.theme_overrides": {
-    "background.appearance": "blurred",
-    "background": "#0f0f0ff0",
-    "editor.background": "#00000000",
-    "panel.background": "#00000000",
-    "editor.gutter.background": "#00000000",
-    "tab_bar.background": "#00000000",
-    "terminal.background": "#00000000",
-    "toolbar.background": "#00000000",
-    "tab.active_background": "#28282820",
-    "tab.inactive_background": "#00000000",
-    "status_bar.background": "#000000f1",
-    "title_bar.background": "#000000f1",
-    "border.variant": "#f5c2e7f0",
-    "scrollbar.track.border": "#000000f0",
-    "editor.active_line.background": "#00000000"
   }
 }
