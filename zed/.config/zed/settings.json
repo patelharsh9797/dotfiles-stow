@@ -41,7 +41,7 @@
   },
   "experimental.theme_overrides": {
     "background.appearance": "blurred",
-    "background": "#0f0f0ff0",
+    "background": "#000000f0",
     "editor.background": "#00000000",
     "panel.background": "#00000000",
     "editor.gutter.background": "#00000000",

@@ -43,4 +43,6 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
+export BAT_THEME=mocha
+
 eval "$(tmuxifier init -)"
