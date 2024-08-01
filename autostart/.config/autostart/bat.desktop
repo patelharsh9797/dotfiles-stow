@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Bat Cache Build
-Exec=bash -c "bat cache --build"
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Comment=Rebuilding the cache for bat

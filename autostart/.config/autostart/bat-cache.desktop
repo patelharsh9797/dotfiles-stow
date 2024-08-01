@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=bat cache
+Comment=bat cache --build
+Exec=bat cache --build
+Type=Application
+Terminal=false
+Hidden=false
+
