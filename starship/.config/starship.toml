@@ -22,6 +22,11 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
+[python]
+symbol = " "
+pyenv_version_name = true
+
+
 [character]
 error_symbol = "[λ](bold #ff5555)"
 success_symbol = "[λ](bold #50fa7b)"
@@ -64,9 +69,6 @@ disabled = false
 [nodejs]
 symbol = " "
 
-[python]
-symbol = " "
-pyenv_version_name = true
 
 [custom.docker]
 description = "Displays a Docker icon in directories with Docker-related files"

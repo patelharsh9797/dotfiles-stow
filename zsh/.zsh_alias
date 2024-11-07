@@ -10,6 +10,7 @@ alias g="git"
 alias gm='git commit -m'
 alias gpom="git push origin main"
 
+# Bun aliases
 alias brd="bun run dev"
 alias brb="bun run build"
 alias brs="bun run start"
@@ -19,19 +20,25 @@ alias bds="bun db:studio"
 
 alias lg="lazygit"
 alias gt="goto"
+
 alias v="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias nv="nvim"
+
 alias yz="yazi"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Python alias
 alias venvAdd="python3 -m venv .venv"
 alias envAct="source env/bin/activate"
 alias venvAct="source .venv/bin/activate"
 alias py="python3"
 alias pmr="py manage.py runserver"
+alias pmm="py manage.py migrate"
 alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
@@ -45,6 +52,8 @@ alias tdev2="tmuxifier load-session dev_server"
 
 # docker alias
 alias dr="docker run"
+alias dcomp="docker compose"
+alias docker-compose="docker compose"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
 alias dv="docker volume"
@@ -54,6 +63,7 @@ alias dis="docker images"
 alias dip="docker image prune"
 alias dc="docker container"
 alias dcl="docker container ls"
+alias dcla="docker container ls -a"
 alias dsp="docker system prune"
 alias dexec="docker exec"
 
