@@ -45,6 +45,10 @@ return {
       -- opts.status = { lsp_progress = { event = "lsp", kind = "progress" } }
       opts.presets.lsp_doc_border = true
 
+      require("noice").setup({
+        presets = { inc_rename = true },
+      })
+
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
         callback = function(event)

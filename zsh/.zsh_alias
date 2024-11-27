@@ -19,6 +19,7 @@ alias bdg="bun db:generate"
 alias bds="bun db:studio"
 
 alias lg="lazygit"
+alias lzd="lazydocker"
 alias gt="goto"
 
 alias v="nvim"
@@ -54,7 +55,6 @@ alias tdev2="tmuxifier load-session dev_server"
 # docker alias
 alias dr="docker run"
 alias dcomp="docker compose"
-alias docker-compose="docker compose"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
 alias dv="docker volume"

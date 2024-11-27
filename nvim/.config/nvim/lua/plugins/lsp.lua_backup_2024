@@ -1,0 +1,199 @@
+return {
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "css-lsp",
+        "eslint-lsp",
+        "html-lsp",
+        "json-lsp",
+        "lua-language-server",
+        "prettier",
+        "prisma-language-server",
+        "selene",
+        "shellcheck",
+        "shfmt",
+        "stylua",
+        "tailwindcss-language-server",
+        -- "typescript-language-server",
+        -- "vtsls",
+        -- "yaml-language-server",
+      })
+
+      opts.ui = {
+        height = 0.8,
+        border = "rounded",
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      }
+    end,
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    event = "BufEnter",
+    opts = {
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      settings = {
+        tsserver_file_preferences = {
+          importModuleSpecifierPreference = "non-relative",
+          providePrefixAndSuffixTextForRename = false,
+        },
+        tsserver_plugins = { "typescript-plugin-css-modules" },
+        separate_diagnostic_server = true,
+        publish_diagnostic_on = "insert_leave",
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      -- LspInfo Border
+      require("lspconfig.ui.windows").default_options.border = "rounded"
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      { "antosha417/nvim-lsp-file-operations", config = true },
+      { "folke/neodev.nvim", opts = {} },
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+      local mason_lspconfig = require("mason-lspconfig")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      })
+
+      -- used to enable autocompletion (assign to every lsp server config)
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+
+      -- Change the Diagnostic symbols in the sign column (gutter)
+      -- (not in youtube nvim video)
+      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
+      mason_lspconfig.setup_handlers({
+        -- default handler for installed servers
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+      })
+    end,
+    opts = {
+      -- make sure mason installs the server
+      servers = {
+        tsserver = {
+          enabled = false,
+        },
+        ts_ls = {
+          enabled = false,
+        },
+        vtsls = {
+          enabled = false,
+        },
+        tailwindcss = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+        },
+        html = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
+        lua_ls = {
+          -- enabled = false,
+          single_file_support = true,
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                workspaceWord = true,
+                callSnippet = "Both",
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                disable = { "incomplete-signature-doc", "trailing-space" },
+                -- enable = false,
+                groupSeverity = {
+                  strong = "Warning",
+                  strict = "Warning",
+                },
+                groupFileStatus = {
+                  ["ambiguity"] = "Opened",
+                  ["await"] = "Opened",
+                  ["codestyle"] = "None",
+                  ["duplicate"] = "Opened",
+                  ["global"] = "Opened",
+                  ["luadoc"] = "Opened",
+                  ["redefined"] = "Opened",
+                  ["strict"] = "Opened",
+                  ["strong"] = "Opened",
+                  ["type-check"] = "Opened",
+                  ["unbalanced"] = "Opened",
+                  ["unused"] = "Opened",
+                },
+                unusedLocalExclude = { "_*" },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
+            },
+          },
+        },
+        dockerls = {
+          filetypes = { "dockerfile", "Dockerfile", "Docker-dev", "Docker-prod", "yaml" },
+        },
+        docker_compose_language_service = {},
+      },
+    },
+  },
+}
