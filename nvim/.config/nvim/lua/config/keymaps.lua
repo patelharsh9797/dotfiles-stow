@@ -85,3 +85,5 @@ end)
 keymap.set("n", "<leader>i", function()
   require("harsh.lsp").toggleInlayHints()
 end)
+
+keymap.set("n", "<leader>ri", ":IncRename ", { desc = "INC-RENAME" })
