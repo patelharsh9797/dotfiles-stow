@@ -8,6 +8,12 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
     },
+    -- FIX: Remove below code if the snippets not working correctoly
+    opts = {
+      history = true,
+      region_check_events = "InsertEnter",
+      delete_check_events = "TextChanged,InsertLeave",
+    },
   },
   {
     "hrsh7th/nvim-cmp",

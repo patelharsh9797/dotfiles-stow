@@ -1,4 +1,5 @@
 return {
+  -- INFO: Mason Config
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
@@ -12,6 +13,8 @@ return {
         "lua-language-server",
         "prettier",
         "prisma-language-server",
+        -- "pyright",
+        -- "ruff",
         "selene",
         "shellcheck",
         "shfmt",
@@ -31,6 +34,8 @@ return {
       }
     end,
   },
+
+  -- INFO:  typescript-tools config
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -78,20 +83,19 @@ return {
       })
     end,
   },
-  {
-    "davidosomething/format-ts-errors.nvim",
-  },
+
+  -- INFO: LSP Config
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       { "antosha417/nvim-lsp-file-operations", config = true },
-      { "folke/neodev.nvim", opts = {} },
     },
     opts = function(_, opts)
       -- import lspconfig plugin
       local lspconfig = require("lspconfig")
+      -- local util = require("lspconfig.util")
 
       -- LspInfo Border
       require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -111,6 +115,11 @@ return {
       opts.inlay_hints = { enabled = false }
 
       opts.servers = {
+        -- biome = {
+        --   root_dir = util.root_pattern(""),
+        -- },
+        dockerls = {},
+        docker_compose_language_service = {},
         tsserver = {
           enabled = false,
         },
@@ -125,11 +134,118 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+
+        -- python lsp & formatter & linter
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+                mccabe = { enabled = false },
+                pylsp_mypy = { enabled = false },
+                pylsp_black = { enabled = false },
+                pylsp_isort = { enabled = false },
+              },
+            },
+          },
+        },
+        ruff = {
+          cmd_env = { RUFF_TRACE = "messages" },
+          init_options = {
+            settings = {
+              logLevel = "error",
+            },
+          },
+          keys = {
+            {
+              "<leader>co",
+
+              LazyVim.lsp.action["source.organizeImports"],
+              desc = "Organize Imports",
+            },
+          },
+        },
+        ruff_lsp = {
+          keys = {
+            {
+              "<leader>co",
+
+              LazyVim.lsp.action["source.organizeImports"],
+              desc = "Organize Imports",
+            },
+          },
+        },
         html = {},
         yamlls = {
           settings = {
             yaml = {
               keyOrdering = false,
+            },
+          },
+        },
+        lua_ls = {
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                workspaceWord = true,
+                callSnippet = "Both",
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                disable = { "incomplete-signature-doc", "trailing-space" },
+                -- enable = false,
+                groupSeverity = {
+                  strong = "Warning",
+                  strict = "Warning",
+                },
+                groupFileStatus = {
+                  ["ambiguity"] = "Opened",
+                  ["await"] = "Opened",
+                  ["codestyle"] = "None",
+                  ["duplicate"] = "Opened",
+                  ["global"] = "Opened",
+                  ["luadoc"] = "Opened",
+                  ["redefined"] = "Opened",
+                  ["strict"] = "Opened",
+                  ["strong"] = "Opened",
+                  ["type-check"] = "Opened",
+                  ["unbalanced"] = "Opened",
+                  ["unused"] = "Opened",
+                },
+                unusedLocalExclude = { "_*" },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
             },
           },
         },
@@ -199,38 +315,7 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      mason_lspconfig.setup_handlers({
-        -- default handler for installed servers
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-        ["emmet_ls"] = function()
-          -- configure emmet language server
-          lspconfig["emmet_ls"].setup({
-            capabilities = capabilities,
-            filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-          })
-        end,
-        ["lua_ls"] = function()
-          -- configure lua server (with special settings)
-          lspconfig["lua_ls"].setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                -- make the language server recognize "vim" global
-                diagnostics = {
-                  globals = { "vim" },
-                },
-                completion = {
-                  callSnippet = "Replace",
-                },
-              },
-            },
-          })
-        end,
-      })
+      mason_lspconfig.setup_handlers({})
     end,
   },
 }
