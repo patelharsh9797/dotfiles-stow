@@ -58,10 +58,13 @@ return {
           winblend = 0,
         },
       }
+
+      -- python specific
+      opts.auto_brackets = opts.auto_brackets or {}
+      table.insert(opts.auto_brackets, "python")
     end,
     config = function()
       local cmp = require("cmp")
-      local luasnip = require("luasnip")
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -89,16 +92,12 @@ return {
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
+          { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
-          { name = "buffer" }, -- text within current buffer
-          { name = "path" }, -- file system paths
+        }, {
+          { name = "buffer" },
+          { name = "path" },
         }),
-        -- sources = cmp.config.sources({
-        --   { name = "nvim_lsp" },
-        --   { name = "luasnip" }, -- For luasnip users.
-        -- }, {
-        --   { name = "buffer" },
-        -- }),
       })
     end,
   },
