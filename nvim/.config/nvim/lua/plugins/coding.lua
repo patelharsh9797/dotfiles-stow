@@ -15,35 +15,44 @@ return {
   },
 
   -- Incremental rename
-  -- {
-  --   "smjonas/inc-rename.nvim",
-  --   cmd = "IncRename",
-  --   config = true,
-  -- },
   {
     "smjonas/inc-rename.nvim",
     cmd = "IncRename",
     config = function()
-      require("inc_rename").setup({
-        input_buffer_type = "dressing",
-        show_message = true,
-        preview_empty_name = true,
-      })
-
-      -- Keymapping with error handling
-      vim.keymap.set("n", "<leader>rn", function()
-        local curr_name = vim.fn.expand("<cword>")
-        if curr_name and curr_name ~= "" then
-          vim.cmd("IncRename " .. curr_name)
-        else
-          vim.notify("No word under cursor to rename", vim.log.levels.WARN)
-        end
-      end, { desc = "Incremental Rename" })
+      require("inc_rename").setup()
+      -- Keybinding for Incremental Rename
+      vim.keymap.set("n", "<leader>ri", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end, { expr = true, desc = "Incremental Rename" })
     end,
-    dependencies = {
-      "stevearc/dressing.nvim", -- Optional but recommended
+    keys = {
+      { "<leader>ri", desc = "Incremental Rename" },
     },
   },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   cmd = "IncRename",
+  --   config = function()
+  --     require("inc_rename").setup({
+  --       input_buffer_type = "dressing",
+  --       show_message = true,
+  --       preview_empty_name = true,
+  --     })
+  --
+  --     -- Keymapping with error handling
+  --     vim.keymap.set("n", "<leader>rn", function()
+  --       local curr_name = vim.fn.expand("<cword>")
+  --       if curr_name and curr_name ~= "" then
+  --         vim.cmd("IncRename " .. curr_name)
+  --       else
+  --         vim.notify("No word under cursor to rename", vim.log.levels.WARN)
+  --       end
+  --     end, { desc = "Incremental Rename" })
+  --   end,
+  --   dependencies = {
+  --     "stevearc/dressing.nvim", -- Optional but recommended
+  --   },
+  -- },
 
   -- Refactoring tool
   {

@@ -95,7 +95,6 @@ return {
     opts = function(_, opts)
       -- import lspconfig plugin
       local lspconfig = require("lspconfig")
-      -- local util = require("lspconfig.util")
 
       -- LspInfo Border
       require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -159,16 +158,6 @@ return {
               logLevel = "error",
             },
           },
-          keys = {
-            {
-              "<leader>co",
-
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
-        ruff_lsp = {
           keys = {
             {
               "<leader>co",
