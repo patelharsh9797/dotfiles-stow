@@ -93,11 +93,10 @@ return {
       { "antosha417/nvim-lsp-file-operations", config = true },
     },
     opts = function(_, opts)
-      -- import lspconfig plugin
-      local lspconfig = require("lspconfig")
-
       -- LspInfo Border
+      ---@diagnostic disable-next-line: no-unknown
       require("lspconfig.ui.windows").default_options.border = "rounded"
+
       local _border = "rounded"
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -108,15 +107,24 @@ return {
         border = _border,
       })
 
+      -- Customizing how diagnostics are displayed
       vim.diagnostic.config({
         float = { border = _border },
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = false,
       })
+
       opts.inlay_hints = { enabled = false }
 
       opts.servers = {
         -- biome = {
         --   root_dir = util.root_pattern(""),
         -- },
+        html = {},
+        cssls = {},
         dockerls = {},
         docker_compose_language_service = {},
         tsserver = {
@@ -133,7 +141,6 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
-
         -- python lsp & formatter & linter
         pylsp = {
           settings = {
@@ -167,7 +174,6 @@ return {
             },
           },
         },
-        html = {},
         yamlls = {
           settings = {
             yaml = {
@@ -240,10 +246,8 @@ return {
         },
       }
 
-      local mason_lspconfig = require("mason-lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      -- some keymaps for all lang
       local keymap = vim.keymap -- for conciseness
-
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
@@ -270,8 +274,8 @@ return {
           opts_keymaps.desc = "See available code actions"
           keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts_keymaps) -- see available code actions, in visual mode will apply to selection
 
-          opts_keymaps.desc = "Smart Rename"
-          keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts_keymaps) -- smart rename
+          -- opts_keymaps.desc = "Smart Rename"
+          -- keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts_keymaps) -- smart rename
 
           opts_keymaps.desc = "Show buffer diagnostics"
           keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=1<CR>", opts_keymaps) -- show  diagnostics for file
@@ -293,9 +297,6 @@ return {
         end,
       })
 
-      -- used to enable autocompletion (assign to every lsp server config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
-
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
       local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -304,7 +305,11 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      mason_lspconfig.setup_handlers({})
+      -- local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+      -- for type, icon in pairs(signs) do
+      --   local hl = "DiagnosticSign" .. type
+      --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      -- end
     end,
   },
 }
