@@ -10,14 +10,17 @@ return {
     filesystem = {
       filtered_items = {
         hide_dotfiles = true,
+        hide_gitignored = true,
         hide_by_name = {
           ".git",
           ".DS_Store",
         },
         always_show = {
-          ".env",
-          ".env.local",
-          ".env.example",
+          ".gitignored",
+        },
+        always_show_by_pattern = {
+          ".env*",
+          ".docker*",
         },
       },
     },
