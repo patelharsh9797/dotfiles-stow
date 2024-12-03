@@ -50,7 +50,6 @@ return {
               return true
             end
           end
-
           opts.history = true
           opts.delete_check_events = "TextChanged"
         end,
@@ -104,6 +103,15 @@ return {
       table.insert(opts.auto_brackets, "python")
     end,
     config = function()
+      local luasnip = require("luasnip")
+
+      vim.keymap.set({ "i", "s" }, "<Tab>", function()
+        luasnip.jump(1)
+      end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+        luasnip.jump(-1)
+      end, { silent = true })
+
       local cmp = require("cmp")
       local lspkind = require("lspkind")
       lspkind.init({
