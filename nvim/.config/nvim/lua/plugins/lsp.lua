@@ -13,8 +13,6 @@ return {
         "lua-language-server",
         "prettier",
         "prisma-language-server",
-        -- "pyright",
-        -- "ruff",
         "selene",
         "shellcheck",
         "shfmt",
@@ -24,7 +22,7 @@ return {
       })
 
       opts.ui = {
-        height = 0.8,
+        height = 0.9,
         border = "rounded",
         icons = {
           package_installed = "✓",
