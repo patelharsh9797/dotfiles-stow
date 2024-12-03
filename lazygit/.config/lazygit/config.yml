@@ -25,6 +25,8 @@ gui:
   authorColors:
     "*": "#b4befe"
 
+  showIcons: true
+  showFileIcons: true
   showRandomTip: false
   animateExplosion: false # takes too long
 
