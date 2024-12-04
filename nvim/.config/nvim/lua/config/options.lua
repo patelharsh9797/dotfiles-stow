@@ -9,3 +9,10 @@ opt.inccommand = "split" -- rename show seprate window
 opt.pumblend = 0 -- transperent BG for suggestion and hover docs
 
 opt.clipboard = "unnamedplus" -- allow access to system clipboard
+
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

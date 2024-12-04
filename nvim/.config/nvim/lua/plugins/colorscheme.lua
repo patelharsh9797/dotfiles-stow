@@ -6,16 +6,6 @@ return {
     },
   },
   {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        -- globalstatus = false,
-        theme = "poimandres",
-      },
-    },
-  },
-  {
     enabled = false,
     "scottmckendry/cyberdream.nvim",
     lazy = true,

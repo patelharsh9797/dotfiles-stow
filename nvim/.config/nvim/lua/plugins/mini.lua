@@ -60,6 +60,10 @@ return {
           ["docker-compose.dev.yml"] = dockerfile_icon_tbl,
           ["docker-compose.prod.yml"] = dockerfile_icon_tbl,
           ["docker-compose.base.yml"] = dockerfile_icon_tbl,
+          [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+          ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+          [".env"] = { glyph = "", hl = "MiniIconsYellow" },
+          [".env.example"] = { glyph = "", hl = "MiniIconsYellow" },
         },
         extension = {
           db = database_icon_tbl,
