@@ -4,7 +4,7 @@ gui:
   border: rounded
   theme:
     activeBorderColor:
-      - "#94e2d5"
+      - "#f9e2af"
       - bold
     inactiveBorderColor:
       - "#a6adc8"
@@ -15,16 +15,16 @@ gui:
     cherryPickedCommitBgColor:
       - "#45475a"
     cherryPickedCommitFgColor:
-      - "#94e2d5"
+      - "#f5e0dc"
     unstagedChangesColor:
       - "#f38ba8"
     defaultFgColor:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
+
   authorColors:
     "*": "#b4befe"
-
   showIcons: true
   showFileIcons: true
   showRandomTip: false
