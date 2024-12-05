@@ -85,7 +85,7 @@ return {
       })
     end,
     opts = {
-      symbol = "│",
+      symbol = "│", -- "╎"  --- "│"
       options = { try_as_border = true },
       draw = {
         animation = function()

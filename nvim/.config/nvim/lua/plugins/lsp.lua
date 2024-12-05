@@ -22,7 +22,7 @@ return {
       })
 
       opts.ui = {
-        height = 0.9,
+        height = 0.8,
         border = "rounded",
         icons = {
           package_installed = "✓",

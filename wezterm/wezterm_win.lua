@@ -3,14 +3,14 @@ local config = wezterm.config_builder()
 
 wezterm.gui.enumerate_gpus()
 
-config.default_domain = "WSL:Ubuntu"
+config.default_domain = 'WSL:Ubuntu'
 config.initial_cols = 100
 config.initial_rows = 24
 
 config.colors = {
 	foreground = "#cdd6f4",
-	background = "#000000",
-	-- background = "#0f0f0f",
+	background = "#1E1D2F",
+	-- background = "#0F0F0F",
 	cursor_bg = "#f5e0dc",
 	cursor_border = "#f5e0dc",
 	cursor_fg = "#11111b",
@@ -43,8 +43,8 @@ config.cursor_blink_rate = 300
 
 -- config.window_decorations = "RESIZE"
 -- config.window_decorations = "TITLE"
-config.window_background_opacity = 0.6
-config.win32_system_backdrop = "Acrylic"
+config.window_background_opacity = 0.69
+config.win32_system_backdrop = 'Disable'  -- or 'Auto' | 'Mica' | 'Acrylic' | 'Tabbed'
 config.macos_window_background_blur = 8
 config.native_macos_fullscreen_mode = false
 config.window_padding = {
@@ -52,6 +52,21 @@ config.window_padding = {
 	right = 4,
 	top = 4,
 	bottom = 4,
+}
+
+config.background = {
+	{
+	  source = {
+		-- File = './bg-blurred.png',
+		File = './bg-blurred-darker.png',
+	  },
+	  width = 'Cover',
+	  height = 'Cover',
+	  horizontal_align = 'Left',
+      repeat_x = 'Repeat',
+	  repeat_y = 'Repeat',
+	  opacity = 0.69,
+	},
 }
 
 -- config.keys = {

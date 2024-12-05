@@ -69,7 +69,7 @@ return {
     },
     keys = {
       {
-        "<leader>fP",
+        "<leader>fP", -- find plugin file
         function()
           require("telescope.builtin").find_files({
             cwd = require("lazy.core.config").options.root,
@@ -78,7 +78,8 @@ return {
         desc = "Find Plugin File",
       },
       {
-        ";f",
+        -- ";f",
+        "<C-p>", -- find files in current working directory
         function()
           local builtin = require("telescope.builtin")
           builtin.find_files({
@@ -89,7 +90,7 @@ return {
         desc = "Lists files in your current working directory, respects .gitignore",
       },
       {
-        ";r",
+        ";r", -- live_grep in current working directory
         function()
           local builtin = require("telescope.builtin")
           builtin.live_grep({
