@@ -1,4 +1,4 @@
-sudo apt install net-tools dnsutils curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0
+sudo apt install net-tools dnsutils hub curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0
 bat fd-find
 
 --exa alternative eza
@@ -80,6 +80,20 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 export PATH="$PATH:/opt/nvim-linux64/bin"  //put it in a .bashrc
 sudo rm nvim-linux64.tar.gz
+
+-- for extra lazyvim
+git clone https://gitlab.com/dwt1/shell-color-scripts.git
+cd shell-color-scripts
+sudo make install
+
+# optional for zsh completion
+sudo cp completions/_colorscript /usr/share/zsh/site-functions
+
+# Removal
+sudo make uninstall
+
+
+
 
 ----neovim using appImage
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
