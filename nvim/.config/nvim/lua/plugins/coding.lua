@@ -48,30 +48,6 @@ return {
       { "<leader>ri", desc = "Incremental Rename" },
     },
   },
-  -- {
-  --   "smjonas/inc-rename.nvim",
-  --   cmd = "IncRename",
-  --   config = function()
-  --     require("inc_rename").setup({
-  --       input_buffer_type = "dressing",
-  --       show_message = true,
-  --       preview_empty_name = true,
-  --     })
-  --
-  --     -- Keymapping with error handling
-  --     vim.keymap.set("n", "<leader>rn", function()
-  --       local curr_name = vim.fn.expand("<cword>")
-  --       if curr_name and curr_name ~= "" then
-  --         vim.cmd("IncRename " .. curr_name)
-  --       else
-  --         vim.notify("No word under cursor to rename", vim.log.levels.WARN)
-  --       end
-  --     end, { desc = "Incremental Rename" })
-  --   end,
-  --   dependencies = {
-  --     "stevearc/dressing.nvim", -- Optional but recommended
-  --   },
-  -- },
 
   -- Refactoring tool
   {
@@ -113,7 +89,6 @@ return {
       })
     end,
   },
-
   {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
@@ -121,13 +96,5 @@ return {
     opts = {
       position = "right",
     },
-  },
-
-  {
-    "nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
   },
 }

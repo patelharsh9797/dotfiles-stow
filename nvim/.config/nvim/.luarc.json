@@ -3,5 +3,8 @@
         "incomplete-signature-doc",
         "trailing-space",
         "missing-fields"
+    ],
+    "diagnostics.globals": [
+        "M"
     ]
 }

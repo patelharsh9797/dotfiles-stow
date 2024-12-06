@@ -1,38 +1,10 @@
 return {
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   dependencies = {
-  --     "saadparwaiz1/cmp_luasnip",
-  --     "rafamadriz/friendly-snippets",
-  --   },
-  --   -- Remove below code if the snippets not working correctoly
-  --   opts = {
-  --     history = true,
-  --     region_check_events = "InsertEnter",
-  --     delete_check_events = "TextChanged,InsertLeave",
-  --   },
-  -- },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    keys = {
-      {
-        "<Tab>",
-        function()
-          require("luasnip").jump(1)
-        end,
-        mode = "s",
-      },
-      {
-        "<S-Tab>",
-        function()
-          require("luasnip").jump(-1)
-        end,
-        mode = { "i", "s" },
-      },
-    },
     dependencies = {
       "onsails/lspkind.nvim",
+      "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-nvim-lsp", -- source for neovim built-in LSP
       "hrsh7th/cmp-path", -- source for file system paths
       "hrsh7th/cmp-buffer", -- source for text in buffer
@@ -66,7 +38,6 @@ return {
             { "╮", "Comment" },
             { "│", "Comment" },
             { "╯", "Comment" },
-
             { "─", "Comment" },
             { "╰", "Comment" },
             { "│", "Comment" },
@@ -98,19 +69,35 @@ return {
       }
       table.insert(opts.sources, { name = "luasnip" })
 
+      table.insert(opts.sources, { name = "emoji" })
+
       -- python specific
       opts.auto_brackets = opts.auto_brackets or {}
       table.insert(opts.auto_brackets, "python")
     end,
     config = function()
-      local luasnip = require("luasnip")
+      vim.api.nvim_set_keymap(
+        "i",
+        "<Tab>",
+        "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'",
+        { silent = true, expr = true }
+      )
+      vim.api.nvim_set_keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
+      vim.api.nvim_set_keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", { silent = true })
+      vim.api.nvim_set_keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
 
-      vim.keymap.set({ "i", "s" }, "<Tab>", function()
-        luasnip.jump(1)
-      end, { silent = true })
-      vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-        luasnip.jump(-1)
-      end, { silent = true })
+      -- local luasnip = require("luasnip")
+      -- vim.keymap.set({ "i", "s" }, "<Tab>", function()
+      --   luasnip.jump(1)
+      -- end, { silent = true })
+      -- vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+      --   luasnip.jump(-1)
+      -- end, { silent = true })
+
+      -- luasnip.setup({
+      --   region_check_events = "CursorHold,InsertLeave",
+      --   delete_check_events = "TextChanged,InsertEnter",
+      -- })
 
       local cmp = require("cmp")
       local lspkind = require("lspkind")

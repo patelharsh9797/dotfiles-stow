@@ -1,6 +1,5 @@
 return {
   -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -27,6 +26,7 @@ return {
         "bash",
         "c",
         "diff",
+        "dockerfile",
         "html",
         "javascript",
         "jsdoc",

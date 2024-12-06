@@ -5,6 +5,7 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "css-lsp",
+        "hadolint",
         "docker-compose-language-service",
         "dockerfile-language-server",
         "eslint-lsp",

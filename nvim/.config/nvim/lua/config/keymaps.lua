@@ -34,10 +34,10 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- ThePrimeagen Keymaps
-keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "<n>", "nzzzv")
-keymap.set("n", "<N>", "Nzzzv")
+keymap.set("n", "<C-d>", "<C-d>zz") -- Half page down
+keymap.set("n", "<C-u>", "<C-u>zz") -- Half page up
+keymap.set("n", "n", "nzzzv") -- Search next & center
+keymap.set("n", "N", "Nzzzv") -- Search previous & center
 
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
