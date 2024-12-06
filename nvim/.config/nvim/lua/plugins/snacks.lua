@@ -36,7 +36,8 @@ return {
             action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
           },
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
         -- Used by the `header` section
@@ -59,22 +60,22 @@ return {
           padding = 1,
         },
         { section = "keys", gap = 1, padding = 1 },
-        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-        { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-        {
-          pane = 2,
-          icon = " ",
-          title = "Git Status",
-          section = "terminal",
-          enabled = function()
-            return Snacks.git.get_root() ~= nil
-          end,
-          cmd = "hub status --short --branch --renames",
-          height = 5,
-          padding = 1,
-          ttl = 5 * 60,
-          indent = 3,
-        },
+        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
+        { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
+        -- {
+        --   pane = 2,
+        --   icon = " ",
+        --   title = "Git Status",
+        --   section = "terminal",
+        --   enabled = function()
+        --     return Snacks.git.get_root() ~= nil
+        --   end,
+        --   cmd = "hub status --short --branch --renames",
+        --   height = 5,
+        --   padding = 1,
+        --   ttl = 5 * 60,
+        --   indent = 3,
+        -- },
         { section = "startup" },
       },
     },
@@ -247,7 +248,6 @@ return {
     })
   end,
 }
-
 -- {
 --   "folke/snacks.nvim",
 --   opts = {

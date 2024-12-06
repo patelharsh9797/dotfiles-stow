@@ -106,6 +106,9 @@ return {
         preset = "codicons",
         symbol_map = {
           Copilot = "",
+          Codeium = "",
+          Supermaven = "",
+
           Text = "󰉿",
           Method = "󰆧",
           Function = "󰊕",
@@ -195,6 +198,8 @@ return {
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
+          { name = "codeium" },
+          -- { name = "supermaven" },
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
         }, {
