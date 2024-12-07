@@ -108,6 +108,9 @@ return {
           Copilot = "",
           Codeium = "",
           Supermaven = "",
+          otter = "🦦",
+          Cody = "",
+          cmp_r = "R",
 
           Text = "󰉿",
           Method = "󰆧",

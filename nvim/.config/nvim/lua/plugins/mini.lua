@@ -51,22 +51,44 @@ return {
         local icon, hl = icons.get(category, name)
         return { glyph = icon, hl = hl }
       end
+
       local dockerfile_icon_tbl = get_icon_tbl("filetype", "dockerfile")
       local database_icon_tbl = get_icon_tbl("extension", "sql")
 
+      local test_icon = ""
+      local js_table = { glyph = test_icon, hl = "MiniIconsYellow" }
+      local jsx_table = { glyph = test_icon, hl = "MiniIconsYellow" }
+      local ts_table = { glyph = test_icon, hl = "MiniIconsBlue" }
+      local tsx_table = { glyph = test_icon, hl = "MiniIconsBlue" }
+
       icons.setup({
+        -- Icon style: 'glyph' or 'ascii'
+        style = "glyph",
         file = {
           ["docker-compose.yml"] = dockerfile_icon_tbl,
           ["docker-compose.dev.yml"] = dockerfile_icon_tbl,
           ["docker-compose.prod.yml"] = dockerfile_icon_tbl,
           ["docker-compose.base.yml"] = dockerfile_icon_tbl,
+          [".dockerignore"] = dockerfile_icon_tbl,
           [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
           ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
           [".env"] = { glyph = "", hl = "MiniIconsYellow" },
           [".env.example"] = { glyph = "", hl = "MiniIconsYellow" },
         },
         extension = {
-          db = database_icon_tbl,
+          db = { glyph = database_icon_tbl.glyph, hl = "MiniIconsYellow" },
+          ["test.js"] = js_table,
+          ["test.jsx"] = jsx_table,
+          ["test.ts"] = ts_table,
+          ["test.tsx"] = tsx_table,
+          ["spec.js"] = js_table,
+          ["spec.jsx"] = jsx_table,
+          ["spec.ts"] = ts_table,
+          ["spec.tsx"] = tsx_table,
+          ["cy.js"] = js_table,
+          ["cy.jsx"] = jsx_table,
+          ["cy.ts"] = ts_table,
+          ["cy.tsx"] = tsx_table,
         },
       })
     end,
