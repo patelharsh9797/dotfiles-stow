@@ -51,7 +51,7 @@ style = "bold #50fa7b"
 format = '[$path ]($style)'
 home_symbol = '󰋜 ~'
 truncation_length = 2
-truncation_symbol = '…/'
+# truncation_symbol = '…/'
 truncate_to_repo = true
 
 [directory.substitutions]
@@ -97,7 +97,7 @@ deleted = "🗑"
 disabled = false
 
 [docker_context]
-symbol = '  '
+symbol = '   '
 style = 'bold cyan'
 format = '[$symbol]($style) $path'
 detect_files = [
@@ -134,6 +134,7 @@ symbol = '󰏗 '
 
 
 [python]
+style = "bold #8be9fd"
 symbol = " "
 pyenv_version_name = true
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
