@@ -1,3 +1,27 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$lua\
+$nodejs\
+$golang\
+$haskell\
+$rust\
+$ruby\
+$aws\
+$docker_context\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+add_newline = true
+
+[fill]
+symbol = ' '
+
+
 [os]
 disabled = true
 
@@ -22,9 +46,20 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
-[python]
-symbol = " "
-pyenv_version_name = true
+[directory]
+style = "bold #50fa7b"
+format = '[$path ]($style)'
+home_symbol = '󰋜 ~'
+truncation_length = 2
+truncation_symbol = '…/'
+truncate_to_repo = true
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+'Videos' = ' '
 
 
 [character]
@@ -33,11 +68,6 @@ success_symbol = "[λ](bold #50fa7b)"
 
 [cmd_duration]
 style = "bold #f1fa8c"
-
-[directory]
-style = "bold #50fa7b"
-home_symbol = '󰋜 ~'
-truncation_length = 1
 
 [hostname]
 style = "bold #bd93f9"
@@ -66,27 +96,52 @@ deleted = "🗑"
 [line_break]
 disabled = false
 
-[nodejs]
-symbol = " "
-
-
-[custom.docker]
-description = "Displays a Docker icon in directories with Docker-related files"
-# command = "echo  "
-command = "echo 🐳"
+[docker_context]
+symbol = '  '
+style = 'bold cyan'
+format = '[$symbol]($style) $path'
 detect_files = [
-  "Dockerfile",
-  "docker-compose.yml",
+  'Dockerfile',
+  'Dockerfile.dev',
+  'Dockerfile.prod',
+  'docker-compose.yml',
   "docker-compose.dev.yml",
   "docker-compose.prod.yml",
   "docker-compose.base.yml",
-  "docker-compose*.yml",
 ]
-when = """ command -v docker &> /dev/null; exit (echo $?); """
-format = "[$output](bold cyan) "
+detect_extensions = ['Dockerfile']
+
+# [custom.docker]
+# description = "Displays a Docker icon in directories with Docker-related files"
+# # command = "echo  "
+# command = "echo 🐳"
+# detect_files = [
+#   "Dockerfile",
+#   "docker-compose.yml",
+#   "docker-compose.dev.yml",
+#   "docker-compose.prod.yml",
+#   "docker-compose.base.yml",
+#   "docker-compose*.yml",
+# ]
+# when = """ command -v docker &> /dev/null; exit (echo $?); """
+# format = "[$output](bold cyan) "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = '󰏗 '
+
+
+[python]
+symbol = " "
+pyenv_version_name = true
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_prefix = ''
 
 [lua]
 symbol = " "
+format = '[$symbol($version )]($style)'
 
 [golang]
 format = '[ ](bold cyan)'
