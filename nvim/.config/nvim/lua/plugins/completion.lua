@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -8,6 +9,7 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- source for neovim built-in LSP
       "hrsh7th/cmp-path", -- source for file system paths
       "hrsh7th/cmp-buffer", -- source for text in buffer
+      "codeium.vim",
       {
         "L3MON4D3/LuaSnip",
         lazy = true,
@@ -29,50 +31,8 @@ return {
       "saadparwaiz1/cmp_luasnip", -- for autocompletion
       "rafamadriz/friendly-snippets", -- useful snippets
     },
-    opts = function(_, opts)
-      opts.window = {
-        completion = {
-          border = {
-            { "󱐋", "WarningMsg" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
-          scrollbar = false,
-          winblend = 0,
-        },
-        documentation = {
-          border = {
-            { "󰙎", "DiagnosticHint" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
-
-          scrollbar = false,
-          winblend = 0,
-        },
-      }
-
-      opts.snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      }
-
-      -- python specific
-      opts.auto_brackets = opts.auto_brackets or {}
-      table.insert(opts.auto_brackets, "python")
-    end,
     config = function()
+      -- <Tab> for jump to next snippet's placeholder
       vim.api.nvim_set_keymap(
         "i",
         "<Tab>",
@@ -83,20 +43,6 @@ return {
       vim.api.nvim_set_keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", { silent = true })
       vim.api.nvim_set_keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
 
-      -- local luasnip = require("luasnip")
-      -- vim.keymap.set({ "i", "s" }, "<Tab>", function()
-      --   luasnip.jump(1)
-      -- end, { silent = true })
-      -- vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-      --   luasnip.jump(-1)
-      -- end, { silent = true })
-
-      -- luasnip.setup({
-      --   region_check_events = "CursorHold,InsertLeave",
-      --   delete_check_events = "TextChanged,InsertEnter",
-      -- })
-
-      local cmp = require("cmp")
       local lspkind = require("lspkind")
       lspkind.init({
         mode = "symbol_text",
@@ -108,7 +54,6 @@ return {
           otter = "🦦",
           Cody = "",
           cmp_r = "R",
-
           Text = "󰉿",
           Method = "󰆧",
           Function = "󰊕",
@@ -153,9 +98,41 @@ return {
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      local cmp = require("cmp")
+
       cmp.setup({
         completion = {
           completeopt = "menu,menuone,preview,noselect",
+        },
+        window = {
+          completion = {
+            border = {
+              { "󱐋", "WarningMsg" },
+              { "─", "Comment" },
+              { "╮", "Comment" },
+              { "│", "Comment" },
+              { "╯", "Comment" },
+              { "─", "Comment" },
+              { "╰", "Comment" },
+              { "│", "Comment" },
+            },
+            scrollbar = false,
+            winblend = 0,
+          },
+          documentation = {
+            border = {
+              { "󰙎", "DiagnosticHint" },
+              { "─", "Comment" },
+              { "╮", "Comment" },
+              { "│", "Comment" },
+              { "╯", "Comment" },
+              { "─", "Comment" },
+              { "╰", "Comment" },
+              { "│", "Comment" },
+            },
+            scrollbar = false,
+            winblend = 0,
+          },
         },
         formatting = {
           format = lspkind.cmp_format({
@@ -182,10 +159,10 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        window = { -- add border for autocompletion menu
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
+        -- window = { -- add border for autocompletion menu
+        --   completion = cmp.config.window.bordered(),
+        --   documentation = cmp.config.window.bordered(),
+        -- },
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
           ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
@@ -198,7 +175,7 @@ return {
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
-          { name = "codeium" },
+          { name = "codeium", priority = 1 },
           -- { name = "supermaven" },
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
