@@ -78,6 +78,7 @@ return {
         extension = {
           db = { glyph = database_icon_tbl.glyph, hl = "MiniIconsYellow" },
           conf = { glyph = "", hl = "MiniIconsGrey" },
+          sh = { glyph = "", hl = "MiniIconsGrey" },
           ["test.js"] = js_table,
           ["test.jsx"] = jsx_table,
           ["test.ts"] = ts_table,
