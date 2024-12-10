@@ -16,3 +16,7 @@ vim.opt.fileencoding = "utf-8"
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- f3fora/cmp-spell
+opt.spell = true
+opt.spelllang = { "en_us" }

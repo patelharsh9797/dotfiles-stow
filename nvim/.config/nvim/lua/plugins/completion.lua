@@ -4,13 +4,15 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      "onsails/lspkind.nvim",
-      "hrsh7th/cmp-emoji",
+      "onsails/lspkind.nvim", -- adds emojis to the selection
+      "hrsh7th/cmp-emoji", -- source for emojis
       "hrsh7th/cmp-nvim-lsp", -- source for neovim built-in LSP
       "hrsh7th/cmp-path", -- source for file system paths
       "hrsh7th/cmp-buffer", -- source for text in buffer
-      "codeium.vim",
-      {
+      -- "amarakon/nvim-cmp-buffer-lines", -- source for whole function prototypes
+      "hrsh7th/cmp-nvim-lsp-signature-help", -- display a signature when you start typing the func name
+      "codeium.vim", -- source for codeium
+      { -- LuaSnip
         "L3MON4D3/LuaSnip",
         lazy = true,
         build = (not LazyVim.is_win())
@@ -30,6 +32,7 @@ return {
       }, -- snippet engine
       "saadparwaiz1/cmp_luasnip", -- for autocompletion
       "rafamadriz/friendly-snippets", -- useful snippets
+      "f3fora/cmp-spell", -- adds spell words to suggestions
     },
     config = function()
       -- <Tab> for jump to next snippet's placeholder
@@ -81,20 +84,6 @@ return {
           TypeParameter = "",
         },
       })
-
-      -- local kind_formatter = lspkind.cmp_format({
-      --   mode = "symbol_text",
-      --   menu = {
-      --     buffer = "[buf]",
-      --     nvim_lsp = "[LSP]",
-      --     nvim_lua = "[api]",
-      --     path = "[path]",
-      --     luasnip = "[snip]",
-      --     gh_issues = "[issues]",
-      --     tn = "[TabNine]",
-      --     eruby = "[erb]",
-      --   },
-      -- })
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -176,13 +165,15 @@ return {
         -- sources for autocompletion
         sources = cmp.config.sources({
           { name = "codeium", priority = 1 },
-          -- { name = "supermaven" },
           { name = "nvim_lsp" },
+          { name = "nvim_lsp_signature_help" }, -- show func parameters
+          -- { name = "buffer-lines" },
           { name = "luasnip" }, -- For luasnip users.
-          { name = "emoji" },
+          { name = "emoji" }, -- For emoji completions
         }, {
-          { name = "path" },
-          { name = "buffer" },
+          { name = "buffer" }, -- text within current buffer
+          { name = "path" }, -- file system paths
+          { name = "spell" }, -- adds spelling suggestions to the cmp list
         }),
       })
     end,
