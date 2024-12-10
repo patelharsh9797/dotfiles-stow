@@ -71,7 +71,7 @@ return {
         --     return Snacks.git.get_root() ~= nil
         --   end,
         --   cmd = "hub status --short --branch --renames",
-        --   height = 5,
+        --   height =
         --   padding = 1,
         --   ttl = 5 * 60,
         --   indent = 3,
@@ -79,7 +79,7 @@ return {
         { section = "startup" },
       },
     },
-    input = {},
+    input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -119,6 +119,13 @@ return {
       "<leader>bd",
       function()
         Snacks.bufdelete()
+      end,
+      desc = "Delete Buffer",
+    },
+    {
+      "<leader>ba",
+      function()
+        Snacks.bufdelete.all()
       end,
       desc = "Delete Buffer",
     },

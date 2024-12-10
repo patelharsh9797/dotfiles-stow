@@ -62,7 +62,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "e9dfb4582b9ca0ab7e987c65999f662242bd6f61" },
   "refactoring.nvim": { "branch": "master", "commit": "2db6d378e873de31d18ade549c2edba64ff1c2e3" },
   "render-markdown.nvim": { "branch": "main", "commit": "e41b0002fe4196825450ab5a6343300c40791d51" },
-  "snacks.nvim": { "branch": "main", "commit": "d830343abdc739a7d940ba4417dd69ec54e68d5f" },
+  "snacks.nvim": { "branch": "main", "commit": "66f7daa2b5b46213d98b94b8702e5b9377c6b976" },
   "solarized-osaka.nvim": { "branch": "main", "commit": "b023c3f3b9f1ce5b67c22e4401563d03554921cf" },
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },

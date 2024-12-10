@@ -97,18 +97,28 @@ return {
       require("lspconfig.ui.windows").default_options.border = "rounded"
 
       local _border = "rounded"
+      local _diagnostics_border = {
+        { "", "DiagnosticHint" },
+        { "─", "Comment" },
+        { "╮", "Comment" },
+        { "│", "Comment" },
+        { "╯", "Comment" },
+        { "─", "Comment" },
+        { "╰", "Comment" },
+        { "│", "Comment" },
+      }
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = _border,
       })
-
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = _border,
       })
 
       -- Customizing how diagnostics are displayed
       vim.diagnostic.config({
-        float = { border = _border },
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        float = { border = _diagnostics_border },
         virtual_text = true,
         signs = true,
         underline = true,

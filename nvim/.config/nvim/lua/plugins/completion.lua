@@ -116,12 +116,12 @@ return {
               { "╰", "Comment" },
               { "│", "Comment" },
             },
-            scrollbar = false,
+            scrollbar = true,
             winblend = 0,
           },
           documentation = {
             border = {
-              { "󰙎", "DiagnosticHint" },
+              { "", "DiagnosticHint" },
               { "─", "Comment" },
               { "╮", "Comment" },
               { "│", "Comment" },
@@ -130,7 +130,7 @@ return {
               { "╰", "Comment" },
               { "│", "Comment" },
             },
-            scrollbar = false,
+            scrollbar = true,
             winblend = 0,
           },
         },
