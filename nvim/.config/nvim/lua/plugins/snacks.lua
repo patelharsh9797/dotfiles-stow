@@ -79,6 +79,7 @@ return {
         { section = "startup" },
       },
     },
+    input = {},
     notifier = {
       enabled = true,
       timeout = 3000,
