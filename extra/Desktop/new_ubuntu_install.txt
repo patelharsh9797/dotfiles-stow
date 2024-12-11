@@ -71,6 +71,10 @@ sudo apt install tlp tlp-rdw
 sudo systemctl enable tlp
 sudo systemctl start tlp
 
+--fnm (Fast node manager) || nvm alternative but faster.
+curl -fsSL https://fnm.vercel.app/install | bash
+
+
 --NVM // Node // Bun
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 exec $SHELL

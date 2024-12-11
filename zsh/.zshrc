@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# TODO for ohmyzsh
+# export ZSH="$HOME/.oh-my-zsh"
 # setopt hist_ignore_all_dups
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -79,9 +80,18 @@ setopt HIST_SAVE_NO_DUPS
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # ezample format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git you-should-use zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
+# plugins=(git you-should-use zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+
+source ~/.oh-my-zsh/custom/plugins/you-should-use/you-should-use.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/you-should-use/you-should-use.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# TODO for ohmyzsh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -122,6 +132,11 @@ ssh-add ~/.ssh/id_azure_devops 2>/dev/null
 # bun completions
 [ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+FNM_PATH="/home/harsh/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/harsh/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+source ~/.fnm_completions.zsh
+eval "$(fnm env --use-on-cd --shell zsh)"
