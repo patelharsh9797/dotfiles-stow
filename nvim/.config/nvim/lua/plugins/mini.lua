@@ -100,7 +100,30 @@ return {
   {
     "echasnovski/mini.indentscope",
     init = function()
-      -- disable indentline on Snacks Dashboard window
+      -- disable indent line on some filetypes
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "Trouble",
+          "alpha",
+          "dashboard",
+          "fzf",
+          "help",
+          "lazy",
+          "mason",
+          "neo-tree",
+          "notify",
+          "snacks_dashboard",
+          "snacks_notif",
+          "snacks_terminal",
+          "snacks_win",
+          "toggleterm",
+          "trouble",
+        },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+      -- disable indent line on Snacks Dashboard window
       vim.api.nvim_create_autocmd("User", {
         pattern = "SnacksDashboardOpened",
         callback = function(data)
