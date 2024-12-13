@@ -1,5 +1,5 @@
 sudo apt install net-tools dnsutils hub curl git unzip ripgrep fd g++ cmake fzf xclip libgconf-2-4 python3-gi gir1.2-gconf-2.0
-bat fd-find
+bat fd-find btop
 
 
 --fast fetch
