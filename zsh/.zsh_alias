@@ -1,15 +1,18 @@
 alias cd="z"
-# alias cat="bat"
-
-alias htop="htop -t"
-alias ff="fastfetch"
-alias mysql_restart="sudo sh ~/mysql_restart.sh"
 alias cl="clear"
 alias x="exit"
 alias md="mkdir -p"
-# alias neofetch='neofetch --ascii ascii.txt | lolcat'
-alias ipaddr="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+# alias cat="bat"
 
+alias ipaddr="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+alias ports="netstat -lnpt"
+alias ff="fastfetch"
+alias htop="htop -t"
+# alias neofetch='neofetch --ascii ascii.txt | lolcat'
+
+alias mysql_restart="sudo sh ~/mysql_restart.sh"
+
+#git alias
 alias g="git"
 alias gm='git commit -m'
 alias gpom="git push origin main"
