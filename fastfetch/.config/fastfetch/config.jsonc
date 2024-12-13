@@ -78,7 +78,7 @@
       "key": " └  ",
       "keyColor": "32",
     },
-    "break",
+    // "break",
     {
       "type": "host",
       "format": "{5} {1} Type {2}",

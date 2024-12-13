@@ -11,7 +11,6 @@ return {
       "hrsh7th/cmp-buffer", -- source for text in buffer
       -- "amarakon/nvim-cmp-buffer-lines", -- source for whole function prototypes
       "hrsh7th/cmp-nvim-lsp-signature-help", -- display a signature when you start typing the func name
-      "codeium.vim", -- source for codeium
       { -- LuaSnip
         "L3MON4D3/LuaSnip",
         lazy = true,
@@ -84,7 +83,6 @@ return {
           TypeParameter = "",
         },
       })
-
       require("luasnip.loaders.from_vscode").lazy_load()
 
       local cmp = require("cmp")

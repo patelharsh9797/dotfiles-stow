@@ -12,6 +12,7 @@ return {
       },
     },
   },
+
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -29,19 +30,23 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
-
   {
-    "dinhhuy258/git.nvim",
-    event = "BufReadPre",
-    opts = {
-      keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
-      },
-    },
+    "HiPhish/rainbow-delimiters.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
+  -- {
+  --   "dinhhuy258/git.nvim",
+  --   event = "BufReadPre",
+  --   opts = {
+  --     keymaps = {
+  --       -- Open blame window
+  --       blame = "<Leader>gb",
+  --       -- Open file/folder in git repository
+  --       browse = "<Leader>go",
+  --     },
+  --   },
+  -- },
+
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
