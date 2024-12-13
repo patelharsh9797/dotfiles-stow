@@ -140,3 +140,6 @@ if [ -d "$FNM_PATH" ]; then
 fi
 source ~/.fnm_completions.zsh
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+fastfetch
+
