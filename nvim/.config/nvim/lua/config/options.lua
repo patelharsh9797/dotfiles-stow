@@ -20,3 +20,14 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 -- f3fora/cmp-spell
 opt.spell = true
 opt.spelllang = { "en_us" }
+
+-- LSP Server to use for Python.
+vim.g.lazyvim_python_lsp = "pylsp"
+vim.g.lazyvim_python_ruff = "ruff"
+
+-- disable animations
+vim.g.snacks_animate = false
+
+-- lazyvim v14 update fixes
+vim.g.lazyvim_cmp = "nvim-cmp"
+vim.g.lazyvim_picker = "telescope"

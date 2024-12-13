@@ -5,6 +5,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    animate = { enabled = false },
     bigfile = { enabled = true },
     ---@class snacks.dashboard.Config
     ---@field sections snacks.dashboard.Section

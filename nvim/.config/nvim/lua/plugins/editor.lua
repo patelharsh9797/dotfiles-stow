@@ -45,7 +45,7 @@ return {
   --       browse = "<Leader>go",
   --     },
   --   },
-  -- },
+  -- },BufReadPre
 
   {
     "nvim-telescope/telescope-ui-select.nvim",

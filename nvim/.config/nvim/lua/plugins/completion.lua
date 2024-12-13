@@ -162,7 +162,7 @@ return {
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
-          { name = "codeium", priority = 1 },
+          { name = "codeium" },
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" }, -- show func parameters
           -- { name = "buffer-lines" },

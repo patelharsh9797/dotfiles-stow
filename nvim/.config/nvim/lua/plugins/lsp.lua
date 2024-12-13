@@ -1,5 +1,4 @@
 return {
-  -- INFO: Mason Config
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
