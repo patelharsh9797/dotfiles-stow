@@ -32,6 +32,7 @@ return {
       "saadparwaiz1/cmp_luasnip", -- for autocompletion
       "rafamadriz/friendly-snippets", -- useful snippets
       "f3fora/cmp-spell", -- adds spell words to suggestions
+      "codeium.vim",
     },
     config = function()
       -- <Tab> for jump to next snippet's placeholder
