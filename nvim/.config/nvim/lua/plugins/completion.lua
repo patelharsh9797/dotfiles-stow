@@ -1,4 +1,4 @@
----@diagnostic disable: assign-type-mismatch
+---@diagnostic disable: assign-type-mismatch, no-unknown
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -35,15 +35,15 @@ return {
     },
     config = function()
       -- <Tab> for jump to next snippet's placeholder
-      vim.api.nvim_set_keymap(
-        "i",
-        "<Tab>",
-        "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'",
-        { silent = true, expr = true }
-      )
-      vim.api.nvim_set_keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
-      vim.api.nvim_set_keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", { silent = true })
-      vim.api.nvim_set_keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
+      -- vim.api.nvim_set_keymap(
+      --   "i",
+      --   "<Tab>",
+      --   "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'",
+      --   { silent = true, expr = true }
+      -- )
+      -- vim.api.nvim_set_keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
+      -- vim.api.nvim_set_keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", { silent = true })
+      -- vim.api.nvim_set_keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { silent = true })
 
       local lspkind = require("lspkind")
       lspkind.init({
@@ -159,6 +159,9 @@ return {
           ["<C-e>"] = cmp.mapping.abort(), -- close completion
           ---@diagnostic disable-next-line: no-unknown
           ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+          ["<tab>"] = function(fallback)
+            return LazyVim.cmp.map({ "snippet_forward", "ai_accept" }, fallback)()
+          end,
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({

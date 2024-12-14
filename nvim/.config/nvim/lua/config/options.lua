@@ -28,6 +28,10 @@ vim.g.lazyvim_python_ruff = "ruff"
 -- disable animations
 vim.g.snacks_animate = false
 
+-- if the completion engine supports the AI source,
+-- use that instead of inline suggestions
+vim.g.ai_cmp = false
+
 -- lazyvim v14 update fixes
 vim.g.lazyvim_cmp = "nvim-cmp"
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
