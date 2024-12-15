@@ -43,10 +43,24 @@ return {
       function()
         require("fzf-lua").diagnostics_document()
       end,
-      desc = "Lists Diagnostics for all open buffers or a specific buffer",
+      desc = "Lists Diagnostics For Current Buffers",
+    },
+    {
+      ";E",
+      function()
+        require("fzf-lua").diagnostics_workspace()
+      end,
+      desc = "Lists Diagnostics For Workshop",
     },
     {
       ";s",
+      function()
+        require("fzf-lua").spell_suggest()
+      end,
+      desc = "Lists spell suggestions",
+    },
+    {
+      ";S",
       function()
         require("fzf-lua").treesitter()
       end,

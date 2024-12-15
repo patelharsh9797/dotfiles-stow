@@ -281,33 +281,33 @@ return {
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts_keymaps = { buffer = ev.buf, silent = true }
 
-          -- set keybinds
-          opts_keymaps.desc = "Show LSP references"
-          keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts_keymaps) -- show definition, references
+          -- -- set keybinds
+          -- opts_keymaps.desc = "Show LSP references"
+          -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts_keymaps) -- show definition, references
 
-          opts_keymaps.desc = "Go to declaration"
-          keymap.set("n", "gD", vim.lsp.buf.declaration, opts_keymaps) -- go to declaration
+          -- opts_keymaps.desc = "Go to declaration"
+          -- keymap.set("n", "gD", vim.lsp.buf.declaration, opts_keymaps) -- go to declaration
 
-          opts_keymaps.desc = "Show LSP definitions"
-          keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts_keymaps) -- show lsp definitions
+          -- opts_keymaps.desc = "Show LSP definitions"
+          -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts_keymaps) -- show lsp definitions
 
-          opts_keymaps.desc = "Show LSP implementations"
-          keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts_keymaps) -- show lsp implementations
+          -- opts_keymaps.desc = "Show LSP implementations"
+          -- keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts_keymaps) -- show lsp implementations
 
-          opts_keymaps.desc = "Show LSP type definitions"
-          keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts_keymaps) -- show lsp type definitions
+          -- opts_keymaps.desc = "Show LSP type definitions"
+          -- keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts_keymaps) -- show lsp type definitions
 
-          opts_keymaps.desc = "See available code actions"
-          keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts_keymaps) -- see available code actions, in visual mode will apply to selection
+          -- opts_keymaps.desc = "See available code actions"
+          -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts_keymaps) -- see available code actions, in visual mode will apply to selection
 
           -- opts_keymaps.desc = "Smart Rename"
           -- keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts_keymaps) -- smart rename
 
-          opts_keymaps.desc = "Show buffer diagnostics"
-          keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=1<CR>", opts_keymaps) -- show  diagnostics for file
+          -- opts_keymaps.desc = "Show buffer diagnostics"
+          -- keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=1<CR>", opts_keymaps) -- show  diagnostics for file
 
-          opts_keymaps.desc = "Show line diagnostics"
-          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts_keymaps) -- show diagnostics for line
+          -- opts_keymaps.desc = "Show line diagnostics"
+          -- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts_keymaps) -- show diagnostics for line
 
           opts_keymaps.desc = "Go to previous diagnostic"
           keymap.set("n", "[d", vim.diagnostic.goto_prev, opts_keymaps) -- jump to previous diagnostic in buffer
@@ -325,11 +325,17 @@ return {
 
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+      -- local signs = {
+      --   Error = "󰅚 ",
+      --   Warn = "󰳦 ",
+      --   Hint = "󱡄 ",
+      --   Info = " ",
+      -- }
+      -- for type, icon in pairs(signs) do
+      --   local hl = "DiagnosticSign" .. type
+      --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      -- end
 
       -- local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
       -- for type, icon in pairs(signs) do
