@@ -27,7 +27,7 @@
     "break",
     {
       "type": "os",
-      "key": "OS   ",
+      "key": " ╭─OS   ",
       "keyColor": "31", // = color1
     },
     {
@@ -70,19 +70,19 @@
     },
     {
       "type": "terminal",
-      "key": " ├  ",
+      "key": " └  ",
       "keyColor": "32",
     },
-    {
-      "type": "terminalfont",
-      "key": " └  ",
-      "keyColor": "32",
-    },
-    // "break",
+    // {
+    //   "type": "terminalfont",
+    //   "key": " └  ",
+    //   "keyColor": "32",
+    // },
+    "break",
     {
       "type": "host",
       "format": "{5} {1} Type {2}",
-      "key": "PC   ",
+      "key": " ╭─PC   ",
       "keyColor": "33",
     },
     {
@@ -97,11 +97,6 @@
       "key": " ├ 󰢮 ",
       "keyColor": "33",
     },
-    {
-      "type": "memory",
-      "key": " ├  ",
-      "keyColor": "33",
-    },
     // {
     //   "type": "swap",
     //   "key": " ├ 󰓡 ",
@@ -109,10 +104,14 @@
     // },
     {
       "type": "monitor",
-      "key": " └  ",
+      "key": " ├  ",
       "keyColor": "33",
     },
-
+    {
+      "type": "memory",
+      "key": " └  ",
+      "keyColor": "33",
+    },
     "break",
     {
       "type": "custom",

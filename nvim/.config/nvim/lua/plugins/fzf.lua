@@ -11,6 +11,13 @@ return {
       desc = "Lists files in your current working directory",
     },
     {
+      ";f",
+      function()
+        require("fzf-lua").files()
+      end,
+      desc = "Lists files in your current working directory",
+    },
+    {
       ";r",
       function()
         require("fzf-lua").live_grep({ additional_opts = { "--hidden" } })
