@@ -84,14 +84,7 @@ return {
   },
   config = function()
     require("fzf-lua").setup({
-      winopts = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        backdrop = 60,
-        treesitter = {
-          enabled = false,
-          fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
-        },
-      },
+      fzf_colors = true,
     })
   end,
 }
