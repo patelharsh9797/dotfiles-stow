@@ -25,13 +25,28 @@ opt.spelllang = { "en_us" }
 vim.g.lazyvim_python_lsp = "pylsp"
 vim.g.lazyvim_python_ruff = "ruff"
 
--- disable animations
-vim.g.snacks_animate = false
+-- LazyVim auto format
+vim.g.autoformat = true
+
+-- Snacks animations
+-- Set to `false` to globally disable all snacks animations
+vim.g.snacks_animate = true
+
+-- LazyVim picker to use.
+-- Can be one of: telescope, fzf || auto
+-- Leave it to "auto" to automatically use the picker
+-- enabled with `:LazyExtras`
+vim.g.lazyvim_picker = "fzf"
+
+-- LazyVim completion engine to use.
+-- Can be one of: nvim-cmp, blink.cmp || auto
+-- Leave it to "auto" to automatically use the completion engine
+-- enabled with `:LazyExtras`
+vim.g.lazyvim_cmp = "nvim-cmp"
 
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
 vim.g.ai_cmp = false
 
--- lazyvim v14 update fixes
-vim.g.lazyvim_cmp = "nvim-cmp"
--- vim.g.lazyvim_picker = "telescope"
+-- Hide deprecation warnings
+vim.g.deprecation_warnings = false
