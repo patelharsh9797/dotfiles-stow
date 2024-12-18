@@ -18,6 +18,14 @@ return {
       desc = "Lists files in your current working directory",
     },
     {
+      ";c",
+      function()
+        require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })
+      end,
+      desc = "Lists files in your current working directory",
+    },
+    -- vim.fn.stdpath('config')
+    {
       ";r",
       function()
         require("fzf-lua").live_grep({ additional_opts = { "--hidden" } })
@@ -75,6 +83,15 @@ return {
     },
   },
   config = function()
-    require("fzf-lua").setup({})
+    require("fzf-lua").setup({
+      winopts = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        backdrop = 60,
+        treesitter = {
+          enabled = false,
+          fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
+        },
+      },
+    })
   end,
 }

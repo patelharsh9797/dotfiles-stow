@@ -19,16 +19,18 @@ return {
         "stylua",
         "tailwindcss-language-server",
         "yaml-language-server",
+
+        "typescript-language-server",
       })
 
       opts.ui = {
         height = 0.8,
         border = "rounded",
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
+        -- icons = {
+        --   package_installed = "✓",
+        --   package_pending = "➜",
+        --   package_uninstalled = "✗",
+        -- },
       }
     end,
   },
