@@ -25,13 +25,6 @@ return {
       desc = "Neovim Config Files",
     },
     {
-      ";k",
-      function()
-        require("fzf-lua").keymaps()
-      end,
-      desc = "Lists keymaps",
-    },
-    {
       ";r",
       function()
         require("fzf-lua").live_grep({ additional_opts = { "--hidden" } })
@@ -39,18 +32,18 @@ return {
       desc = "Search for a string in the current working directory",
     },
     {
-      ";;",
+      ";b",
       function()
-        require("fzf-lua").resume()
+        require("fzf-lua").builtin()
       end,
-      desc = "Resume the previous fzf-lua picker",
+      desc = "Lists keymaps",
     },
     {
-      "\\\\",
+      ";k",
       function()
-        require("fzf-lua").buffers()
+        require("fzf-lua").keymaps()
       end,
-      desc = "Lists open buffers",
+      desc = "Lists keymaps",
     },
     {
       ";t",
@@ -86,6 +79,20 @@ return {
         require("fzf-lua").treesitter()
       end,
       desc = "Lists Function names, variables, from Treesitter",
+    },
+    {
+      "\\\\",
+      function()
+        require("fzf-lua").buffers()
+      end,
+      desc = "Lists open buffers",
+    },
+    {
+      ";;",
+      function()
+        require("fzf-lua").resume()
+      end,
+      desc = "Resume the previous fzf-lua picker",
     },
   },
   config = function()
