@@ -22,9 +22,15 @@ return {
       function()
         require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })
       end,
-      desc = "Lists files in your current working directory",
+      desc = "Neovim Config Files",
     },
-    -- vim.fn.stdpath('config')
+    {
+      ";k",
+      function()
+        require("fzf-lua").keymaps()
+      end,
+      desc = "Lists keymaps",
+    },
     {
       ";r",
       function()

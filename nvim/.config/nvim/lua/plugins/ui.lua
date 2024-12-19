@@ -1,3 +1,18 @@
+-- Function to get the name of the attached LSP client(s)
+local function lsp_client_names()
+  local clients = vim.lsp.buf_get_clients()
+  if next(clients) == nil then
+    return ""
+  end
+
+  local client_names = {}
+  for _, client in pairs(clients) do
+    table.insert(client_names, client.name)
+  end
+
+  return table.concat(client_names, ", ")
+end
+
 ---@diagnostic disable: undefined-field, no-unknown
 return {
   -- buffer line
@@ -87,6 +102,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    -- dependencies = { "nvim-lua/lsp-status.nvim" },
     init = function()
       vim.g.lualine_laststatus = vim.o.laststatus
       if vim.fn.argc(-1) > 0 then
@@ -133,10 +149,24 @@ return {
           lualine_x = {
           -- stylua: ignore
           {
-            function() return require("noice").api.status.command.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = { fg = Snacks.util.color("Statement") },
-          },
+              -- LSP client names
+              function()
+                return "" .. lsp_client_names()
+              end,
+              cond = function()
+                return vim.lsp.buf_get_clients() and next(vim.lsp.buf_get_clients()) ~= nil
+              end,
+              color = { fg = "#8be9fd" }, -- Use your preferred color
+            },
+            {
+              function()
+                return require("noice").api.status.command.get()
+              end,
+              cond = function()
+                return package.loaded["noice"] and require("noice").api.status.command.has()
+              end,
+              color = { fg = Snacks.util.color("Statement") },
+            },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,

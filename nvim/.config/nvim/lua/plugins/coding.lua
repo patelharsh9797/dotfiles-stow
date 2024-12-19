@@ -98,4 +98,8 @@ return {
   --     position = "right",
   --   },
   -- },
+
+  {
+    "mg979/vim-visual-multi",
+  },
 }

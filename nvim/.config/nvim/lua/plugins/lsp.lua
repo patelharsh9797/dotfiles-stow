@@ -346,4 +346,12 @@ return {
       -- end
     end,
   },
+
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {},
+    config = function()
+      require("venv-selector").setup()
+    end,
+  },
 }
