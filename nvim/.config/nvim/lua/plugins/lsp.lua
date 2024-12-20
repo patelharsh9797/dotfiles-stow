@@ -322,6 +322,10 @@ return {
 
           opts_keymaps.desc = "Restart LSP"
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
+
+          ---@diagnostic disable-next-line: no-unknown
+          local lsp_utils = require("util.lsp-float-utils")
+          keymap.set("n", "<Leader>rl", lsp_utils.show_lsp_info, { desc = "Show LSP info in float" })
         end,
       })
 
