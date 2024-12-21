@@ -89,8 +89,9 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       { "antosha417/nvim-lsp-file-operations", config = true },
+      "saghen/blink.cmp", --blink completion
     },
     opts = function(_, opts)
       -- LspInfo Border
@@ -112,6 +113,7 @@ return {
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = _border,
       })
+
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = _border,
       })
@@ -180,8 +182,8 @@ return {
                 yapf = { enabled = false },
                 mccabe = { enabled = false },
                 pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = false },
-                pylsp_isort = { enabled = false },
+                pylsp_black = { enabled = true },
+                pylsp_isort = { enabled = true },
               },
             },
           },
@@ -274,6 +276,15 @@ return {
         },
       }
 
+      -- INFO: blink.cmp
+      -- local lspconfig = require("lspconfig")
+      -- for server, config in pairs(opts.servers) do
+      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      --   -- `opts[server].capabilities, if you've defined it
+      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
+
       -- some keymaps for all lang
       local keymap = vim.keymap -- for conciseness
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -308,8 +319,8 @@ return {
           -- opts_keymaps.desc = "Show buffer diagnostics"
           -- keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=1<CR>", opts_keymaps) -- show  diagnostics for file
 
-          -- opts_keymaps.desc = "Show line diagnostics"
-          -- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts_keymaps) -- show diagnostics for line
+          opts_keymaps.desc = "Show line diagnostics"
+          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts_keymaps) -- show diagnostics for line
 
           opts_keymaps.desc = "Go to previous diagnostic"
           keymap.set("n", "[d", vim.diagnostic.goto_prev, opts_keymaps) -- jump to previous diagnostic in buffer
