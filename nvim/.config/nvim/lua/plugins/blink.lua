@@ -193,19 +193,19 @@ return {
         cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },
-          lsp = {
-            name = "lsp",
-            enabled = true,
-            module = "blink.cmp.sources.lsp",
-            -- kind = "LSP",
-            score_offset = 1000, -- the higher the score, the higher the priority
-          },
-          luasnip = {
-            name = "luasnip",
-            enabled = true,
-            module = "blink.cmp.sources.luasnip",
-            score_offset = 950, -- the higher the number, the higher the priority
-          },
+          -- lsp = {
+          --   name = "lsp",
+          --   enabled = true,
+          --   module = "blink.cmp.sources.lsp",
+          --   -- kind = "LSP",
+          --   score_offset = 1000, -- the higher the score, the higher the priority
+          -- },
+          -- luasnip = {
+          --   name = "luasnip",
+          --   enabled = true,
+          --   module = "blink.cmp.sources.luasnip",
+          --   score_offset = 950, -- the higher the number, the higher the priority
+          -- },
         },
       },
 

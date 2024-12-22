@@ -67,6 +67,11 @@ return {
       desc = "Search for a string in the current working directory",
     },
     {
+      ";q",
+      require("fzf-lua").quickfix,
+      desc = "Lists quickfix list",
+    },
+    {
       ";b",
       function()
         require("fzf-lua").builtin()

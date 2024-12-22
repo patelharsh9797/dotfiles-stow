@@ -1,3 +1,4 @@
+---@diagnostic disable: no-unknown
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -8,6 +9,9 @@ discipline.cowboy()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+
+local lsp_utils = require("util.lsp-float-utils")
+keymap.set("n", "<Leader>rl", lsp_utils.show_lsp_info, { desc = "Show LSP info in float" })
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')

@@ -138,14 +138,12 @@ return {
         -- biome = {
         --   root_dir = util.root_pattern(""),
         -- },
-        html = {
-          enabled = true,
-        },
-        cssls = { enabled = true },
-        dockerls = { enabled = true },
-        docker_compose_language_service = { enabled = true },
-        marksman = { enabled = true },
-        prismals = { enabled = true },
+        html = {},
+        cssls = {},
+        dockerls = {},
+        docker_compose_language_service = {},
+        marksman = {},
+        prismals = {},
         tsserver = {
           enabled = false,
         },
@@ -260,8 +258,8 @@ return {
                   ["global"] = "Opened",
                   ["luadoc"] = "Opened",
                   ["redefined"] = "Opened",
-                  ["strict"] = "Opened",
                   ["strong"] = "Opened",
+                  ["strict"] = "Opened",
                   ["type-check"] = "Opened",
                   ["unbalanced"] = "Opened",
                   ["unused"] = "Opened",
@@ -281,14 +279,6 @@ return {
         },
       }
 
-      -- INFO: blink.cmp
-      local lspconfig = require("lspconfig")
-      for server, config in pairs(opts.servers) do
-        -- passing config.capabilities to blink.cmp merges with the capabilities in your
-        -- `opts[server].capabilities, if you've defined it
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-      end
       -- lspconfig["lua_ls"].setup({
       --   capabilities = capabilities,
       -- })
@@ -345,12 +335,17 @@ return {
 
           opts_keymaps.desc = "Restart LSP"
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
-
-          ---@diagnostic disable-next-line: no-unknown
-          local lsp_utils = require("util.lsp-float-utils")
-          keymap.set("n", "<Leader>rl", lsp_utils.show_lsp_info, { desc = "Show LSP info in float" })
         end,
       })
+
+      -- INFO: blink.cmp
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        -- passing config.capabilities to blink.cmp merges with the capabilities in your
+        -- `opts[server].capabilities, if you've defined it
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
 
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)

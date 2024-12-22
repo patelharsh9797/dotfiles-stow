@@ -5,6 +5,7 @@
         "missing-fields"
     ],
     "diagnostics.globals": [
-        "M"
+        "M",
+        "vim"
     ]
 }
