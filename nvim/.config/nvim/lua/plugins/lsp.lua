@@ -1,3 +1,5 @@
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 return {
   {
     "williamboman/mason.nvim",
@@ -46,6 +48,7 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>TSToolsOrganizeImports<CR>", { noremap = true, silent = true })
 
       require("typescript-tools").setup({
+        capabilities = capabilities,
         -- on_attach = function(client, bufnr)
         --   -- Add any custom on_attach configuration here
         --   -- For example, set key mappings for LSP functionality
@@ -135,12 +138,14 @@ return {
         -- biome = {
         --   root_dir = util.root_pattern(""),
         -- },
-        html = {},
-        cssls = {},
-        dockerls = {},
-        docker_compose_language_service = {},
-        marksman = {},
-        prismals = {},
+        html = {
+          enabled = true,
+        },
+        cssls = { enabled = true },
+        dockerls = { enabled = true },
+        docker_compose_language_service = { enabled = true },
+        marksman = { enabled = true },
+        prismals = { enabled = true },
         tsserver = {
           enabled = false,
         },
@@ -277,13 +282,20 @@ return {
       }
 
       -- INFO: blink.cmp
-      -- local lspconfig = require("lspconfig")
-      -- for server, config in pairs(opts.servers) do
-      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
-      --   -- `opts[server].capabilities, if you've defined it
-      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      --   lspconfig[server].setup(config)
-      -- end
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        -- passing config.capabilities to blink.cmp merges with the capabilities in your
+        -- `opts[server].capabilities, if you've defined it
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
+      -- lspconfig["lua_ls"].setup({
+      --   capabilities = capabilities,
+      -- })
+      -- lspconfig["pylsp"].setup({
+      --   capabilities = capabilities,
+      -- })
+      --
 
       -- some keymaps for all lang
       local keymap = vim.keymap -- for conciseness

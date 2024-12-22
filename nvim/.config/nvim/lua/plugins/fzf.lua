@@ -1,7 +1,24 @@
 return {
   "ibhagwan/fzf-lua",
   -- optional for icon support
-  dependencies = {},
+  dependencies = { "echasnovski/mini.icons" },
+  config = function(_, opts)
+    require("fzf-lua").setup({
+      fzf_colors = true,
+
+      -- for horizontal layout at bottom.
+      -- winopts = vim.tbl_extend("force", opts.winopts or {}, {
+      -- border = "rounded",
+      -- width = 0.85,
+      -- height = 0.80,
+      -- row = 1, -- window row position (0=top, 1=bottom)
+      -- background = 100, -- Backdrop opacity, 0 is fully opaque, 100 is fully transparent (i.e. disabled)
+      -- preview = {
+      --   horizontal = "right:60%",
+      -- },
+      -- }),
+    })
+  end,
   keys = {
     {
       "<C-p>",
@@ -24,6 +41,24 @@ return {
       end,
       desc = "Neovim Config Files",
     },
+    {
+      ";p",
+      LazyVim.pick("files", { cwd = require("lazy.core.config").options.root }),
+      desc = "Find Plugin File",
+    },
+    {
+      ";P",
+      function()
+        local dirs = { "~/dot/nvim/lua/plugins", "~/projects/LazyVim/lua/lazyvim/plugins" }
+        require("fzf-lua").live_grep({
+          filespec = "-- " .. table.concat(vim.tbl_values(dirs), " "),
+          search = "/",
+          formatter = "path.filename_first",
+        })
+      end,
+      desc = "Find Plugin File",
+    },
+
     {
       ";r",
       function()
@@ -95,9 +130,4 @@ return {
       desc = "Resume the previous fzf-lua picker",
     },
   },
-  config = function()
-    require("fzf-lua").setup({
-      fzf_colors = true,
-    })
-  end,
 }

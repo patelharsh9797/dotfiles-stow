@@ -6,15 +6,35 @@ return {
     "sources.compat",
     "sources.default",
   },
+  config = function(_, opts)
+    require("blink.cmp").setup(opts)
+  end,
   dependencies = {
     "codeium.vim", -- codeium.nvim
     { -- vscode snippets
       "rafamadriz/friendly-snippets",
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
       end,
     },
-    "L3MON4D3/LuaSnip",
+    {
+      "L3MON4D3/LuaSnip",
+      opts = function()
+        LazyVim.cmp.actions.snippet_forward = function()
+          if require("luasnip").jumpable(1) then
+            require("luasnip").jump(1)
+            return true
+          end
+        end
+        LazyVim.cmp.actions.snippet_stop = function()
+          if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
+            require("luasnip").unlink_current()
+            return true
+          end
+        end
+      end,
+    },
     "leiserfg/blink_luasnip",
     {
       "saghen/blink.compat",
@@ -28,8 +48,6 @@ return {
 
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
-    local ls = require("luasnip")
-
     require("blink.cmp").setup({
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -40,22 +58,57 @@ return {
         -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
 
-        -- kind_icons = vim.tbl_extend("keep", {
-        --   Color = "██", -- Use block instead of icon for color items to make swatches more usable
-        -- }, LazyVim.config.icons.kinds),
+        kind_icons = vim.tbl_extend("keep", {
+          Color = "██", -- Use block instead of icon for color items to make swatches more usable
+        }, LazyVim.config.icons.kinds),
+
+        -- kind_icons = {
+        --   Copilot = "",
+        --   Text = "󰉿",
+        --   Method = "󰊕",
+        --   Function = "󰊕",
+        --   Constructor = "󰒓",
+        --
+        --   Field = "󰜢",
+        --   Variable = "󰆦",
+        --   Property = "󰖷",
+        --
+        --   Class = "󱡠",
+        --   Interface = "󱡠",
+        --   Struct = "󱡠",
+        --   Module = "󰅩",
+        --
+        --   Unit = "󰪚",
+        --   Value = "󰦨",
+        --   Enum = "󰦨",
+        --   EnumMember = "󰦨",
+        --
+        --   Keyword = "󰻾",
+        --   Constant = "󰏿",
+        --
+        --   Snippet = "󱄽",
+        --   Color = "󰏘",
+        --   File = "󰈔",
+        --   Reference = "󰬲",
+        --   Folder = "󰉋",
+        --   Event = "󱐋",
+        --   Operator = "󰪚",
+        --   TypeParameter = "󰬛",
+        -- },
       },
+
       snippets = {
         expand = function(snippet)
-          ls.lsp_expand(snippet)
+          require("luasnip").lsp_expand(snippet)
         end,
         active = function(filter)
           if filter and filter.direction then
-            return ls.jumpable(filter.direction)
+            return require("luasnip").jumpable(filter.direction)
           end
-          return ls.in_snippet()
+          return require("luasnip").in_snippet()
         end,
         jump = function(direction)
-          ls.jump(direction)
+          require("luasnip").jump(direction)
         end,
       },
 
@@ -140,16 +193,18 @@ return {
         cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },
+          lsp = {
+            name = "lsp",
+            enabled = true,
+            module = "blink.cmp.sources.lsp",
+            -- kind = "LSP",
+            score_offset = 1000, -- the higher the score, the higher the priority
+          },
           luasnip = {
             name = "luasnip",
-            module = "blink_luasnip",
-
-            score_offset = -1,
-
-            opts = {
-              use_show_condition = false,
-              show_autosnippets = true,
-            },
+            enabled = true,
+            module = "blink.cmp.sources.luasnip",
+            score_offset = 950, -- the higher the number, the higher the priority
           },
         },
       },
