@@ -42,24 +42,22 @@ return {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     event = "BufEnter",
-    opts = function(_, opts)
-      -- custom keymasps
-      vim.api.nvim_set_keymap("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>TSToolsOrganizeImports<CR>", { noremap = true, silent = true })
-
+    init = function()
+      require("lazyvim.util").lsp.on_attach(function(_, buffer) end)
+    end,
+    config = function(_, opts)
       require("typescript-tools").setup({
         capabilities = capabilities,
-        -- on_attach = function(client, bufnr)
-        --   -- Add any custom on_attach configuration here
-        --   -- For example, set key mappings for LSP functionality
-        --   local opts = { noremap = true, silent = true, buffer = bufnr }
-        --   local buf_set_keymap = vim.api.nvim_buf_set_keymap
-        --
-        --   buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        --   buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-        --   buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        --   buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        -- end,
+        on_attach = function(_, buffer)
+        -- stylua: ignore
+        vim.keymap.set( "n", "<leader>ci", "<cmd>TSToolsAddMissingImports<CR>", { buffer = buffer, desc = "Missing Imports" })
+          vim.keymap.set(
+            "n",
+            "<leader>co",
+            "<cmd>TSToolsOrganizeImports<CR>",
+            { desc = "Organize Imports", buffer = buffer }
+          )
+        end,
         filetypes = {
           "javascript",
           "javascriptreact",
@@ -338,14 +336,14 @@ return {
         end,
       })
 
-      -- INFO: blink.cmp
-      local lspconfig = require("lspconfig")
-      for server, config in pairs(opts.servers) do
-        -- passing config.capabilities to blink.cmp merges with the capabilities in your
-        -- `opts[server].capabilities, if you've defined it
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-      end
+      -- -- INFO: blink.cmp
+      -- local lspconfig = require("lspconfig")
+      -- for server, config in pairs(opts.servers) do
+      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      --   -- `opts[server].capabilities, if you've defined it
+      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
 
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
@@ -361,11 +359,11 @@ return {
       --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       -- end
 
-      -- local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-      -- for type, icon in pairs(signs) do
-      --   local hl = "DiagnosticSign" .. type
-      --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      -- end
+      local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
     end,
   },
 
