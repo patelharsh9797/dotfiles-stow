@@ -52,7 +52,7 @@ return {
   --   },
   -- },
 
-  -- Highlight patterns in text
+  -- Highlight patterns in text color highlight groups
   {
     "echasnovski/mini.hipatterns",
     event = "BufReadPre",
@@ -74,7 +74,6 @@ return {
       },
     },
   },
-
   -- Icon provider
   {
     "echasnovski/mini.icons",

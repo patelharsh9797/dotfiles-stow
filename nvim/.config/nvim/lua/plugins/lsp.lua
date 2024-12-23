@@ -88,6 +88,7 @@ return {
   -- INFO: LSP Config
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- "hrsh7th/cmp-nvim-lsp",
@@ -277,13 +278,41 @@ return {
         },
       }
 
-      -- lspconfig["lua_ls"].setup({
-      --   capabilities = capabilities,
-      -- })
-      -- lspconfig["pylsp"].setup({
-      --   capabilities = capabilities,
-      -- })
-      --
+      -- -- INFO: blink.cmp
+      local lspconfig = require("lspconfig")
+      -- for server, config in pairs(opts.servers) do
+      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      --   -- `opts[server].capabilities, if you've defined it
+      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
+      lspconfig["lua_ls"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["pylsp"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["tailwindcss"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["html"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["cssls"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["dockerls"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["docker_compose_language_service"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["jsonls"].setup({
+        capabilities = capabilities,
+      })
+      lspconfig["yamlls"].setup({
+        capabilities = capabilities,
+      })
 
       -- some keymaps for all lang
       local keymap = vim.keymap -- for conciseness
@@ -335,15 +364,6 @@ return {
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
         end,
       })
-
-      -- -- INFO: blink.cmp
-      -- local lspconfig = require("lspconfig")
-      -- for server, config in pairs(opts.servers) do
-      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
-      --   -- `opts[server].capabilities, if you've defined it
-      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      --   lspconfig[server].setup(config)
-      -- end
 
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
