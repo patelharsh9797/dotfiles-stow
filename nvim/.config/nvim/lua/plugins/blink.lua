@@ -208,13 +208,23 @@ return {
           -- },
         },
       },
-
       keymap = {
         preset = "enter",
         ["<Tab>"] = {
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+              -- else
+              --   return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
           "fallback",
         },
+        -- ["<Tab>"] = {
+        --   LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+        --   "fallback",
+        -- },
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" }, -- previous suggestion
