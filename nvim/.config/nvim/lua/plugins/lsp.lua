@@ -131,6 +131,7 @@ return {
         severity_sort = false,
       })
 
+      opts.capabilities = capabilities
       opts.inlay_hints = { enabled = false }
 
       opts.servers = {
@@ -277,42 +278,6 @@ return {
           },
         },
       }
-
-      -- -- INFO: blink.cmp
-      local lspconfig = require("lspconfig")
-      -- for server, config in pairs(opts.servers) do
-      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
-      --   -- `opts[server].capabilities, if you've defined it
-      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      --   lspconfig[server].setup(config)
-      -- end
-      lspconfig["lua_ls"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["pylsp"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["tailwindcss"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["html"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["cssls"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["dockerls"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["docker_compose_language_service"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["jsonls"].setup({
-        capabilities = capabilities,
-      })
-      lspconfig["yamlls"].setup({
-        capabilities = capabilities,
-      })
 
       -- some keymaps for all lang
       local keymap = vim.keymap -- for conciseness

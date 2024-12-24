@@ -13,9 +13,10 @@ return {
       -- height = 0.80,
       -- row = 1, -- window row position (0=top, 1=bottom)
       -- background = 100, -- Backdrop opacity, 0 is fully opaque, 100 is fully transparent (i.e. disabled)
-      -- preview = {
-      --   horizontal = "right:60%",
-      -- },
+      preview = {
+        wrap = "wrap", -- wrap|nowrap
+        --   horizontal = "right:60%",
+      },
       -- }),
     })
   end,
