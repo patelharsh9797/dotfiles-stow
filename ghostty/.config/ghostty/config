@@ -1,0 +1,25 @@
+
+# Fonts
+# font-family =  JetBrainMono Nerd Font
+font-size = 14
+
+
+# Appearance
+theme = catppuccin-mocha
+background = 0f0f0f
+background-opacity = 0.9
+background-blur-radius = 20
+
+gtk-single-instance = true
+gtk-tabs-location = bottom
+gtk-wide-tabs = false
+
+window-padding-x = 8
+window-padding-y = 4,0
+window-padding-balance = true
+window-decoration = true
+window-theme = ghostty
+
+
+# Action keybinds
+keybind = alt+enter=toggle_fullscreen
