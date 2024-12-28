@@ -1,25 +1,37 @@
+# https://ghostty.org/docs/config/reference
+
+
 
 # Fonts
 # font-family =  JetBrainMono Nerd Font
-font-size = 14
+font-size = 16
 
 
 # Appearance
 theme = catppuccin-mocha
+bold-is-bright = true
 background = 0f0f0f
 background-opacity = 0.9
 background-blur-radius = 20
 
+
+# Window
+window-width = 100
+window-height = 24
+window-padding-x = 8
+window-padding-y = 4
+window-padding-balance = true
+window-decoration = true
+window-theme = ghostty
+window-inherit-working-directory = true
+
+# GTK
 gtk-single-instance = true
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
 
-window-padding-x = 8
-window-padding-y = 4,0
-window-padding-balance = true
-window-decoration = true
-window-theme = ghostty
+#Others
+# shell-integration = zsh
 
-
-# Action keybinds
+# Action key-binds
 keybind = alt+enter=toggle_fullscreen
