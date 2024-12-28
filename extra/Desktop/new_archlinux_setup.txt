@@ -1,0 +1,30 @@
+sudo pacman -Sy
+sudo pacman -S git
+
+-- install yay packagemanger
+      git clone https://aur.archlinux.org/yay.git
+      cd yay
+      makepkg -si
+
+-- install fonts:
+  yay -S ttf-jetbrains-mono-nerd
+
+yay -S fastfetch
+
+-- install neovim: yay -S neovim
+
+-- install wezterm: yay -S wezterm
+
+-- install eza: ysy -S eza
+
+-- install stow: yay -S stow
+
+-- install zsh: 
+  yay -S zsh
+  chsh -s $(which zsh)
+
+-- install starship: 
+    curl -sS https://starship.rs/install.sh | sh
+
+
+-- fnm & node & bun are same as ubuntu
