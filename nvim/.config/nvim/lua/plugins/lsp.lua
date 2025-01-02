@@ -185,8 +185,8 @@ return {
                 yapf = { enabled = false },
                 mccabe = { enabled = false },
                 pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = true },
-                pylsp_isort = { enabled = true },
+                pylsp_black = { enabled = false },
+                pylsp_isort = { enabled = false },
               },
             },
           },
@@ -196,6 +196,12 @@ return {
           init_options = {
             settings = {
               logLevel = "error",
+              lint = {
+                extendSelect = {
+                  "I",
+                },
+              },
+              organizeImports = true,
             },
           },
           keys = {
@@ -326,7 +332,7 @@ return {
           keymap.set("n", "K", vim.lsp.buf.hover, opts_keymaps) -- show documentation for what is under cursor
 
           opts_keymaps.desc = "Restart LSP"
-          keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
+          keymap.set("n", "<leader>rS", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
         end,
       })
 

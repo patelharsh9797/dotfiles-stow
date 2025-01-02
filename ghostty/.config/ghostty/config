@@ -1,11 +1,9 @@
 # https://ghostty.org/docs/config/reference
 
 
-
 # Fonts
 # font-family =  JetBrainMono Nerd Font
-font-size = 16
-
+font-size = 14
 
 # Appearance
 theme = catppuccin-mocha
@@ -29,9 +27,17 @@ window-inherit-working-directory = true
 gtk-single-instance = true
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
+gtk-titlebar = true
+
 
 #Others
+confirm-close-surface = false
 # shell-integration = zsh
+
+# Shaders
+# custom-shader = ./shaders/bloom.glsl
+custom-shader-animation = true
+
 
 # Action key-binds
 keybind = alt+enter=toggle_fullscreen

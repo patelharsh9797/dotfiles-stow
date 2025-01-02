@@ -17,12 +17,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec3 color2 = vec3(0.5, 0.1, 0.1);
     vec3 color3 = vec3(0.1, 0.5, 0.1);
 
-    // Smooth interpolation between colors using multiple mixcolor3,
-olor.rgb, gradientColor, mask);
-
-    fragColor = vec4(blendedColor, terminalColor.a);
-}- step(0.5, dot(terminalColor.rgb, vec3(1.0)));
-    vec3 blendedColor = mix(terminalC            smoothstep(0.0, 1.0, sin(angle + 2.0) * 0.5 + 0.5)
+    // Smooth interpolation between colors using multiple mix operations
+    vec3 gradientStartColor = mix(
+            mix(color1, color2, smoothstep(0.0, 1.0, sin(angle) * 0.5 + 0.5)),
+            color3,
+            smoothstep(0.0, 1.0, sin(angle + 2.0) * 0.5 + 0.5)
         );
 
     vec3 gradientEndColor = mix(
@@ -34,7 +33,8 @@ olor.rgb, gradientColor, mask);
     vec3 gradientColor = mix(gradientStartColor, gradientEndColor, gradientFactor);
 
     vec4 terminalColor = texture(iChannel0, uv);
-    float mask = 1.0  operations
-    vec3 gradientStartColor = mix(
-            mix(color1, color2, smoothstep(0.0, 1.0, sin(angle) * 0.5 + 0.5)),
-            
+    float mask = 1.0 - step(0.5, dot(terminalColor.rgb, vec3(1.0)));
+    vec3 blendedColor = mix(terminalColor.rgb, gradientColor, mask);
+
+    fragColor = vec4(blendedColor, terminalColor.a);
+}
