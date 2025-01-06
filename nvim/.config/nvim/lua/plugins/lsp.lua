@@ -332,7 +332,10 @@ return {
           keymap.set("n", "K", vim.lsp.buf.hover, opts_keymaps) -- show documentation for what is under cursor
 
           opts_keymaps.desc = "Restart LSP"
-          keymap.set("n", "<leader>rS", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
+          keymap.set("n", "<leader>cx", ":LspRestart<CR>", opts_keymaps) -- mapping to restart lsp if necessary
+
+          local lsp_utils = require("util.lsp-float-utils")
+          keymap.set("n", "<Leader>cL", lsp_utils.show_lsp_info, { desc = "Show LSP info in float" })
         end,
       })
 

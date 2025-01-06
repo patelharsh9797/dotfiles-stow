@@ -2,6 +2,7 @@
   "extras": [
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.editor.inc-rename",
+    "lazyvim.plugins.extras.editor.refactoring",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.docker",
     "lazyvim.plugins.extras.lang.json",
@@ -20,7 +21,7 @@
   ],
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "10424"
+    "doc/news.txt": "10522"
   },
   "version": 7
 }

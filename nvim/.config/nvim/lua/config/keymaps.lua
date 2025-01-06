@@ -10,9 +10,6 @@ discipline.cowboy()
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-local lsp_utils = require("util.lsp-float-utils")
-keymap.set("n", "<Leader>rl", lsp_utils.show_lsp_info, { desc = "Show LSP info in float" })
-
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<Leader>p", '"0p')
@@ -79,15 +76,15 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Diagnostics
-keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
-end, opts)
+-- -- Diagnostics
+-- keymap.set("n", "<C-j>", function()
+--   vim.diagnostic.goto_next()
+-- end, opts)
 
-keymap.set("n", "<leader>r", function()
-  require("harsh.hsl").replaceHexWithHSL()
-end)
-
-keymap.set("n", "<leader>i", function()
-  require("harsh.lsp").toggleInlayHints()
-end)
+-- keymap.set("n", "<leader>r", function()
+--   require("harsh.hsl").replaceHexWithHSL()
+-- end)
+--
+-- keymap.set("n", "<leader>i", function()
+--   require("harsh.lsp").toggleInlayHints()
+-- end)
