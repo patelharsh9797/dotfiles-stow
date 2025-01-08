@@ -53,26 +53,26 @@ return {
   {
     "ThePrimeagen/refactoring.nvim",
     keys = {
-      -- {
-      --   "<leader>rr",
-      --   function()
-      --     require("refactoring").select_refactor()
-      --   end,
-      --   mode = "v",
-      --   noremap = true,
-      --   silent = true,
-      --   expr = false,
-      --   desc = "Select refactoring",
-      -- },
       {
         "<leader>rs",
-        pick,
+        function()
+          require("refactoring").select_refactor()
+        end,
         mode = "v",
         noremap = true,
         silent = true,
         expr = false,
-        desc = "Select Refactoring",
+        desc = "Select refactoring",
       },
+      -- {
+      --   "<leader>rs",
+      --   pick,
+      --   mode = "v",
+      --   noremap = true,
+      --   silent = true,
+      --   expr = false,
+      --   desc = "Select Refactoring",
+      -- },
       {
         "<leader>rf",
         function()

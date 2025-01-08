@@ -6,9 +6,9 @@ return {
     "sources.compat",
     "sources.default",
   },
-  config = function(_, opts)
-    require("blink.cmp").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   require("blink.cmp").setup(opts)
+  -- end,
   dependencies = {
     "codeium.vim", -- codeium.nvim
     { -- vscode snippets
@@ -18,23 +18,23 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
       end,
     },
-    {
-      "L3MON4D3/LuaSnip",
-      opts = function()
-        LazyVim.cmp.actions.snippet_forward = function()
-          if require("luasnip").jumpable(1) then
-            require("luasnip").jump(1)
-            return true
-          end
-        end
-        LazyVim.cmp.actions.snippet_stop = function()
-          if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
-            require("luasnip").unlink_current()
-            return true
-          end
-        end
-      end,
-    },
+    -- {
+    --   "L3MON4D3/LuaSnip",
+    --   opts = function()
+    --     LazyVim.cmp.actions.snippet_forward = function()
+    --       if require("luasnip").jumpable(1) then
+    --         require("luasnip").jump(1)
+    --         return true
+    --       end
+    --     end
+    --     LazyVim.cmp.actions.snippet_stop = function()
+    --       if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
+    --         require("luasnip").unlink_current()
+    --         return true
+    --       end
+    --     end
+    --   end,
+    -- },
     "leiserfg/blink_luasnip",
     {
       "saghen/blink.compat",
@@ -189,7 +189,7 @@ return {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
         -- compat = { "codeium" },
-        default = { "lsp", "path", "luasnip", "buffer" },
+        default = { "lsp", "path", "buffer" },
         cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },

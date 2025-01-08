@@ -48,7 +48,7 @@ return {
         },
         always_show = {
           ".config",
-          ".gitignored",
+          ".gitignore",
         },
         always_show_by_pattern = {
           ".env*",
