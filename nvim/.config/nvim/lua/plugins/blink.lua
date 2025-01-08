@@ -1,6 +1,7 @@
 return {
   "saghen/blink.cmp",
-  version = not vim.g.lazyvim_blink_main and "*",
+  -- version = not vim.g.lazyvim_blink_main and "*",
+  version = "v0.9.3",
   opts_extend = {
     "sources.completion.enabled_providers",
     "sources.compat",
@@ -18,24 +19,25 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
       end,
     },
-    -- {
-    --   "L3MON4D3/LuaSnip",
-    --   opts = function()
-    --     LazyVim.cmp.actions.snippet_forward = function()
-    --       if require("luasnip").jumpable(1) then
-    --         require("luasnip").jump(1)
-    --         return true
-    --       end
-    --     end
-    --     LazyVim.cmp.actions.snippet_stop = function()
-    --       if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
-    --         require("luasnip").unlink_current()
-    --         return true
-    --       end
-    --     end
-    --   end,
-    -- },
+    {
+      "L3MON4D3/LuaSnip",
+      opts = function()
+        LazyVim.cmp.actions.snippet_forward = function()
+          if require("luasnip").jumpable(1) then
+            require("luasnip").jump(1)
+            return true
+          end
+        end
+        LazyVim.cmp.actions.snippet_stop = function()
+          if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
+            require("luasnip").unlink_current()
+            return true
+          end
+        end
+      end,
+    },
     "leiserfg/blink_luasnip",
+    "moyiz/blink-emoji.nvim",
     {
       "saghen/blink.compat",
       optional = true, -- make optional so it's only enabled if any extras need it
@@ -189,9 +191,29 @@ return {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
         -- compat = { "codeium" },
-        default = { "lsp", "path", "buffer" },
+        default = { "lsp", "path", "buffer", "luasnip", "emoji" },
         cmdline = {},
         providers = {
+          emoji = {
+            module = "blink-emoji",
+            name = "Emoji",
+            score_offset = 15, -- Tune by preference
+            opts = { insert = true }, -- Insert emoji (default) or complete its name
+          },
+          -- luasnip = {
+          --   name = "luasnip",
+          --   module = "blink_luasnip",
+          --
+          --   score_offset = -3,
+          --
+          --   ---@module 'blink_luasnip'
+          --   ---@type blink_luasnip.Options
+          --   opts = {
+          --     use_show_condition = false, -- disables filtering completion candidates
+          --     show_autosnippets = true,
+          --     show_ghost_text = false, -- whether to show a preview of the selected snippet (experimental)
+          --   },
+          -- },
           -- codeium = { kind = "Codeium" },
           -- lsp = {
           --   name = "lsp",
