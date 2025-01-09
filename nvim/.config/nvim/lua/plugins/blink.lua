@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
-  -- version = not vim.g.lazyvim_blink_main and "*",
-  version = "v0.9.3",
+  version = not vim.g.lazyvim_blink_main and "*",
+  -- version = "v0.9.3",
   opts_extend = {
     "sources.completion.enabled_providers",
     "sources.compat",
@@ -100,18 +100,24 @@ return {
       },
 
       snippets = {
-        expand = function(snippet)
-          require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require("luasnip").jumpable(filter.direction)
-          end
-          return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-          require("luasnip").jump(direction)
-        end,
+        preset = "luasnip",
+
+        -- expand = function(snippet, _)
+        --   return LazyVim.cmp.expand(snippet)
+        -- end,
+
+        -- expand = function(snippet)
+        --   require("luasnip").lsp_expand(snippet)
+        -- end,
+        -- active = function(filter)
+        --   if filter and filter.direction then
+        --     return require("luasnip").jumpable(filter.direction)
+        --   end
+        --   return require("luasnip").in_snippet()
+        -- end,
+        -- jump = function(direction)
+        --   require("luasnip").jump(direction)
+        -- end,
       },
 
       completion = {
@@ -191,7 +197,7 @@ return {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
         -- compat = { "codeium" },
-        default = { "lsp", "path", "buffer", "luasnip", "emoji" },
+        default = { "lsp", "path", "snippets", "buffer", "emoji" },
         cmdline = {},
         providers = {
           emoji = {

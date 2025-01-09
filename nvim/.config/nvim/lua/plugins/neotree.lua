@@ -45,6 +45,7 @@ return {
         hide_by_name = {
           ".git",
           ".DS_Store",
+          "node_modules",
         },
         always_show = {
           ".config",

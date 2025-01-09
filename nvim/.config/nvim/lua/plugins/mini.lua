@@ -251,5 +251,23 @@ return {
   { "echasnovski/mini.pairs", version = "*", config = true },
 
   -- Extend and create a/i textobjects
-  { "echasnovski/mini.surround", version = "*", config = true },
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    config = true,
+    opts = {
+      mappings = {
+        add = "sa", -- Add surrounding in Normal and Visual modes
+        delete = "sd", -- Delete surrounding
+        find = "sf", -- Find surrounding (to the right)
+        find_left = "sF", -- Find surrounding (to the left)
+        highlight = "gsh", -- Highlight surrounding
+        replace = "sr", -- Replace surrounding
+        update_n_lines = "sn", -- Update `n_lines`
+
+        suffix_last = "l", -- Suffix to search with "prev" method
+        suffix_next = "n", -- Suffix to search with "next" method
+      },
+    },
+  },
 }

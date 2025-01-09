@@ -75,6 +75,12 @@ alias dcl="docker container ls"
 alias dcla="docker container ls -a"
 alias dsp="docker system prune"
 alias dexec="docker exec"
+alias dc_redis="docker run --name some-redis -p 6379:6379 -d redis:alpine"
+alias dc_mysql="docker run --name some-mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -p 3306:3306\
+  -d mysql"
+
 
 # Changing "ls" to "eza"
 alias ls='eza --icons --color=always --group-directories-first'
