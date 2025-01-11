@@ -1,12 +1,12 @@
+local trigger_text = ";"
+
 return {
   "saghen/blink.cmp",
   version = not vim.g.lazyvim_blink_main and "*",
+  -- In case there are breaking changes and you want to go back to the last
+  -- working release
+  -- https://github.com/Saghen/blink.cmp/releases
   -- version = "v0.9.3",
-  opts_extend = {
-    "sources.completion.enabled_providers",
-    "sources.compat",
-    "sources.default",
-  },
   -- config = function(_, opts)
   --   require("blink.cmp").setup(opts)
   -- end,
@@ -36,7 +36,7 @@ return {
         end
       end,
     },
-    "leiserfg/blink_luasnip",
+    -- "leiserfg/blink_luasnip",
     "moyiz/blink-emoji.nvim",
     {
       "saghen/blink.compat",
@@ -45,7 +45,11 @@ return {
       version = not vim.g.lazyvim_blink_main and "*",
     },
   },
-
+  opts_extend = {
+    "sources.completion.enabled_providers",
+    "sources.compat",
+    "sources.default",
+  },
   event = "InsertEnter",
 
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
@@ -106,18 +110,18 @@ return {
         --   return LazyVim.cmp.expand(snippet)
         -- end,
 
-        -- expand = function(snippet)
-        --   require("luasnip").lsp_expand(snippet)
-        -- end,
-        -- active = function(filter)
-        --   if filter and filter.direction then
-        --     return require("luasnip").jumpable(filter.direction)
-        --   end
-        --   return require("luasnip").in_snippet()
-        -- end,
-        -- jump = function(direction)
-        --   require("luasnip").jump(direction)
-        -- end,
+        expand = function(snippet)
+          require("luasnip").lsp_expand(snippet)
+        end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require("luasnip").jumpable(filter.direction)
+          end
+          return require("luasnip").in_snippet()
+        end,
+        jump = function(direction)
+          require("luasnip").jump(direction)
+        end,
       },
 
       completion = {
@@ -200,6 +204,39 @@ return {
         default = { "lsp", "path", "snippets", "buffer", "emoji" },
         cmdline = {},
         providers = {
+          -- codeium = { kind = "Codeium" },
+          lsp = {
+            name = "lsp",
+            enabled = true,
+            module = "blink.cmp.sources.lsp",
+            -- kind = "LSP",
+            score_offset = 1000, -- the higher the score, the higher the priority
+          },
+          path = {
+            name = "Path",
+            module = "blink.cmp.sources.path",
+            score_offset = 25,
+            -- When typing a path, I would get snippets and text in the
+            -- suggestions, I want those to show only if there are no path
+            -- suggestions
+            fallbacks = { "snippets", "buffer" },
+            opts = {
+              trailing_slash = false,
+              label_trailing_slash = true,
+              get_cwd = function(context)
+                return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+              end,
+              show_hidden_files_by_default = true,
+            },
+          },
+          buffer = {
+            name = "Buffer",
+            enabled = true,
+            max_items = 3,
+            module = "blink.cmp.sources.buffer",
+            min_keyword_length = 4,
+            score_offset = 15, -- the higher the number, the higher the priority
+          },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
@@ -219,14 +256,6 @@ return {
           --     show_autosnippets = true,
           --     show_ghost_text = false, -- whether to show a preview of the selected snippet (experimental)
           --   },
-          -- },
-          -- codeium = { kind = "Codeium" },
-          -- lsp = {
-          --   name = "lsp",
-          --   enabled = true,
-          --   module = "blink.cmp.sources.lsp",
-          --   -- kind = "LSP",
-          --   score_offset = 1000, -- the higher the score, the higher the priority
           -- },
           -- luasnip = {
           --   name = "luasnip",
