@@ -67,20 +67,35 @@ return {
           "typescript.tsx",
         },
         settings = {
+          publish_diagnostic_on = "insert_leave",
+          tsserver_plugins = { "typescript-plugin-css-modules" },
+          -- single_file_support = false,
+          separate_diagnostic_server = true,
           tsserver_file_preferences = {
             importModuleSpecifierPreference = "non-relative",
             providePrefixAndSuffixTextForRename = false,
+            includeInlayParameterNameHints = "all",
+            includeCompletionsForModuleExports = true,
+            quotePreference = "auto",
           },
-          tsserver_plugins = { "typescript-plugin-css-modules" },
-          separate_diagnostic_server = true,
-          tsserver_format_options = {}, -- Customize tsserver formatting options
-          publish_diagnostic_on = "insert_leave",
+          tsserver_format_options = {
+            allowIncompleteCompletions = false,
+            allowRenameOfImportPath = false,
+          }, -- Customize tsserver formatting options
           expose_as_code_action = {
             "fix_all", -- Show "Fix All" in code actions
             "add_missing_imports", -- Show "Add Missing Imports" in code actions
             "remove_unused", -- Show "Remove Unused" in code actions
+            "remove_unused_imports",
+            "organize_imports",
           },
         },
+      })
+
+      -- Organize imports on save // write
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.ts*",
+        command = ":TSToolsOrganizeImports sync", -- added `sync` here
       })
     end,
   },
