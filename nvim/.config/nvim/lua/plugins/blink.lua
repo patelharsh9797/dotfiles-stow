@@ -105,7 +105,6 @@ return {
 
       snippets = {
         preset = "luasnip",
-
         -- expand = function(snippet, _)
         --   return LazyVim.cmp.expand(snippet)
         -- end,
@@ -210,12 +209,12 @@ return {
             enabled = true,
             module = "blink.cmp.sources.lsp",
             -- kind = "LSP",
-            score_offset = 1000, -- the higher the score, the higher the priority
+            -- score_offset = 1000, -- the higher the score, the higher the priority
           },
           path = {
             name = "Path",
             module = "blink.cmp.sources.path",
-            score_offset = 25,
+            -- score_offset = 25,
             -- When typing a path, I would get snippets and text in the
             -- suggestions, I want those to show only if there are no path
             -- suggestions
@@ -235,12 +234,12 @@ return {
             max_items = 3,
             module = "blink.cmp.sources.buffer",
             min_keyword_length = 4,
-            score_offset = 15, -- the higher the number, the higher the priority
+            -- score_offset = 15, -- the higher the number, the higher the priority
           },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
-            score_offset = 15, -- Tune by preference
+            -- score_offset = 15, -- Tune by preference
             opts = { insert = true }, -- Insert emoji (default) or complete its name
           },
           -- luasnip = {

@@ -9,7 +9,7 @@ font-size = 14
 theme = catppuccin-mocha
 bold-is-bright = true
 background = 0f0f0f
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur-radius = 20
 
 
@@ -41,3 +41,4 @@ custom-shader-animation = true
 
 # Action key-binds
 keybind = alt+enter=toggle_fullscreen
+keybind = ctrl+shift+period=toggle_tab_overview
