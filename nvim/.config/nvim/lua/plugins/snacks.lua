@@ -159,11 +159,11 @@ return {
       desc = "Lazygit Current File History",
     },
     {
-      "<leader>lg",
+      "<leader>gg",
       function()
         Snacks.lazygit()
       end,
-      desc = "Lazygit",
+      desc = "Lazygit Snacks",
     },
     {
       "<leader>gl",

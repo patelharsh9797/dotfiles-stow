@@ -21,13 +21,13 @@ return {
     })
   end,
   keys = {
-    {
-      "<C-p>",
-      function()
-        require("fzf-lua").files()
-      end,
-      desc = "Lists files in your current working directory",
-    },
+    -- {
+    --   "<C-p>",
+    --   function()
+    --     require("fzf-lua").files()
+    --   end,
+    --   desc = "Lists files in your current working directory",
+    -- },
     {
       ";f",
       function()
