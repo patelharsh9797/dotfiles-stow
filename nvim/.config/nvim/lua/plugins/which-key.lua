@@ -3,6 +3,7 @@ return {
   opts = {
     ---@type false | "classic" | "modern" | "helix"
     preset = "helix",
+    delay = 0,
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
       separator = "➜", -- symbol used between a key and it's label
@@ -25,6 +26,14 @@ return {
       width = { min = 20, max = 50 }, -- min and max width of the columns
       spacing = 3, -- spacing between columns
       align = "left", -- align columns left, center or right
+    },
+    -- Document existing key chains
+    spec = {
+      {
+        "<leader>o",
+        group = "Overseer",
+        icon = { icon = "", color = "red" },
+      },
     },
   },
 }
