@@ -93,10 +93,10 @@ return {
       })
 
       -- Organize imports on save // write
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.ts*",
-        command = ":TSToolsOrganizeImports sync", -- added `sync` here
-      })
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   pattern = "*.ts*",
+      --   command = ":TSToolsOrganizeImports sync", -- added `sync` here
+      -- })
     end,
   },
 
