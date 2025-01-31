@@ -3,13 +3,13 @@
 
 # Fonts
 # font-family =  JetBrainMono Nerd Font
-font-size = 14
+font-size = 15
 
 # Appearance
 theme = catppuccin-mocha
 bold-is-bright = true
 background = 0f0f0f
-background-opacity = 0.95
+background-opacity = 0.98
 background-blur-radius = 20
 
 
