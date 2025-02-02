@@ -9,7 +9,8 @@ font-size = 15
 theme = catppuccin-mocha
 bold-is-bright = true
 background = 0f0f0f
-background-opacity = 0.98
+background-opacity = 0.95
+background-blur = 20
 background-blur-radius = 20
 
 

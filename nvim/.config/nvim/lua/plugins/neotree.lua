@@ -50,6 +50,7 @@ return {
         always_show = {
           ".config",
           ".gitignore",
+          ".github",
         },
         always_show_by_pattern = {
           ".env*",

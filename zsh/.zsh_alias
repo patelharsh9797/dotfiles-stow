@@ -25,6 +25,15 @@ alias bdp="bun db:push"
 alias bdg="bun db:generate"
 alias bds="bun db:studio"
 
+# pnpm aliases
+alias prd="pnpm run dev"
+alias prb="pnpm run build"
+alias prs="pnpm run start"
+alias pdp="pnpm db:push"
+alias pdg="pnpm db:generate"
+alias pds="pnpm db:studio"
+
+
 alias lg="lazygit"
 alias lzd="lazydocker"
 alias gt="goto"
