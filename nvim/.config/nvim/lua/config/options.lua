@@ -19,7 +19,11 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- f3fora/cmp-spell
 opt.spell = true
-opt.spelllang = { "en_us" }
+-- vim.opt.spelllang = "en"
+opt.spelllang = "en"
+opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+opt.spellcapcheck = ""
+opt.spellsuggest = "5"
 
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
@@ -38,7 +42,7 @@ vim.g.snacks_animate = true
 -- Can be one of: telescope, fzf || auto
 -- Leave it to "auto" to automatically use the picker
 -- enabled with `:LazyExtras`
-vim.g.lazyvim_picker = "fzf"
+-- vim.g.lazyvim_picker = "fzf"
 
 -- LazyVim completion engine to use.
 -- Can be one of: nvim-cmp, blink.cmp || auto

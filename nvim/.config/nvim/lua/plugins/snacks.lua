@@ -85,6 +85,9 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    pickers = {
+      matcher = { frecency = true },
+    },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
@@ -226,6 +229,77 @@ return {
           },
         })
       end,
+    },
+
+    -- Snacks picker keymap updates like fzf
+    {
+      ";f",
+      function()
+        Snacks.picker.files()
+      end,
+      desc = "Find Files",
+    },
+    {
+      ";r",
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = "Grep",
+    },
+    {
+      ";q",
+      function()
+        Snacks.picker.qflist()
+      end,
+      desc = "Quickfix List",
+    },
+    {
+      ";k",
+      function()
+        Snacks.picker.keymaps()
+      end,
+      desc = "Keymaps",
+    },
+    {
+      ";t",
+      function()
+        Snacks.picker.help()
+      end,
+      desc = "Help Pages",
+    },
+    {
+      ";d",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "Diagnostics",
+    },
+    {
+      ";s",
+      function()
+        ---@diagnostic disable-next-line: undefined-field
+        Snacks.picker.spelling({
+          finder = "vim_spelling",
+          format = "text",
+          layout = { preset = "select" },
+          confirm = "item_action",
+        })
+      end,
+      desc = "Spelling",
+    },
+    {
+      "\\\\",
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = "Buffers",
+    },
+    {
+      ";;",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "Resume",
     },
   },
   init = function()

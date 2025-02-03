@@ -28,6 +28,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.editor.refactoring" },
     -- { import = "lazyvim.plugins.extras.editor.telescope" },
     -- { import = "lazyvim.plugins.extras.editor.fzf" },
+    { import = "lazyvim.plugins.extras.editor.snacks_picker" },
 
     { import = "lazyvim.plugins.extras.formatting.prettier" },
 
