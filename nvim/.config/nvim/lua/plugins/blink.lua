@@ -38,6 +38,7 @@ return {
     },
     -- "leiserfg/blink_luasnip",
     "moyiz/blink-emoji.nvim",
+    "Kaiser-Yang/blink-cmp-dictionary",
     {
       "saghen/blink.compat",
       optional = true, -- make optional so it's only enabled if any extras need it
@@ -55,6 +56,15 @@ return {
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
     require("blink.cmp").setup({
+      enabled = function()
+        -- Get the current buffer's filetype
+        local filetype = vim.bo[0].filetype
+        -- Disable for Telescope buffers
+        if filetype == "TelescopePrompt" or filetype == "minifiles" or filetype == "snacks_picker_input" then
+          return false
+        end
+        return true
+      end,
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
         -- useful for when your theme doesn't support blink.cmp
@@ -200,7 +210,7 @@ return {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
         -- compat = { "codeium" },
-        default = { "lsp", "path", "snippets", "buffer", "emoji" },
+        default = { "lsp", "path", "snippets", "buffer", "dictionary", "emoji" },
         cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },
@@ -235,6 +245,20 @@ return {
             module = "blink.cmp.sources.buffer",
             min_keyword_length = 4,
             -- score_offset = 15, -- the higher the number, the higher the priority
+          },
+          dictionary = {
+            module = "blink-cmp-dictionary",
+            name = "Dict",
+            -- score_offset = 20,
+            -- enabled = true,
+            -- max_items = 8,
+            min_keyword_length = 2,
+            opts = {
+              -- dictionary_directories = { vim.fn.expand("~/github/dotfiles-latest/dictionaries") },
+              dictionary_files = {
+                vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
+              },
+            },
           },
           emoji = {
             module = "blink-emoji",
