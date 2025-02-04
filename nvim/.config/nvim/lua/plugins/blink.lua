@@ -15,8 +15,9 @@ return {
     { -- vscode snippets
       "rafamadriz/friendly-snippets",
       config = function()
+        require("luasnip").filetype_extend("typescript", { "typescriptreact" })
+        require("luasnip").filetype_extend("javascript", { "javascriptreact" })
         require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
       end,
     },
     {
@@ -56,15 +57,15 @@ return {
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
     require("blink.cmp").setup({
-      enabled = function()
-        -- Get the current buffer's filetype
-        local filetype = vim.bo[0].filetype
-        -- Disable for Telescope buffers
-        if filetype == "TelescopePrompt" or filetype == "minifiles" or filetype == "snacks_picker_input" then
-          return false
-        end
-        return true
-      end,
+      -- enabled = function()
+      --   -- Get the current buffer's filetype
+      --   local filetype = vim.bo[0].filetype
+      --   -- Disable for Telescope buffers
+      --   if filetype == "TelescopePrompt" or filetype == "minifiles" or filetype == "snacks_picker_input" then
+      --     return false
+      --   end
+      --   return true
+      -- end,
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
         -- useful for when your theme doesn't support blink.cmp
@@ -210,7 +211,7 @@ return {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
         -- compat = { "codeium" },
-        default = { "lsp", "path", "snippets", "buffer", "dictionary", "emoji" },
+        default = { "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
         cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },
@@ -220,6 +221,47 @@ return {
             module = "blink.cmp.sources.lsp",
             -- kind = "LSP",
             -- score_offset = 1000, -- the higher the score, the higher the priority
+          },
+          snippets = {
+            name = "snippets",
+            enabled = true,
+            module = "blink.cmp.sources.snippets",
+            max_items = 10,
+            min_keyword_length = 2,
+            -- score_offset = 85, -- the higher the number, the higher the priority
+            -- Only show snippets if I type the trigger_text characters, so
+            -- to expand the "bash" snippet, if the trigger_text is ";" I have to
+            -- should_show_items = function()
+            --   local col = vim.api.nvim_win_get_cursor(0)[2]
+            --   local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+            --   -- NOTE: remember that `trigger_text` is modified at the top of the file
+            --   return before_cursor:match(trigger_text .. "%w*$") ~= nil
+            -- end,
+            -- After accepting the completion, delete the trigger_text characters
+            -- from the final inserted text
+            -- transform_items = function(_, items)
+            --   local col = vim.api.nvim_win_get_cursor(0)[2]
+            --   local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+            --   local trigger_pos = before_cursor:find(trigger_text .. "[^" .. trigger_text .. "]*$")
+            --   if trigger_pos then
+            --     for _, item in ipairs(items) do
+            --       item.textEdit = {
+            --         newText = item.insertText or item.label,
+            --         range = {
+            --           start = { line = vim.fn.line(".") - 1, character = trigger_pos - 1 },
+            --           ["end"] = { line = vim.fn.line(".") - 1, character = col },
+            --         },
+            --       }
+            --     end
+            --   end
+            --   -- NOTE: After the transformation, I have to reload the luasnip source
+            --   -- Otherwise really crazy shit happens and I spent way too much time
+            --   -- figurig this out
+            --   vim.schedule(function()
+            --     require("blink.cmp").reload("snippets")
+            --   end)
+            --   return items
+            -- end,
           },
           path = {
             name = "Path",
@@ -241,7 +283,7 @@ return {
           buffer = {
             name = "Buffer",
             enabled = true,
-            max_items = 3,
+            max_items = 5,
             module = "blink.cmp.sources.buffer",
             min_keyword_length = 4,
             -- score_offset = 15, -- the higher the number, the higher the priority
@@ -250,8 +292,8 @@ return {
             module = "blink-cmp-dictionary",
             name = "Dict",
             -- score_offset = 20,
-            -- enabled = true,
-            -- max_items = 8,
+            enabled = true,
+            max_items = 8,
             min_keyword_length = 2,
             opts = {
               -- dictionary_directories = { vim.fn.expand("~/github/dotfiles-latest/dictionaries") },
