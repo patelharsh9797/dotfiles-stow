@@ -43,6 +43,7 @@ return {
         },
         -- Used by the `header` section
         header = [[
+
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
 ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
@@ -85,7 +86,10 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    pickers = {
+    picker = {
+      debug = {
+        scores = false,
+      },
       matcher = { frecency = true },
     },
     quickfile = { enabled = true },
@@ -238,6 +242,13 @@ return {
         Snacks.picker.files()
       end,
       desc = "Find Files",
+    },
+    {
+      ";g",
+      function()
+        Snacks.picker.git_files()
+      end,
+      desc = "Find Git Files",
     },
     {
       ";r",
