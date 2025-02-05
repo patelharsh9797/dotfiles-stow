@@ -86,11 +86,17 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    explorer = {
+      enabled = true,
+    },
     picker = {
       debug = {
         scores = false,
       },
       matcher = { frecency = true },
+      sources = {
+        explorer = { layout = { layout = { position = "right" } } },
+      },
     },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
@@ -102,6 +108,14 @@ return {
     },
   },
   keys = {
+    {
+      "<leader>e",
+      function()
+        Snacks.explorer()
+      end,
+      desc = "File Explorer",
+    },
+
     {
       "<leader>.",
       function()
