@@ -1,4 +1,24 @@
 ---@diagnostic disable: duplicate-doc-field, duplicate-set-field
+local M = {}
+
+M.exclude = {
+  "**/.git/*",
+  "**/.next/*",
+  "**/node_modules/*",
+  "**/.yarn/cache/*",
+  "**/.yarn/releases/*",
+  "**/.pnpm-store/*",
+}
+
+M.include = { ".env*", ".gitignore", ".dockerignore" }
+
+M.files_and_grep = {
+  hidden = true,
+  ignored = true,
+  include = M.include,
+  exclude = M.exclude,
+}
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -95,7 +115,13 @@ return {
       },
       matcher = { frecency = true },
       sources = {
-        explorer = { layout = { layout = { position = "right" } } },
+        files = M.files_and_grep,
+        grep = M.files_and_grep,
+        explorer = {
+          layout = { layout = { position = "right" } },
+          include = M.include,
+          exclude = M.exclude,
+        },
       },
     },
     quickfile = { enabled = true },
