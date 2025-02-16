@@ -55,7 +55,10 @@ return {
         lsp_trouble = true,
         mason = true,
         markdown = true,
-        mini = true,
+        mini = {
+          enabled = true,
+          indentscope_color = "",
+        },
         native_lsp = {
           enabled = true,
           underlines = {

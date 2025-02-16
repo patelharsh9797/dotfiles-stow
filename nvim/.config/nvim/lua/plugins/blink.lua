@@ -212,7 +212,6 @@ return {
         -- with blink.compat
         -- compat = { "codeium" },
         default = { "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
-        cmdline = {},
         providers = {
           -- codeium = { kind = "Codeium" },
           lsp = {
