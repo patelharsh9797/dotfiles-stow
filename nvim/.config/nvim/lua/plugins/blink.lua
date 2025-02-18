@@ -206,7 +206,9 @@ return {
           winhighlight = "Normal:None,FloatBorder:BlinkCmpDocBorder",
         },
       },
-
+      cmdline = {
+        enabled = false,
+      },
       sources = {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
