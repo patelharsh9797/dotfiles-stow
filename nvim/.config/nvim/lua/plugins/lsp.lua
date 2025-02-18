@@ -161,6 +161,12 @@ return {
         cssls = {},
         dockerls = {},
         docker_compose_language_service = {},
+        eslint = {
+          settings = {
+            workingDirectory = { mode = "auto" },
+            useFlatConfig = false,
+          },
+        },
         marksman = {},
         prismals = {},
         tsserver = {

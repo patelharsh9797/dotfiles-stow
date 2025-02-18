@@ -5,12 +5,11 @@ M.exclude = {
   "**/.git/*",
   "**/.next/*",
   "**/node_modules/*",
-  "**/.yarn/cache/*",
-  "**/.yarn/releases/*",
+  "**/.yarn/*",
   "**/.pnpm-store/*",
 }
 
-M.include = { ".env*", ".gitignore", ".dockerignore" }
+M.include = { ".env*", ".github", ".gitignore", "**eslint*", "**prettierrc*", ".dockerignore" }
 
 M.files_and_grep = {
   hidden = true,
