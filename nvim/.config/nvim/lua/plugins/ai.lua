@@ -1,6 +1,13 @@
 return {
+  --sueprmaven
+  {
+    enabled = true,
+    "supermaven-inc/supermaven-nvim",
+  },
+
   -- codeium.vim
   {
+    enabled = false,
     "Exafunction/codeium.vim",
     event = "BufEnter",
     -- config = function()

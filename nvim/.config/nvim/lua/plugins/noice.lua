@@ -9,6 +9,7 @@ return {
         },
         opts = { skip = true },
       })
+
       local focused = true
       vim.api.nvim_create_autocmd("FocusGained", {
         callback = function()
@@ -75,6 +76,20 @@ return {
             require("noice.text.markdown").keys(event.buf)
           end)
         end,
+      })
+
+      vim.list_extend(opts.routes, {
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "Starting Supermaven" },
+              { find = "Supermaven Free Tier" },
+              { find = "Supermaven already" },
+            },
+          },
+          skip = true,
+        },
       })
     end,
   },

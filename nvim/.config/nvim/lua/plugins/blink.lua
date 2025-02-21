@@ -1,4 +1,9 @@
 local trigger_text = ";"
+local local_kind_icons = vim.tbl_extend("force", {
+  Color = "██", -- Use block instead of icon for color items to make swatches more usable
+  Supermaven = " ",
+  supermaven = " ",
+}, LazyVim.config.icons.kinds)
 
 return {
   "saghen/blink.cmp",
@@ -7,11 +12,9 @@ return {
   -- working release
   -- https://github.com/Saghen/blink.cmp/releases
   -- version = "v0.9.3",
-  -- config = function(_, opts)
-  --   require("blink.cmp").setup(opts)
-  -- end,
+
   dependencies = {
-    "codeium.vim", -- codeium.nvim
+    -- { "codeium.vim", dependencies = { "saghen/blink.compat" } }, -- codeium.nvim
     { -- vscode snippets
       "rafamadriz/friendly-snippets",
       config = function()
@@ -75,9 +78,7 @@ return {
         -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
 
-        kind_icons = vim.tbl_extend("keep", {
-          Color = "██", -- Use block instead of icon for color items to make swatches more usable
-        }, LazyVim.config.icons.kinds),
+        kind_icons = local_kind_icons,
 
         -- kind_icons = {
         --   Copilot = "",
@@ -133,7 +134,6 @@ return {
           require("luasnip").jump(direction)
         end,
       },
-
       completion = {
         accept = {
           -- experimental auto-brackets support
@@ -162,6 +162,20 @@ return {
               { "label", "label_description", gap = 2 },
               { "kind_icon", "kind", gap = 2 },
             },
+
+            components = {
+              kind_icon = {
+                ellipsis = true,
+                text = function(ctx)
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return kind_icon
+                end,
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
+            },
             treesitter = { "lsp" },
           },
         },
@@ -189,7 +203,6 @@ return {
           enabled = vim.g.ai_cmp,
         },
       },
-
       signature = {
         enabled = false,
         window = {
@@ -209,13 +222,25 @@ return {
       cmdline = {
         enabled = false,
       },
+
       sources = {
-        -- adding any nvim-cmp sources here will enable them
-        -- with blink.compat
-        -- compat = { "codeium" },
-        default = { "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
+        default = { "supermaven", "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
+
         providers = {
-          -- codeium = { kind = "Codeium" },
+          -- codeium = {
+          --   name = "codeium",
+          --   module = "blink.compat.source",
+          --   -- kind = "Codeium",
+          --   score_offset = 100,
+          --   async = true,
+          -- },
+          supermaven = {
+            name = "supermaven",
+            module = "blink.compat.source",
+            -- kind = "Supermaven",
+            score_offset = 10,
+            async = true,
+          },
           lsp = {
             name = "lsp",
             enabled = true,

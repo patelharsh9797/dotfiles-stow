@@ -114,6 +114,10 @@ return {
       local tsx_table = { glyph = test_icon, hl = "MiniIconsBlue" }
 
       icons.setup({
+        lsp = {
+          supermaven = { glyph = "", hl = "MiniIconsYellow" },
+          Supermaven = { glyph = "", hl = "MiniIconsYellow" },
+        },
         -- Icon style: 'glyph' or 'ascii'
         style = "glyph",
         file = {
