@@ -115,8 +115,9 @@ return {
 
       icons.setup({
         lsp = {
-          supermaven = { glyph = "", hl = "MiniIconsYellow" },
-          Supermaven = { glyph = "", hl = "MiniIconsYellow" },
+          supermaven = { glyph = " ", hl = "MiniIconsYellow" },
+          dict = { glyph = "󰉿", hl = "MiniIconsGrey" },
+          -- Supermaven = { glyph = "", hl = "MiniIconsYellow" },
         },
         -- Icon style: 'glyph' or 'ascii'
         style = "glyph",
