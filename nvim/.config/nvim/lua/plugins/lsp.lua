@@ -393,4 +393,6 @@ return {
       require("venv-selector").setup()
     end,
   },
+
+  { "isobit/vim-caddyfile" },
 }

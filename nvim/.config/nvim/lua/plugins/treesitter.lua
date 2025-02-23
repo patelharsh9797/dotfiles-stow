@@ -87,14 +87,14 @@ return {
       },
     },
     config = function(_, opts)
-      require("nvim-treesitter.parsers").get_parser_configs().caddy = {
-        install_info = {
-          url = "https://github.com/Samonitari/tree-sitter-caddy",
-          files = { "src/parser.c", "src/scanner.c" },
-          branch = "master",
-        },
-        filetype = "caddy",
-      }
+      -- require("nvim-treesitter.parsers").get_parser_configs().caddy = {
+      --   install_info = {
+      --     url = "https://github.com/Samonitari/tree-sitter-caddy",
+      --     files = { "src/parser.c", "src/scanner.c" },
+      --     branch = "master",
+      --   },
+      --   filetype = "caddy",
+      -- }
 
       -- MDX
       vim.filetype.add({
@@ -103,17 +103,17 @@ return {
         },
       })
 
-      vim.filetype.add({
-        pattern = {
-          ["Caddyfile"] = "caddy",
-        },
-      })
+      -- vim.filetype.add({
+      --   pattern = {
+      --     ["Caddyfile"] = "caddy",
+      --   },
+      -- })
 
       vim.treesitter.language.register("markdown", "mdx")
 
-      vim.list_extend(opts.ensure_installed, {
-        "caddy",
-      })
+      -- vim.list_extend(opts.ensure_installed, {
+      --   "caddy",
+      -- })
 
       require("nvim-treesitter.configs").setup(opts)
     end,

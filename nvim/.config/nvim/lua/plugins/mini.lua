@@ -116,8 +116,7 @@ return {
       icons.setup({
         lsp = {
           supermaven = { glyph = " ", hl = "MiniIconsYellow" },
-          dict = { glyph = "󰉿", hl = "MiniIconsGrey" },
-          -- Supermaven = { glyph = "", hl = "MiniIconsYellow" },
+          dict = { glyph = " ", hl = "MiniIconsGreen" },
         },
         -- Icon style: 'glyph' or 'ascii'
         style = "glyph",
@@ -131,6 +130,7 @@ return {
           ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
           [".env"] = { glyph = "", hl = "MiniIconsYellow" },
           [".env.example"] = { glyph = "", hl = "MiniIconsYellow" },
+          ["Caddyfile"] = { glyph = "󰅰 ", hl = "MiniIconsBlue" }, -- Add Caddyfile icon here
         },
         extension = {
           db = { glyph = database_icon_tbl.glyph, hl = "MiniIconsYellow" },
