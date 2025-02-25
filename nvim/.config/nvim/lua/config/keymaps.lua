@@ -36,6 +36,8 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 
 keymap.set("n", "<Leader>xs", ":source %<Return>", { desc = "Source curent file" })
 
+keymap.set("n", "G", "GGzz") -- End page down but still stay in the center
+
 -- ThePrimeagen Keymaps
 keymap.set("n", "<C-d>", "<C-d>zz") -- Half page down
 keymap.set("n", "<C-u>", "<C-u>zz") -- Half page up

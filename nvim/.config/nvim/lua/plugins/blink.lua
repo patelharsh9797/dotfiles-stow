@@ -225,7 +225,7 @@ return {
     }
 
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      default = { "supermaven", "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
+      default = { "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
       providers = {
         -- codeium = {
         --   name = "codeium",
@@ -235,13 +235,13 @@ return {
         --   async = true,
         -- },
 
-        supermaven = {
-          name = "supermaven",
-          module = "blink.compat.source",
-          -- kind = "Supermaven",
-          score_offset = 10,
-          async = true,
-        },
+        -- supermaven = {
+        --   name = "supermaven",
+        --   module = "blink.compat.source",
+        --   -- kind = "Supermaven",
+        --   score_offset = 10,
+        --   async = true,
+        -- },
 
         lsp = {
           name = "lsp",

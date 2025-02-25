@@ -394,5 +394,6 @@ return {
     end,
   },
 
+  -- Caddyfile Syntax Highlight
   { "isobit/vim-caddyfile" },
 }
