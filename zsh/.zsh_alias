@@ -1,3 +1,5 @@
+alias os_update="sudo apt update && sudo apt upgrade -y"
+alias osupdate="sudo apt update && sudo apt upgrade -y"
 alias cd="z"
 alias cl="clear"
 alias x="exit"
@@ -36,6 +38,8 @@ alias pds="pnpm db:studio"
 
 alias lg="lazygit"
 alias lzd="lazydocker"
+alias lazypodman="DOCKER_HOST=unix:///tmp/podman.sock lazydocker"
+alias lzp="lazypodman"
 alias gt="goto"
 alias yz="yazi"
 
@@ -90,6 +94,28 @@ alias dc_mysql="docker run --name some-mysql \
   -e MYSQL_ROOT_PASSWORD=root \
   -p 3306:3306\
   -d mysql"
+
+
+# podman alias
+alias pr="podman run"
+alias pcomp="podman-compose"
+alias pps="podman ps"
+alias ppsa="podman ps -a"
+alias pv="podman volume"
+alias pvl="podman volume ls"
+alias pi="podman image"
+alias pis="podman images"
+alias pip="podman image prune"
+alias pc="podman container"
+alias pcl="podman container ls"
+alias pcla="podman container ls -a"
+alias psp="podman system prune"
+alias pexec="podman exec"
+# alias pc_redis="podman run --name some-redis -p 6379:6379 -d redis:alpine"
+# alias pc_mysql="podman run --name some-mysql \
+#   -e MYSQL_ROOT_PASSWORD=root \
+#   -p 3306:3306\
+#   -d mysql"
 
 
 # Changing "ls" to "eza"
