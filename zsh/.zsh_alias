@@ -4,6 +4,8 @@ alias cd="z"
 alias cl="clear"
 alias x="exit"
 alias md="mkdir -p"
+alias rmd="rm -r"
+alias rmdf="rm -rf"
 # alias cat="bat"
 
 alias ipaddr="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
@@ -111,11 +113,11 @@ alias pcl="podman container ls"
 alias pcla="podman container ls -a"
 alias psp="podman system prune"
 alias pexec="podman exec"
-# alias pc_redis="podman run --name some-redis -p 6379:6379 -d redis:alpine"
-# alias pc_mysql="podman run --name some-mysql \
-#   -e MYSQL_ROOT_PASSWORD=root \
-#   -p 3306:3306\
-#   -d mysql"
+alias pc_redis="podman run --name some-redis -p 6379:6379 -d redis:alpine"
+alias pc_mysql="podman run --name some-mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -p 3306:3306\
+  -d mysql"
 
 
 # Changing "ls" to "eza"

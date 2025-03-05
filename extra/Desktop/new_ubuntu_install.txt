@@ -260,6 +260,10 @@ sudo ./install
     mv yazi-x86_64-unknown-linux-gnu yazi
     sudo cp yazi /usr/bin/yazi
 
+    superfile: (yazi alternative!!)
+    bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
+
+
 8. NVM // Node // Bun
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
     exec $SHELL
