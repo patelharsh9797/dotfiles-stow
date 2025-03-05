@@ -1,3 +1,4 @@
+Hello, World!
 cmp
 basedpyright
 plugin
@@ -37,3 +38,7 @@ keymaps
 Treesitter
 function
 
+stages
+stage
+variables
+script

@@ -20,7 +20,7 @@ return {
         "shfmt",
         "stylua",
         "tailwindcss-language-server",
-        "yaml-language-server",
+        -- "yaml-language-server",
 
         "typescript-language-server",
       })

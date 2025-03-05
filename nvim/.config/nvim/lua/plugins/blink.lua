@@ -314,7 +314,7 @@ return {
           enabled = true,
           max_items = 5,
           module = "blink.cmp.sources.buffer",
-          min_keyword_length = 4,
+          -- min_keyword_length = 4,
           -- score_offset = 15, -- the higher the number, the higher the priority
         },
         dictionary = {
@@ -336,6 +336,7 @@ return {
           name = "Emoji",
           -- score_offset = 15, -- Tune by preference
           opts = { insert = true }, -- Insert emoji (default) or complete its name
+          min_keyword_length = 2,
         },
         -- luasnip = {
         --   name = "luasnip",

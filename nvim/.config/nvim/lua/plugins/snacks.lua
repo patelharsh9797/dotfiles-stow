@@ -9,7 +9,7 @@ M.exclude = {
   "**/.pnpm-store/*",
 }
 
-M.include = { ".env*", ".github", ".gitignore", "**eslint*", "**prettierrc*", ".dockerignore" }
+M.include = { ".env*", ".github", ".gitlab-ci.yml", ".gitignore", "**eslint*", "**prettierrc*", ".dockerignore" }
 
 M.files_and_grep = {
   hidden = true,
