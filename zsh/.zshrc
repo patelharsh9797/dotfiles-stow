@@ -130,8 +130,9 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
-eval "$(ssh-agent -s)" > /dev/null
-ssh-add ~/.ssh/id_azure_devops 2>/dev/null
+
+# eval "$(ssh-agent -s)" > /dev/null
+# ssh-add ~/.ssh/id_azure_devops 2>/dev/null
 
 # bun completions
 [ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
