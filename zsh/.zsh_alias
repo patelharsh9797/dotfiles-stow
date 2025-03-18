@@ -67,6 +67,8 @@ alias pmcs="py manage.py collectstatic"
 alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
+
+# tmux
 alias t="tmux -u"
 alias tns="tmux new -s"
 alias tmx="tmuxifier"
@@ -99,6 +101,7 @@ alias dc_mysql="docker run --name some-mysql \
 
 
 # podman alias
+alias psock="podman system service --time=0 unix:///tmp/podman.sock &"
 alias pr="podman run"
 alias pcomp="podman-compose"
 alias pps="podman ps"
@@ -107,7 +110,7 @@ alias pv="podman volume"
 alias pvl="podman volume ls"
 alias pi="podman image"
 alias pis="podman images"
-alias pip="podman image prune"
+alias pimp="podman image prune"
 alias pc="podman container"
 alias pcl="podman container ls"
 alias pcla="podman container ls -a"

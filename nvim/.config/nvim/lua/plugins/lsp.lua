@@ -21,7 +21,8 @@ return {
         "stylua",
         "tailwindcss-language-server",
         -- "yaml-language-server",
-
+        -- "gitlab-ci-ls",
+        -- "nginx-language-server",
         "typescript-language-server",
       })
 
@@ -161,6 +162,8 @@ return {
         cssls = {},
         dockerls = {},
         docker_compose_language_service = {},
+        -- gitlab_ci_ls = {},
+        -- nginx_language_server = {},
         eslint = {
           settings = {
             workingDirectory = { mode = "auto" },

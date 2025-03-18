@@ -3,6 +3,9 @@
 -- Add any additional autocmds here
 
 vim.g.rainbow_delimiters = { query = { tsx = "rainbow-parens", jsx = "rainbow-parens" } }
+vim.g.tpipeline_clearstl = 1
+vim.g.tpipeline_autoembed = 1
+vim.g.tpipeline_restore = 1
 
 -- some transperent effect
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -21,5 +24,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "docker-compose*.yml", "docker-compose*.yaml", "compose*.yml", "compose*.yaml" },
   callback = function()
     vim.bo.filetype = "yaml.docker-compose"
+  end,
+})
+
+-- attach gitlab-ci lsp to file pattern .gitlab-ci.yml
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { ".gitlab-ci.yml", ".gitlab-ci.yaml" },
+  callback = function()
+    vim.bo.filetype = "yaml.gitlab"
   end,
 })

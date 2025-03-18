@@ -147,17 +147,17 @@ return {
             { LazyVim.lualine.pretty_path() },
           },
           lualine_x = {
-            -- stylua: ignore
-            {
-              -- LSP client names
-              function()
-                return "" .. lsp_client_names()
-              end,
-              cond = function()
-                return vim.lsp.buf_get_clients() and next(vim.lsp.buf_get_clients()) ~= nil
-              end,
-              color = { fg = "#8be9fd" }, -- Use your preferred color
-            },
+             -- stylua: ignore
+             {
+               -- LSP client names
+               function()
+                 return "" .. lsp_client_names()
+               end,
+               cond = function()
+                 return vim.lsp.buf_get_clients() and next(vim.lsp.buf_get_clients()) ~= nil
+               end,
+               color = { fg = "#8be9fd" }, -- Use your preferred color
+             },
             {
               function()
                 return require("noice").api.status.command.get()
@@ -168,24 +168,24 @@ return {
               color = { fg = Snacks.util.color("Statement") },
             },
             LazyVim.lualine.cmp_source("supermaven"), -- supermaven
-            -- stylua: ignore
-            {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = { fg = Snacks.util.color("Constant") },
-            },
-            -- stylua: ignore
-            {
-              function() return "  " .. require("dap").status() end,
-              cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = { fg = Snacks.util.color("Debug") },
-            },
-            -- stylua: ignore
-            {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-              color = { fg = Snacks.util.color("Special") },
-            },
+             -- stylua: ignore
+             {
+               function() return require("noice").api.status.mode.get() end,
+               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+               color = { fg = Snacks.util.color("Constant") },
+             },
+             -- stylua: ignore
+             {
+               function() return "  " .. require("dap").status() end,
+               cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+               color = { fg = Snacks.util.color("Debug") },
+             },
+             -- stylua: ignore
+             {
+               require("lazy.status").updates,
+               cond = require("lazy.status").has_updates,
+               color = { fg = Snacks.util.color("Special") },
+             },
             {
               "diff",
               symbols = {
