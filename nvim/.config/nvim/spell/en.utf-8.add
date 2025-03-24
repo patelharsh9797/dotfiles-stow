@@ -37,6 +37,8 @@ edgebar
 keymaps
 Treesitter
 function
+node_modules
+pycache
 
 stages
 stage

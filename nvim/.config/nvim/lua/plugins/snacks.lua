@@ -2,11 +2,15 @@
 local M = {}
 
 M.exclude = {
-  "**/.git/*",
-  "**/.next/*",
-  "**/node_modules/*",
-  "**/.yarn/*",
-  "**/.pnpm-store/*",
+  ".git",
+  ".next",
+  "node_modules",
+  ".yarn",
+  ".pnpm-store",
+  ".venv",
+  ".env",
+  "venv",
+  "__pycache__",
 }
 
 M.include = { ".env*", ".github", ".gitlab-ci.yml", ".gitignore", "**eslint*", "**prettierrc*", ".dockerignore" }

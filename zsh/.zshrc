@@ -126,28 +126,5 @@ source ~/.zsh_alias
 
 source ~/.zsh_export_path
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
-
-# eval "$(ssh-agent -s)" > /dev/null
-# ssh-add ~/.ssh/id_azure_devops 2>/dev/null
-
 # bun completions
 [ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
-
-# fnm
-FNM_PATH="/home/harsh/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/harsh/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-source ~/.fnm_completions.zsh
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-# fastfetch
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"

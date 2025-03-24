@@ -390,11 +390,17 @@ return {
   },
 
   {
+    enabled = true,
     "linux-cultist/venv-selector.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    config = function()
-      require("venv-selector").setup()
-    end,
+    -- dependencies = { "nvim-telescope/telescope.nvim" },
+    opts = {
+      options = {
+        picker = "fzf-lua", -- The picker to use. Valid options are "telescope", "fzf-lua", "native", or "auto"
+      },
+    },
+    -- config = function(_, opts)
+    --   require("venv-selector").setup(opts)
+    -- end,
   },
 
   -- Caddyfile Syntax Highlight
