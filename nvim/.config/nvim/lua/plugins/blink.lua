@@ -1,4 +1,5 @@
 local trigger_text = ";"
+local snippet_min_keyword_length = 1
 -- local local_kind_icons = vim.tbl_extend("force", {
 --   Color = "██", -- Use block instead of icon for color items to make swatches more usable
 -- }, LazyVim.config.icons.kinds)
@@ -132,7 +133,6 @@ return {
         require("luasnip").jump(direction)
       end,
     })
-
     opts.completion = vim.tbl_deep_extend("force", opts.completion, {
       accept = {
         -- experimental auto-brackets support
@@ -203,7 +203,6 @@ return {
     })
 
     opts.signature = vim.tbl_deep_extend("force", opts.signature or {}, {
-
       enabled = false,
       window = {
         border = {
@@ -256,12 +255,12 @@ return {
           enabled = true,
           module = "blink.cmp.sources.snippets",
           max_items = 10,
-          min_keyword_length = 1,
+          min_keyword_length = snippet_min_keyword_length,
           score_offset = 10, -- the higher the number, the higher the priority
           -- Only show snippets if I type the trigger_text characters, so
           -- to expand the "bash" snippet, if the trigger_text is ";" I have to
           should_show_items = function()
-            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local col = vim.api.nvim_win_get_cursor(0)[snippet_min_keyword_length]
             local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
             -- NOTE: remember that `trigger_text` is modified at the top of the file
             return before_cursor:match(trigger_text .. "%w*$") ~= nil
@@ -269,7 +268,7 @@ return {
           -- After accepting the completion, delete the trigger_text characters
           -- from the final inserted text
           transform_items = function(_, items)
-            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local col = vim.api.nvim_win_get_cursor(0)[snippet_min_keyword_length]
             local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
             local trigger_pos = before_cursor:find(trigger_text .. "[^" .. trigger_text .. "]*$")
             if trigger_pos then

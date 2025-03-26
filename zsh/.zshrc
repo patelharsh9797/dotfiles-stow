@@ -86,6 +86,7 @@ setopt HIST_SAVE_NO_DUPS
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git you-should-use zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
 
+source ~/.oh-my-zsh/lib/git.zsh
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 
 source ~/.oh-my-zsh/custom/plugins/you-should-use/you-should-use.plugin.zsh
