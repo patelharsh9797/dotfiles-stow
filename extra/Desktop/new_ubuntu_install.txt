@@ -87,11 +87,12 @@ nvm install 20.14.0
 curl -fsSL https://bun.sh/install | bash
 
 --Neovim //lazyvim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-export PATH="$PATH:/opt/nvim-linux64/bin"  //put it in a .bashrc
-sudo rm nvim-linux64.tar.gz
+sudo mkdir -p /opt/nvim && sudo tar -C /opt/nvim -xzf nvim-linux-x86_64.tar.gz
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+export PATH="$PATH:/opt/nvim/bin"  //put it in a .bashrc
+sudo rm nvim-linux-x86_64.tar.gz
 
 -- for extra lazyvim
 git clone https://gitlab.com/dwt1/shell-color-scripts.git
@@ -233,10 +234,13 @@ sudo ./install
 3.2 atuin search history: curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
 4. Neovim:
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    sudo rm nvim-linux64.tar.gz
+    sudo mkdir -p /opt/nvim && sudo tar -C /opt/nvim -xzf nvim-linux-x86_64.tar.gz
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    export PATH="$PATH:/opt/nvim/bin"  //put it in a .bashrc
+    sudo rm nvim-linux-x86_64.tar.gz
+
     
     export PATH="$PATH:/opt/nvim-linux64/bin"  //put it in a .bashrc
 
