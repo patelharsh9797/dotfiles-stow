@@ -39,13 +39,12 @@ return {
       --   end
       -- end,
     },
-
     -- "leiserfg/blink_luasnip",
     "moyiz/blink-emoji.nvim",
     "Kaiser-Yang/blink-cmp-dictionary",
     {
       "saghen/blink.compat",
-      optional = true, -- make optional so it's only enabled if any extras need it
+      optional = false, -- make optional so it's only enabled if any extras need it
       opts = { impersonate_nvim_cmp = true },
       version = not vim.g.lazyvim_blink_main and "*",
     },
@@ -198,7 +197,7 @@ return {
         treesitter_highlighting = true,
       },
       ghost_text = {
-        enabled = vim.g.ai_cmp,
+        enabled = not vim.g.ai_cmp,
       },
     })
 
@@ -224,7 +223,7 @@ return {
     }
 
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      default = { "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
+      default = { "supermaven", "lsp", "snippets", "path", "buffer", "dictionary", "emoji" },
       providers = {
         -- codeium = {
         --   name = "codeium",
@@ -234,13 +233,13 @@ return {
         --   async = true,
         -- },
 
-        -- supermaven = {
-        --   name = "supermaven",
-        --   module = "blink.compat.source",
-        --   -- kind = "Supermaven",
-        --   score_offset = 10,
-        --   async = true,
-        -- },
+        supermaven = {
+          name = "supermaven",
+          module = "blink.compat.source",
+          kind = "Supermaven",
+          score_offset = 10,
+          async = true,
+        },
 
         lsp = {
           name = "lsp",

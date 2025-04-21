@@ -1,5 +1,7 @@
 alias os_update="sudo apt update && sudo apt upgrade -y"
 alias osupdate="sudo apt update && sudo apt upgrade -y"
+alias ghostty_update='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"'
+
 alias cd="z"
 alias cl="clear"
 alias x="exit"
@@ -20,6 +22,15 @@ alias mysql_restart="sudo sh ~/mysql_restart.sh"
 alias g="git"
 alias gm='git commit -m'
 alias gpom="git push origin main"
+
+# npm aliases
+alias nrd="npm run dev"
+alias nrb="npm run build"
+alias nrs="npm run start"
+alias ndp="npm run db:push"
+alias ndg="npm run db:generate"
+alias nds="npm run db:studio"
+
 
 # Bun aliases
 alias brd="bun run dev"

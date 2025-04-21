@@ -34,3 +34,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo.filetype = "yaml.gitlab"
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "package.json" },
+  callback = function()
+    local picker = require("util.package-info-picker")
+    vim.keymap.set("n", "<leader>cp", picker.package_info_picker, {
+      silent = true,
+      noremap = true,
+      desc = "Pick package-info action",
+    })
+  end,
+})
