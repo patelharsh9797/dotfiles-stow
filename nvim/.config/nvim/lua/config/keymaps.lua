@@ -10,6 +10,11 @@ discipline.cowboy()
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+keymap.set("n", "st", "saatt", {
+  remap = true,
+  desc = "Surround Tag with another Tag",
+})
+
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<Leader>p", '"0p')

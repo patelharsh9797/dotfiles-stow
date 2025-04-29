@@ -8,7 +8,8 @@ M.exclude = {
   ".yarn",
   ".pnpm-store",
   ".venv",
-  ".env",
+  "env",
+  ".env/",
   "venv",
   "__pycache__",
 }
@@ -52,7 +53,12 @@ return {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          {
+            icon = " ",
+            key = "r",
+            desc = "Recent Files",
+            action = ":lua Snacks.dashboard.pick('oldfiles')",
+          },
           {
             icon = " ",
             key = "c",
@@ -85,7 +91,14 @@ return {
           padding = 1,
         },
         { section = "keys", gap = 1, padding = 1 },
-        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Recent Files",
+          section = "recent_files",
+          indent = 2,
+          padding = 2,
+        },
         { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
         -- {
         --   pane = 2,
@@ -145,7 +158,20 @@ return {
       debug = {
         scores = false,
       },
-      matcher = { frecency = true },
+      matcher = {
+
+        fuzzy = true, -- use fuzzy matching
+        smartcase = true, -- use smartcase
+        ignorecase = true, -- use ignorecase
+        sort_empty = false, -- sort results when the search string is empty
+        filename_bonus = true, -- give bonus for matching file names (last part of the path)
+        file_pos = true, -- support patterns like `file:line:col` and `file:line`
+        -- the bonusses below, possibly require string concatenation and path normalization,
+        -- so this can have a performance impact for large lists and increase memory usage
+        cwd_bonus = false, -- give bonus for matching files in the cwd
+        frecency = true, -- frecency bonus
+        history_bonus = false, -- give more weight to chronological order
+      },
       sources = {
         files = M.files_and_grep,
         grep = M.files_and_grep,
@@ -316,6 +342,15 @@ return {
       desc = "Find Files",
     },
     {
+      ";c",
+      function()
+        Snacks.picker.files({
+          cwd = vim.fn.stdpath("config"),
+        })
+      end,
+      desc = "Lazyvim Config Files",
+    },
+    {
       ";g",
       function()
         Snacks.picker.git_files()
@@ -328,6 +363,13 @@ return {
         Snacks.picker.grep()
       end,
       desc = "Grep",
+    },
+    {
+      ";R",
+      function()
+        Snacks.picker.recent({ filter = { cwd = true } })
+      end,
+      desc = "Recent (cwd)",
     },
     {
       ";q",
