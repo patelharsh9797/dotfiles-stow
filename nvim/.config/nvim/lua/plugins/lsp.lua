@@ -1,8 +1,10 @@
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 return {
+  { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
   {
     "williamboman/mason.nvim",
+    version = "1.11.0",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "css-lsp",

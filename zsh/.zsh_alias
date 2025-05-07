@@ -2,7 +2,7 @@ alias os_update="sudo apt update && sudo apt upgrade -y"
 alias osupdate="sudo apt update && sudo apt upgrade -y"
 alias ghostty_update='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"'
 
-alias cd="z"
+# alias cd="z"
 alias cl="clear"
 alias x="exit"
 alias md="mkdir -p"
@@ -113,7 +113,7 @@ alias dc_mysql="docker run --name some-mysql \
   -e MYSQL_ROOT_PASSWORD=root \
   -p 3306:3306\
   -d mysql"
-
+alias dc_metube="docker run -d -p 8081:8081 -v /mnt/c/Users/Harsh/Downloads/metube/downloads:/downloads --name metube ghcr.io/alexta69/metube"
 
 # podman alias
 alias psock="podman system service --time=0 unix:///tmp/podman.sock &"
