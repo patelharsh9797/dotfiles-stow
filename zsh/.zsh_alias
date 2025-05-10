@@ -50,7 +50,7 @@ alias pds="pnpm db:studio"
 
 
 alias lg="lazygit"
-alias lzd="lazydocker"
+alias lzd="DOCKER_HOST=tcp://127.0.0.1:2375 lazydocker"
 alias lazypodman="DOCKER_HOST=unix:///tmp/podman.sock lazydocker"
 alias lzp="lazypodman"
 alias gt="goto"
@@ -114,6 +114,7 @@ alias dc_mysql="docker run --name some-mysql \
   -p 3306:3306\
   -d mysql"
 alias dc_metube="docker run -d -p 8081:8081 -v /mnt/c/Users/Harsh/Downloads/metube/downloads:/downloads --name metube ghcr.io/alexta69/metube"
+alias dc_sitegain="unset DOCKER_HOST && docker context use sitegain-hostinger"
 
 # podman alias
 alias psock="podman system service --time=0 unix:///tmp/podman.sock &"

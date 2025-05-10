@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- attach docker-compose lsp to file pattern docker-compose*.yml
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "docker-compose*.yml", "docker-compose*.yaml", "compose*.yml", "compose*.yaml" },
+  pattern = { "compose*.yml", "compose*.yaml", "docker-*.yml", "docker-*.yaml" },
   callback = function()
     vim.bo.filetype = "yaml.docker-compose"
   end,

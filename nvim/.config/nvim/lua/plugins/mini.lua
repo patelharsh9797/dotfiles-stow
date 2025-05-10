@@ -122,6 +122,9 @@ return {
         style = "glyph",
         file = {
           ["docker-compose.yml"] = dockerfile_icon_tbl,
+          ["docker-compose.yaml"] = dockerfile_icon_tbl,
+          ["docker-stack.yml"] = dockerfile_icon_tbl,
+          ["docker-stack.yaml"] = dockerfile_icon_tbl,
           ["docker-compose.dev.yml"] = dockerfile_icon_tbl,
           ["docker-compose.prod.yml"] = dockerfile_icon_tbl,
           ["docker-compose.base.yml"] = dockerfile_icon_tbl,

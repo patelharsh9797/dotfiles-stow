@@ -101,12 +101,13 @@ disabled = false
 [docker_context]
 symbol = '   '
 style = 'bold cyan'
-format = '[$symbol]($style) $path'
+format = '[$symbol$context]($style) $path'
 detect_files = [
   'Dockerfile',
   'Dockerfile.dev',
   'Dockerfile.prod',
   'docker-compose.yml',
+  'docker-stack.yml',
   "docker-compose.dev.yml",
   "docker-compose.prod.yml",
   "docker-compose.base.yml",
