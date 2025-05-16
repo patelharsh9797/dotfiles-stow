@@ -2,9 +2,10 @@ alias os_update="sudo apt update && sudo apt upgrade -y"
 alias osupdate="sudo apt update && sudo apt upgrade -y"
 alias ghostty_update='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"'
 
-alias sitegain_db_tunnel="~/sitegain_db_tunnel.sh"
+alias db_tunnel="~/db_tunnel.sh"
+alias sitegain_db_tunnel="db_tunnel --remote 0.0.0.0"
 
-# alias cd="z"
+alias cd="z"
 alias cl="clear"
 alias x="exit"
 alias md="mkdir -p"

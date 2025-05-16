@@ -48,6 +48,7 @@ export BAT_THEME=mocha
 eval "$(tmuxifier init -)"
 
 export DOCKER_HOST="tcp://127.0.0.1:2375"
+export DOCKER_BUILDKIT=1
 
 export UID=$(id -u)
 export GID=$(id -g)
