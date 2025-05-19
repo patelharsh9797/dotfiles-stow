@@ -67,12 +67,17 @@ get_env
 STOP_MODE=false
 START_MODE=false
 STATUS_MODE=false
+FORCE_STOP_MODE=false
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
   case "$1" in
   --stop)
     STOP_MODE=true
+    shift
+    ;;
+  --force-stop)
+    FORCE_STOP_MODE=true
     shift
     ;;
   --start)
@@ -167,7 +172,18 @@ if [ "$ACTION_VAR" ]; then
   esac
 fi
 
-# Handle stopping the tunnel
+if $FORCE_STOP_MODE; then
+  pkill -f "ssh -f -N -L" || true
+
+  if [ $? -eq 0 ]; then
+    gum_success "✅ All tunnels stopped."
+  else
+    gum_error "❌ Failed to stop all tunnels"
+  fi
+
+  exit 0
+fi
+
 if $STOP_MODE; then
   ACTION="Stop Tunnels"
 fi

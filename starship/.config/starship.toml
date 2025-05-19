@@ -161,6 +161,7 @@ symbol = " "
 [custom.tunnel]
 when = "pgrep -f 'ssh -f -N -L'"
 # command = "pgrep -af 'ssh -f -N -L' | awk -F '-L ' '{print $2}' | awk '{print $1}' | sed -E 's/(0.0.0.0|localhost)://g' | paste -sd ',' -"
-command = "pgrep -af 'ssh -f -N -L' | awk -F '-L ' '{print $2}' | awk '{print $1}' | cut -d: -f1 | paste -sd ',' -"
+# command = "pgrep -af 'ssh -f -N -L' | awk -F '-L ' '{print $2}' | awk '{print $1}' | cut -d: -f1 | paste -sd ',' -"
+command = "pgrep -af 'ssh -f -N -L' | awk -F '-L ' '{print $2}' | awk '{print $1}' | awk -F: '{print $1}' | sort -u | paste -sd ',' -"
 symbol = "  "
 format = '[$symbol($output )]($style)'
