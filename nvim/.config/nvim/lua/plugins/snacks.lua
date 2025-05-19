@@ -23,6 +23,40 @@ M.files_and_grep = {
   exclude = M.exclude,
 }
 
+M.layout = {
+  { preview = true },
+  layout = {
+    box = "horizontal",
+    width = 0.8,
+    height = 0.8,
+    {
+      box = "vertical",
+      border = "rounded",
+      title = "{source} {live} {flags}",
+      title_pos = "center",
+      { win = "input", height = 1, border = "bottom" },
+      { win = "list", border = "none" },
+    },
+    { win = "preview", border = "rounded", width = 0.6, title = "{preview}" },
+  },
+}
+
+M.vscode_layout = {
+  preview = false,
+  layout = {
+    backdrop = false,
+    row = 3,
+    width = 0.5,
+    min_width = 80,
+    height = 0.8,
+    border = "rounded",
+    box = "vertical",
+    { win = "input", height = 1, border = "rounded", title = "{title} {live} {flags}", title_pos = "center" },
+    { win = "list", border = "none" },
+    { win = "preview", title = "{preview}", border = "rounded" },
+  },
+}
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -117,6 +151,9 @@ return {
         { section = "startup" },
       },
     },
+    explorer = {
+      enabled = true,
+    },
     image = {
       enabled = true,
       doc = {
@@ -146,20 +183,17 @@ return {
         -- Go 1 dir above and check `sudo du -sh ./* | sort -hr | head -n 5`
       },
     },
+    indent = { enabled = true },
     input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
-    },
-    explorer = {
-      enabled = true,
     },
     picker = {
       debug = {
         scores = false,
       },
       matcher = {
-
         fuzzy = true, -- use fuzzy matching
         smartcase = true, -- use smartcase
         ignorecase = true, -- use ignorecase
@@ -176,22 +210,64 @@ return {
         files = M.files_and_grep,
         grep = M.files_and_grep,
         explorer = {
-          layout = { layout = { position = "right" } },
           include = M.include,
           exclude = M.exclude,
+          auto_close = true,
+          -- layout = { layout = { position = "right" } },
+          layout = M.layout,
+          win = {
+            list = {
+              keys = { ["<Right>"] = "confirm", ["<Left>"] = "explorer_close" },
+              wo = {
+                number = false, -- Enable line numbers
+                relativenumber = false, -- Enable relative line numbers
+              },
+            },
+          },
         },
       },
     },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
-    words = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
       },
     },
+    words = { enabled = true },
   },
   keys = {
+    -- -- Iterate through incomplete tasks in Snacks_picker
+    -- {
+    --   -- -- You can confirm in your teminal lamw26wmal with:
+    --   -- -- rg "^\s*-\s\[ \]" test-markdown.md
+    --   "<leader>tt",
+    --   function()
+    --     Snacks.picker.grep({
+    --       -- prompt = " ",
+    --       -- pass your desired search as a static pattern
+    --       search = "^\\s*- \\[ \\]",
+    --       -- we enable regex so the pattern is interpreted as a regex
+    --       regex = true,
+    --       -- no “live grep” needed here since we have a fixed pattern
+    --       live = false,
+    --       -- restrict search to the current working directory
+    --       dirs = { vim.fn.getcwd() },
+    --       -- include files ignored by .gitignore
+    --       args = { "--no-ignore" },
+    --       -- Start in normal mode
+    --       on_show = function()
+    --         vim.cmd.stopinsert()
+    --       end,
+    --       finder = "grep",
+    --       format = "file",
+    --       show_empty = true,
+    --       supports_live = false,
+    --       layout = M.layout,
+    --     })
+    --   end,
+    --   desc = "[P]Search for incomplete tasks",
+    -- },
     {
       "<leader>e",
       function()
@@ -337,37 +413,71 @@ return {
     {
       ";f",
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({
+          layout = M.layout,
+        })
       end,
       desc = "Find Files",
+    },
+    {
+      ";p",
+      function()
+        Snacks.picker.projects({
+          layout = M.layout,
+        })
+      end,
+      desc = "Projects",
     },
     {
       ";c",
       function()
         Snacks.picker.files({
           cwd = vim.fn.stdpath("config"),
+          layout = M.layout,
         })
       end,
       desc = "Lazyvim Config Files",
     },
     {
+      ";b",
+      function()
+        Snacks.picker.grep_buffers({
+          layout = M.layout,
+        })
+      end,
+      desc = "Search In Open Buffer",
+    },
+    {
+      ";l",
+      function()
+        Snacks.picker.lines({
+          layout = M.vscode_layout,
+        })
+      end,
+      desc = "Search lines in the current buffer",
+    },
+    {
       ";g",
       function()
-        Snacks.picker.git_files()
+        Snacks.picker.git_files({
+          layout = M.layout,
+        })
       end,
       desc = "Find Git Files",
     },
     {
       ";r",
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep({
+          layout = M.layout,
+        })
       end,
       desc = "Grep",
     },
     {
       ";R",
       function()
-        Snacks.picker.recent({ filter = { cwd = true } })
+        Snacks.picker.recent({ filter = { cwd = true }, layout = M.layout })
       end,
       desc = "Recent (cwd)",
     },
@@ -388,7 +498,9 @@ return {
     {
       ";t",
       function()
-        Snacks.picker.help()
+        Snacks.picker.help({
+          layout = M.layout,
+        })
       end,
       desc = "Help Pages",
     },
@@ -415,14 +527,18 @@ return {
     {
       "\\\\",
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers({
+          layout = M.layout,
+        })
       end,
       desc = "Buffers",
     },
     {
       ";;",
       function()
-        Snacks.picker.resume()
+        Snacks.picker.resume({
+          layout = M.layout,
+        })
       end,
       desc = "Resume",
     },

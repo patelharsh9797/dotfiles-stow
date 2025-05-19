@@ -3,6 +3,7 @@ return {
   {
     enabled = true,
     "supermaven-inc/supermaven-nvim",
+    event = "BufEnter",
   },
 
   -- codeium.vim

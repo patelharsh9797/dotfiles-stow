@@ -5,32 +5,48 @@ return {
       colorscheme = "catppuccin",
     },
   },
-  {
-    enabled = false,
-    "scottmckendry/cyberdream.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = function(_, opts)
-      opts.transparent = true
-      opts.italic_comments = true
-      opts.terminal_colors = true
-      opts.hide_fillchars = false
-      opts.borderless_telescope = false
-    end,
-  },
-  -- modicator (auto color line number based on vim mode)
-  {
-    enabled = false,
-    "mawkler/modicator.nvim",
-    dependencies = "scottmckendry/cyberdream.nvim",
-    init = function()
-      -- These are required for Modicator to work
-      vim.o.cursorline = false
-      vim.o.number = true
-      vim.o.termguicolors = true
-    end,
-    opts = {},
-  },
+
+  -- {
+  --   "rose-pine/neovim",
+  --   name = "rose-pine",
+  --   opts = {
+  --     variant = "moon", -- auto, main, moon, or dawn
+  --     dark_variant = "dawn", -- main, moon, or dawn
+  --     styles = {
+  --       bold = true,
+  --       italic = true,
+  --       transparency = true,
+  --     },
+  --   },
+  -- },
+
+  -- {
+  --   -- enabled = false,
+  --   "scottmckendry/cyberdream.nvim",
+  --   lazy = true,
+  --   priority = 1000,
+  --   opts = function(_, opts)
+  --     opts.transparent = true
+  --     opts.italic_comments = true
+  --     opts.terminal_colors = true
+  --     opts.hide_fillchars = false
+  --     opts.borderless_telescope = false
+  --   end,
+  -- },
+  -- -- modicator (auto color line number based on vim mode)
+  -- {
+  --   enabled = false,
+  --   "mawkler/modicator.nvim",
+  --   dependencies = "scottmckendry/cyberdream.nvim",
+  --   init = function()
+  --     -- These are required for Modicator to work
+  --     vim.o.cursorline = false
+  --     vim.o.number = true
+  --     vim.o.termguicolors = true
+  --   end,
+  --   opts = {},
+  -- },
+
   {
     enabled = true,
     "catppuccin/nvim",
@@ -43,7 +59,9 @@ return {
       integrations = {
         aerial = true,
         alpha = true,
-        blink_cmp = true,
+        blink_cmp = {
+          style = "bordered",
+        },
         cmp = true,
         dashboard = true,
         flash = true,
