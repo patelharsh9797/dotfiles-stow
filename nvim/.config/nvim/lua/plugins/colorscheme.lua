@@ -126,9 +126,12 @@ return {
         disable_italics = false, -- disable italics
         highlight_groups = {
           WhichKeyFloat = { bg = p.none },
-          LspReferenceText = { bg = p.background3 },
-          LspReferenceRead = { bg = p.background3 },
-          LspReferenceWrite = { bg = p.background3 },
+          -- LspReferenceText = { bg = p.background3 },
+          -- LspReferenceRead = { bg = p.background3 },
+          -- LspReferenceWrite = { bg = p.background3 },
+          LspReferenceText = { link = "visual" },
+          LspReferenceRead = { link = "visual" },
+          LspReferenceWrite = { link = "visual" },
         },
       })
       require("notify").setup({
