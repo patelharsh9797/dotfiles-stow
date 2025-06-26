@@ -398,7 +398,7 @@ return {
     -- dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
       options = {
-        picker = "fzf-lua", -- The picker to use. Valid options are "telescope", "fzf-lua", "native", or "auto"
+        picker = "snacks", -- The picker to use. Valid options are "telescope", "fzf-lua", "snacks", "native", or "auto"
       },
     },
     -- config = function(_, opts)

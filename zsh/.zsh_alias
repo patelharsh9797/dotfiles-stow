@@ -118,6 +118,7 @@ alias dc_mysql="docker run --name some-mysql \
   -d mysql"
 alias dc_metube="docker run -d -p 8081:8081 -v /mnt/c/Users/Harsh/Downloads/metube/downloads:/downloads --name metube ghcr.io/alexta69/metube"
 alias dc_sitegain="unset DOCKER_HOST && docker context use sitegain-hostinger"
+alias dc_default="unset DOCKER_HOST && docker context use default"
 
 # podman alias
 alias psock="podman system service --time=0 unix:///tmp/podman.sock &"

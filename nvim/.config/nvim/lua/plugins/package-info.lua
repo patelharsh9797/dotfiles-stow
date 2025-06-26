@@ -6,9 +6,9 @@ return {
     config = function()
       require("package-info").setup({
         autostart = false, -- Whether to autostart when `package.json` is opened
-        package_manager = "bun",
+        package_manager = "npm",
+        notifications = true, -- Whether to display notifications when running commands
         colors = {
-          -- outdated = "#db4b4b",
           up_to_date = "#3C4048", -- Text color for up to date dependency virtual text
           outdated = "#d19a66", -- Text color for outdated dependency virtual text
           invalid = "#ee4b2b", -- Text color for invalid dependency virtual text

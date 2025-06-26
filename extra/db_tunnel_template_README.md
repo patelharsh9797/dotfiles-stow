@@ -67,6 +67,12 @@ or **interactively**:
 ./tunnel.sh --stop
 ```
 
+### 🟥 Force Stop All Tunnels
+
+```bash
+./tunnel.sh --force-stop
+```
+
 ### 📊 Check Tunnel Status
 
 ```bash
@@ -77,6 +83,7 @@ or **interactively**:
 
 - **`--start`** - Start tunnels
 - **`--stop`** - Stop tunnels
+- **`--force-stop`** - Force Stop All tunnels
 - **`--status`** - Show tunnel status
 - **`--ip <IP>`** - Specify server IP
 - **`--user <username>`** - Specify server username
