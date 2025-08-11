@@ -81,6 +81,7 @@ alias pmcs="py manage.py collectstatic"
 alias pa="py app.py"
 alias pipun="pip uninstall"
 alias pjn="jupyter notebook"
+alias uv_update="uv self update"
 
 # tmux
 alias t="tmux -u"
