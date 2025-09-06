@@ -8,7 +8,7 @@ M.exclude = {
   ".yarn",
   ".pnpm-store",
   ".venv",
-  "env",
+  -- "env/",
   ".env/",
   "venv",
   "__pycache__",

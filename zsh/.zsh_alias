@@ -15,8 +15,9 @@ alias rmdf="rm -rf"
 
 alias ipaddr="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
 alias ports="netstat -lnpt"
+alias check_port="nc -zv localhost"
 alias ff="fastfetch"
-alias htop="htop -t"
+# alias htop="htop -t"
 # alias neofetch='neofetch --ascii ascii.txt | lolcat'
 
 alias mysql_restart="sudo sh ~/mysql_restart.sh"

@@ -50,21 +50,33 @@ return {
   {
     enabled = true,
     "catppuccin/nvim",
-    lazy = true,
+    version = "*",
+    -- version = "v1.11.0",
+    -- lazy = true,
+    priority = 1000, -- make sure to load this before all the other catppuccin colorschemes
     name = "catppuccin",
     opts = {
       flavour = "mocha", -- latte, frappe, macchiato, mocha
       transparent_background = true,
-      transparent = true,
+      -- transparent = true,
+      float = {
+        transparent = true,
+        solid = false,
+      },
+      no_italic = false, -- Force no italic
+      no_bold = false, -- Force no bold
+      no_underline = false, -- Force no underline
+      auto_integrations = true,
       integrations = {
-        aerial = true,
         alpha = true,
         blink_cmp = {
           style = "bordered",
         },
+        bufferline = true,
         cmp = true,
         dashboard = true,
         flash = true,
+        fzf = true,
         gitsigns = true,
         headlines = true,
         illuminate = true,
@@ -73,6 +85,7 @@ return {
         lsp_trouble = true,
         mason = true,
         markdown = true,
+        markview = true,
         mini = {
           enabled = true,
           indentscope_color = "",
@@ -92,6 +105,9 @@ return {
         noice = true,
         notify = true,
         semantic_tokens = true,
+        snacks = {
+          enabled = true,
+        },
         telescope = true,
         treesitter = true,
         treesitter_context = true,
