@@ -14,31 +14,31 @@ return {
 
   dependencies = {
     -- { "codeium.vim", dependencies = { "saghen/blink.compat" } }, -- codeium.nvim
-    { -- vscode snippets
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip").filetype_extend("typescript", { "typescriptreact" })
-        require("luasnip").filetype_extend("javascript", { "javascriptreact" })
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
-    },
-    {
-      "L3MON4D3/LuaSnip",
-      -- opts = function()
-      --   LazyVim.cmp.actions.snippet_forward = function()
-      --     if require("luasnip").jumpable(1) then
-      --       require("luasnip").jump(1)
-      --       return true
-      --     end
-      --   end
-      --   LazyVim.cmp.actions.snippet_stop = function()
-      --     if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
-      --       require("luasnip").unlink_current()
-      --       return true
-      --     end
-      --   end
-      -- end,
-    },
+    -- { -- vscode snippets
+    --   "rafamadriz/friendly-snippets",
+    --   config = function()
+    --     require("luasnip").filetype_extend("typescript", { "typescriptreact" })
+    --     require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+    --     require("luasnip.loaders.from_vscode").lazy_load()
+    --   end,
+    -- },
+    -- {
+    --   "L3MON4D3/LuaSnip",
+    --   -- opts = function()
+    --   --   LazyVim.cmp.actions.snippet_forward = function()
+    --   --     if require("luasnip").jumpable(1) then
+    --   --       require("luasnip").jump(1)
+    --   --       return true
+    --   --     end
+    --   --   end
+    --   --   LazyVim.cmp.actions.snippet_stop = function()
+    --   --     if require("luasnip").expand_or_jumpable() then -- or just jumpable(1) is fine?
+    --   --       require("luasnip").unlink_current()
+    --   --       return true
+    --   --     end
+    --   --   end
+    --   -- end,
+    -- },
     -- "leiserfg/blink_luasnip",
     "moyiz/blink-emoji.nvim",
     "Kaiser-Yang/blink-cmp-dictionary",
@@ -273,6 +273,14 @@ return {
           -- friendly-snippets in the luasnip.lua file, but I was unable to do
           -- so, so I still have to use the transform_items here
           -- This removes the ";" only for the friendly-snippets snippets
+          transform_items = function(_, items)
+            for _, item in ipairs(items) do
+              if item.insertText and item.insertText:match("^" .. vim.pesc(trigger_text)) then
+                item.insertText = item.insertText:gsub("^" .. vim.pesc(trigger_text), "")
+              end
+            end
+            return items
+          end,
           transform_items = function(_, items)
             local line = vim.api.nvim_get_current_line()
             local col = vim.api.nvim_win_get_cursor(0)[2]
