@@ -1,10 +1,10 @@
 return {
   -- Extend and create a/i textobjects
-  { "echasnovski/mini.ai", version = "*", config = true },
+  { "nvim-mini/mini.ai", version = "*", config = true },
 
   -- Go forward/backward with square brackets
   {
-    "echasnovski/mini.bracketed",
+    "nvim-mini/mini.bracketed",
     event = "BufReadPost",
     config = function()
       local bracketed = require("mini.bracketed")
@@ -21,7 +21,7 @@ return {
   -- -- files
   {
 
-    "echasnovski/mini.files",
+    "nvim-mini/mini.files",
     opts = {
       mappings = {
         close = "q",
@@ -72,7 +72,7 @@ return {
 
   -- Highlight patterns in text color highlight groups
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "BufReadPre",
     opts = {
       highlighters = {
@@ -95,7 +95,7 @@ return {
 
   -- Icon provider
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     config = function()
       local icons = require("mini.icons")
       -- icons.mock_nvim_web_devicons()
@@ -158,7 +158,7 @@ return {
 
   -- Visualize and work with indent scope
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     init = function()
       -- disable indent line on some filetypes
       vim.api.nvim_create_autocmd("FileType", {
@@ -204,7 +204,7 @@ return {
 
   -- Move any selection in any direction
   {
-    "echasnovski/mini.move",
+    "nvim-mini/mini.move",
     version = "*",
     event = "VeryLazy",
     opts = {
@@ -231,7 +231,7 @@ return {
 
   -- Text edit operators
   {
-    "echasnovski/mini.operators",
+    "nvim-mini/mini.operators",
     version = "*",
     opts = {
       -- Each entry configures one operator.
@@ -275,11 +275,11 @@ return {
   },
 
   -- Autopairs
-  { "echasnovski/mini.pairs", version = "*", config = true },
+  { "nvim-mini/mini.pairs", version = "*", config = true },
 
   -- Extend and create a/i textobjects
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     version = "*",
     config = true,
     opts = {

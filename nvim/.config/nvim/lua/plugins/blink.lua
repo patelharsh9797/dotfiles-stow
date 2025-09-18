@@ -274,14 +274,6 @@ return {
           -- so, so I still have to use the transform_items here
           -- This removes the ";" only for the friendly-snippets snippets
           transform_items = function(_, items)
-            for _, item in ipairs(items) do
-              if item.insertText and item.insertText:match("^" .. vim.pesc(trigger_text)) then
-                item.insertText = item.insertText:gsub("^" .. vim.pesc(trigger_text), "")
-              end
-            end
-            return items
-          end,
-          transform_items = function(_, items)
             local line = vim.api.nvim_get_current_line()
             local col = vim.api.nvim_win_get_cursor(0)[2]
             local before_cursor = line:sub(1, col)
