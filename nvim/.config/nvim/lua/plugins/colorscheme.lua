@@ -72,7 +72,6 @@ return {
         blink_cmp = {
           style = "bordered",
         },
-        bufferline = true,
         cmp = true,
         dashboard = true,
         flash = true,

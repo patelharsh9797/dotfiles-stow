@@ -17,12 +17,18 @@ end
 return {
   -- buffer line
   {
+    enabled = false,
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
     },
+    -- config = function()
+    --   require("bufferline").setup({
+    --     highlights = require("catppuccin.groups.integrations.bufferline").get_theme(),
+    --   })
+    -- end,
     opts = {
       options = {
         mode = "tabs",
