@@ -47,7 +47,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     event = "BufEnter",
     init = function()
-      require("lazyvim.util").lsp.on_attach(function(_, buffer) end)
+      require("snacks").util.lsp.on({ name = "typescript-tools" }, function(_, buffer) end)
     end,
     config = function(_, opts)
       require("typescript-tools").setup({
@@ -154,7 +154,7 @@ return {
         severity_sort = false,
       })
 
-      opts.capabilities = capabilities
+      -- opts.capabilities = capabilities
       opts.inlay_hints = { enabled = false }
 
       opts.servers = {
